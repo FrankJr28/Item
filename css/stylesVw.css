@@ -1,0 +1,40 @@
+/*--------------------------- FORM ---------------------------*/
+.form-view{
+    box-sizing: content-box;
+}
+
+.form-view{
+    color: #031218;
+  }
+  
+  .form-view label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+  }
+  
+  .form-view input[type="text"] {
+    border: none;
+    background: transparent;
+    outline: none;
+    height: 30px;
+    font-size: 14px;
+  }
+
+/*--------------------------- H4 ---------------------------*/
+
+.margin-cont h4{
+    color: #363642;
+}
+
+.margin-cont h6{
+    font-weight: bold;
+}
+
+/*--------------------------- H4 ---------------------------*/
+
+.margin-cont img{
+  width: 220px;
+}
+
+

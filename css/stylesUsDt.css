@@ -1,0 +1,123 @@
+/*----------------------------FORMULARIO---------------------------*/
+.form-mod {
+    box-sizing: content-box;
+  }
+ 
+  .form-mod h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .form-mod label {
+    margin: 0 10px 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .form-mod select, .form-mod input {
+    margin-bottom: 20px;
+    margin-left: 10px;
+  }
+
+  .form-mod select, .form-mod input[type="text"]{
+    border: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+    width: 80%;
+  }
+
+  #staticEmail2{
+    border: none;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+    width: 40px;
+  }
+
+  .form-mod .span-fj{
+    height: 50%;
+  }
+
+  #span-fj-tel{
+    width: 54%;
+  }
+
+  .form-mod a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+  }
+  
+  .form-mod a:hover {
+    color: rgb(16, 173, 212);
+  }
+
+  #btn-cancel{
+    margin-top: 10px;
+    margin-right: 5px;
+    border: none;
+    outline: none;
+    height: 35px;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 20%;
+  }
+
+  #btn-agregar{
+    margin-top: 10px;
+    background: #000;
+    color: #fff;
+    border: none;
+    outline: none;
+    height: 35px;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 20%;
+  }
+
+  #btn-agregar:hover, #btn-cancel:hover{
+    cursor: pointer;
+    background: #216e8a;
+    color: #fff;
+  }
+
+/*----------------------------ACCORDION---------------------------*/
+
+.accord-format h3{
+    margin: 0;
+    padding: 0 0 20px;
+    color: #212529;
+    text-align: start;
+}
+
+.accord-format button[data-bs-toggle="collapse"]{
+    margin: 0;
+    padding: 10px 10px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    border-bottom: #000;
+    display: flex;
+    text-align: start;
+}
+
+.accord-format .icon-img{
+  display: flex;
+  align-items: center;
+}
+
+#cred-usr-dt{
+    width: 220px;
+  }
+  

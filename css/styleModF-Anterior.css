@@ -1,0 +1,148 @@
+.form-mod {
+    box-sizing: content-box;
+}
+
+.form-mod .form-mod-margin {
+    color: #216e8a;
+    margin-left: 18%;
+}
+
+.form-mod .form-mod-mrg-strech {
+    color: #216e8a;
+    margin-left: 5%;
+}
+
+.form-mod-mrg {
+    margin-left: 30%;
+    margin-right: 30%;
+    color: #216e8a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-mod h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.form-mod label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+}
+
+.form-mod input {
+    margin-bottom: 20px;
+}
+
+.form-mod input[placeholder="6"] {
+    text-align: center;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.form-mod input[placeholder=" 12345678912345671"] {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-mod input[type="text"],
+.form-mod input[type="articuloName"] {
+    border: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+    width: 70%;
+}
+
+.form-mod input[type="date"] {
+    border: none;
+    border-bottom: 1px solid #000000;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+    width: 200px;
+}
+
+#btn-agregar,
+#btn-editar,
+#btn-eliminar,
+#btn-generar {
+    margin-top: 10px;
+    background: #000;
+    color: #fff;
+}
+
+.form-mod button[type="button"] {
+    border: none;
+    outline: none;
+    height: 35px;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 20%;
+}
+
+.form-mod button[type="reset"] {
+    margin-top: 10px;
+    margin-right: 5px;
+    border: none;
+    outline: none;
+    height: 35px;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 20%;
+}
+
+#btn-editar {
+    width: 30%;
+}
+
+#btn-generar {
+    width: 200px;
+}
+
+#btn-agregar:hover,
+#btn-editar:hover,
+#btn-generar:hover,
+.form-mod button[type="reset"]:hover {
+    cursor: pointer;
+    background: #216e8a;
+    color: #fff;
+}
+
+#btn-eliminar:hover {
+    cursor: pointer;
+    background: #ff6363;
+    color: #fff;
+}
+
+#cont-generar {
+    padding-left: 50px;
+}
+
+.form-mod a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.form-mod a:hover {
+    color: rgb(16, 173, 212);
+}
+
+@media screen and (max-width: 750px) {
+    #cont-generar {
+        padding-right: 50px;
+    }
+}

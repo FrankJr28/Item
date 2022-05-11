@@ -1,0 +1,205 @@
+@import url('normalize.css');
+a {
+    text-decoration: none;
+}
+
+* {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    color: #8b8a8a;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    min-width: 200px;
+    height: 100vh;
+}
+
+
+/*                          HEADER                          */
+
+.header {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    order: 1;
+    height: min-content;
+}
+
+.header-element {
+    flex: 1 1 33%;
+    display: flex;
+    flex-direction: row;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+.header-element-content {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logoCta {
+    justify-content: flex-end;
+}
+
+#logoCusur {
+    justify-content: flex-start;
+}
+
+#logoCusur img {
+    width: 17rem;
+}
+
+#logoCta img {
+    width: 7rem;
+}
+
+
+/*                          NAV                         */
+
+.nav {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    /*border: transparent;
+    border-top: rgb(112, 110, 110);
+    border-bottom: rgb(112, 110, 110);
+    border-style: solid;*/
+    height: min-content;
+    top: initial;
+}
+
+.nav-element {
+    margin: .3rem 1rem .3rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.main-body {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    order: 3;
+    min-height: 50%;
+}
+
+
+/*                          FOOTER                          */
+
+.footer {
+    background-color: beige;
+    padding: 1.5rem;
+    /* Flex */
+    display: flex;
+    justify-content: center;
+    flex: 1 1 100%;
+    order: 4;
+    align-self: flex-end;
+}
+
+.footer>div>p {
+    font-size: 12px;
+}
+
+
+/*                          MEDIA QUERYS                            */
+
+@media(max-width: 1112px) {
+    #logoCusur img {
+        width: 12rem;
+    }
+    #logoCta img {
+        width: 4.94rem;
+    }
+    .header-element {
+        padding-left: .4rem;
+        padding-right: .4rem;
+    }
+    /*
+    .main {
+        margin: 1rem .5rem 1rem .5rem;
+        padding: .5rem .5rem .5rem .5rem;
+        background: rgb(255, 255, 255);
+        flex: 1 1 65%;
+        display: flex;
+        flex-direction: column;
+    }
+    */
+    textarea,
+    select,
+    .form-content input {
+        flex-basis: 100%;
+        font-size: .8rem;
+    }
+    * {
+        font-size: 18px;
+    }
+}
+
+@media(max-width: 1112px) {
+    #logoCusur img {
+        width: 12rem;
+    }
+    #logoCta img {
+        width: 4.94rem;
+    }
+    .header-element {
+        padding-left: .4rem;
+        padding-right: .4rem;
+    }
+    * {
+        font-size: 18px;
+    }
+}
+
+@media(max-width: 695px) {
+    #logoCusur img {
+        width: 10rem;
+    }
+    #logoCta img {
+        width: 4rem;
+    }
+    .header-element {
+        padding-left: .3rem;
+        padding-right: .3rem;
+    }
+    * {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 440px) {
+    #logoCusur img {
+        width: 8rem;
+    }
+    #logoCta img {
+        width: 3.2rem;
+    }
+    .header-element {
+        padding-left: .3rem;
+        padding-right: .3rem;
+    }
+    * {
+        font-size: 14px;
+    }
+    .header-element-content {
+        font-size: small;
+    }
+    h1 {
+        font-size: 16px;
+    }
+}

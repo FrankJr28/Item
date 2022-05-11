@@ -1,0 +1,224 @@
+.main {
+    margin: 1rem .5rem 1rem .5rem;
+    padding: 1rem 1rem 1rem 3.5rem;
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-basis: 70%;
+    flex-direction: row;
+}
+
+.main-content {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+form {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.form-content {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-element {
+    margin-top: .3rem;
+    padding: .4rem;
+    flex-basis: 25%;
+}
+
+.form-content input,
+.form-content textarea,
+.form-content select,
+form button {
+    flex-basis: 50%;
+    margin-top: .3rem;
+    background: rgb(255, 255, 255);
+    color: rgb(112, 110, 110);
+    border-style: solid;
+    border-color: rgb(112, 110, 110);
+    padding: .2rem;
+    border-radius: .8rem;
+    font-size: .8rem;
+    display: flex;
+}
+
+select,
+.form-content input {
+    flex-basis: 50%;
+    font-size: 1rem;
+}
+
+textarea {
+    font-size: 1rem;
+    height: 15vh;
+}
+
+#btn-Enviar,
+.form-content select {
+    background-color: rgb(112, 110, 110);
+    color: white;
+    font-size: 1rem;
+}
+
+#div-btn {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 75%;
+}
+
+#btn-Enviar {
+    flex-basis: min-content;
+}
+
+.aside {
+    margin: 1rem .5rem 1rem .5rem;
+    border-style: solid;
+    border-color: rgb(56, 98, 141);
+    border-radius: 1.5rem;
+    padding: 1.2rem;
+    flex: 1 1 25%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.aside-element {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aside-element-header {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aside-element input {
+    background: rgb(255, 255, 255);
+    color: rgb(112, 110, 110);
+    border-style: solid;
+    border-color: rgb(112, 110, 110);
+    padding: 6px;
+    border-radius: 15px;
+    font-size: .9 rem;
+}
+
+#online {
+    flex-basis: 100%;
+}
+
+textarea {
+    height: 5rem;
+}
+
+
+/*                      footer                      */
+
+.footer {
+    color: gray;
+    background-color: beige;
+    padding: 1.5rem;
+    /* Flex */
+    order: 4;
+    display: block;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    height: 5rem;
+    font-size: 10 px;
+    flex: 1 1 100%;
+    order: 4;
+    align-self: flex-end;
+}
+
+.footer>div>p {
+    font-size: 12px;
+}
+
+
+/*                  Validacion                      */
+
+.input-correcto {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.input-error {
+    font-size: 12px;
+    color: red;
+    margin-bottom: 0;
+    display: block;
+}
+
+@media(max-width: 1066px) {
+    .main {
+        flex-basis: 100%;
+        margin: .8rem .5rem .8rem .5rem;
+        padding: .2rem .2rem .2rem .2rem;
+    }
+    .form-content input,
+    .form-content textarea,
+    .form-content select,
+    form button {
+        /*flex-basis: 70%;*/
+        flex-basis: 80%;
+        margin-top: .1rem;
+        background: rgb(255, 255, 255);
+        color: rgb(112, 110, 110);
+        border-style: solid;
+        border-color: rgb(112, 110, 110);
+        padding: .1rem;
+        border-radius: .8rem;
+        font-size: .8rem;
+        display: flex;
+    }
+    select,
+    .form-content input {
+        flex-basis: 80%;
+        font-size: 1rem;
+    }
+    #div-btn {
+        flex-basis: 100%;
+    }
+}
+
+@media(max-width:558px) {
+    .form-content input,
+    .form-content textarea,
+    .form-content select,
+    form button {
+        /*flex-basis: 70%;*/
+        flex-basis: 65%;
+        margin-top: .1rem;
+        background: rgb(255, 255, 255);
+        color: rgb(112, 110, 110);
+        border-style: solid;
+        border-color: rgb(112, 110, 110);
+        padding: .1rem;
+        border-radius: .8rem;
+        font-size: .8rem;
+        display: flex;
+    }
+    select,
+    .form-content input {
+        flex-basis: 65%;
+        font-size: 1rem;
+    }
+    .form-element {
+        flex-basis: 35%;
+    }
+}

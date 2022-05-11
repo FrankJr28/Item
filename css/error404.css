@@ -1,0 +1,17 @@
+.main {
+    width: 100%;
+}
+
+.title {
+    /*width: 100%;*/
+    text-align: center;
+}
+
+.title>h1 {
+    color: crimson;
+}
+
+.content {
+    /*width: 100%;*/
+    text-align: center;
+}
