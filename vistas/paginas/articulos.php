@@ -16,6 +16,7 @@
             </h3>
         <div id="accorAdaptador" class="accordion-collapse collapse" aria-labelledby="accorAdaptador-head" data-bs-parent="#accordionItems">
             <div class="accordion-body listItemByItem">
+                <!--
                 <a class="list-group-item listHead d-flex align-items-center">
                     <h6>Adaptador Id</h6>
                     <h6>Marca</h6>
@@ -41,7 +42,29 @@
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" disabled>
                         <label class="form-check-label" for="flexSwitchCheckDisabled"></label>
                     </div>
-                </a>
+                </a>-->
+
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Adaptador Id</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Disponible</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Acer</td>
+                            <td>Aptitude</td>
+                            <td>Sí</td>
+                        </tr>
+                    </tbody>
+                
+                </table>
+
                 <div class="d-flex justify-content-center btn-plus">
                     <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArt">
                         <i class="bi bi-plus-circle"></i>Nuevo
@@ -59,6 +82,7 @@
             </h3>
         <div id="accorBocina" class="accordion-collapse collapse" aria-labelledby="accorBocina-head" data-bs-parent="#accordionItems">
             <div class="accordion-body listItemByItem">
+                <!--
                 <a class="list-group-item listHead d-flex align-items-center">
                     <h6>Bocina Id</h6>
                     <h6>Marca</h6>
@@ -84,7 +108,15 @@
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" disabled>
                         <label class="form-check-label" for="flexSwitchCheckDisabled"></label>
                     </div>
-                </a>
+                </a>-->
+
+                <?php
+                
+                $laptops = new controladorArticulos();
+                $laptops->ctrObtenerLaptops();
+
+                ?>
+
                 <div class="d-flex justify-content-center btn-plus">
                     <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArt">
                         <i class="bi bi-plus-circle"></i>Nuevo
