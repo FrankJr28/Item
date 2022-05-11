@@ -14,7 +14,7 @@
                     Adaptadores
                 </button>
             </h3>
-        <div id="accorAdaptador" class="accordion-collapse collapse" aria-labelledby="accorAdaptador-head" data-bs-parent="#itemsList">
+        <div id="accorAdaptador" class="accordion-collapse collapse" aria-labelledby="accorAdaptador-head" data-bs-parent="#accordionItems">
             <div class="accordion-body listItemByItem">
                 <a class="list-group-item listHead d-flex align-items-center">
                     <h6>Adaptador Id</h6>
@@ -57,7 +57,7 @@
                     Bocinas
                 </button>
             </h3>
-        <div id="accorBocina" class="accordion-collapse collapse" aria-labelledby="accorBocina-head" data-bs-parent="#itemsList">
+        <div id="accorBocina" class="accordion-collapse collapse" aria-labelledby="accorBocina-head" data-bs-parent="#accordionItems">
             <div class="accordion-body listItemByItem">
                 <a class="list-group-item listHead d-flex align-items-center">
                     <h6>Bocina Id</h6>
@@ -100,7 +100,7 @@
                     Cables
                 </button>
             </h3>
-        <div id="accorCable" class="accordion-collapse collapse" aria-labelledby="accorCable-head" data-bs-parent="#itemsList">
+        <div id="accorCable" class="accordion-collapse collapse" aria-labelledby="accorCable-head" data-bs-parent="#accordionItems">
             <div class="accordion-body listItemByItem">
                 <a class="list-group-item listHead d-flex align-items-center">
                     <h6>Cable Id</h6>
@@ -143,7 +143,7 @@
                     Laptops
                 </button>
             </h3>
-        <div id="accorLaptop" class="accordion-collapse collapse" aria-labelledby="accorCable-head" data-bs-parent="#itemsList">
+        <div id="accorLaptop" class="accordion-collapse collapse" aria-labelledby="accorCable-head" data-bs-parent="#accordionItems">
             <div class="accordion-body listItemByItem">
                 <a class="list-group-item listHead d-flex align-items-center">
                     <h6>Laptop Id</h6>
@@ -186,7 +186,7 @@
                     Monitores
                 </button>
             </h3>
-        <div id="accorMonitor" class="accordion-collapse collapse" aria-labelledby="accorMonitor-head" data-bs-parent="#itemsList">
+        <div id="accorMonitor" class="accordion-collapse collapse" aria-labelledby="accorMonitor-head" data-bs-parent="#accordionItems">
             <div class="accordion-body listItemByItem">
                 <a class="list-group-item listHead d-flex align-items-center">
                     <h6>Monitor Id</h6>
