@@ -367,7 +367,7 @@
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="12345678912345671" disabled>
+                                <input type="text" id="idCable" class="form-control">
                             </div>
                             <div class="col-6">
                             <div class="form-group">
@@ -381,28 +381,11 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" placeholder="Acer">
+                                <input type="text" placeholder="Acer" id>
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Modelo</label>
                                 <input type="text" placeholder="Aspire V">
-                            </div>
-                        </div>
-                        <div class="row g-2 m-3">
-                            <div class="col-6">
-                                <label for="articuloSN">S/N </label>
-                                <input type="text" id="disabledTextInput" placeholder="12345678912345671">
-                            </div>
-                            <div class="col-6">
-                                <label for="">Cargador</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="articuloCg1">Sí</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="articuloCg2">No</label>
-                                </div>
                             </div>
                         </div>
                         <div class="row">

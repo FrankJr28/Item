@@ -129,9 +129,9 @@ class controladorArticulos{
                 </thead>
                 <tbody>';
 
-                foreach($informacion as $dato){
+                foreach($informacion as $index => $dato){
 
-                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtCab" data-id="'.$dato["id_c"].'" class="cab">
+                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtCab" id="'.$dato["id_c"].$index.'" data-valor="'.$dato["id_c"].'" class="cab" value="10">
                                 <td>'.$dato["id_c"].'</td>
                                 <td>'.$dato["marca_c"].'</td>
                                 <td>'.$dato["conexion"].'</td>
