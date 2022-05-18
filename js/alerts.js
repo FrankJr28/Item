@@ -58,6 +58,7 @@ $('a.check-green-fin').on('click', function() {
     })
 });
 
+/*
 $('#btn-editar').on('click', function() {
 
     Swal.fire({
@@ -77,7 +78,7 @@ $('#btn-editar').on('click', function() {
             )
         }
     })
-});
+});*/
 
 $('#btn-agregar').on('click', function() {
     Swal.fire(

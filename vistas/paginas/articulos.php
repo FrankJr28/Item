@@ -17,26 +17,12 @@
         <div id="accorAdaptador" class="accordion-collapse collapse" aria-labelledby="accorAdaptador-head" data-bs-parent="#accordionItems">
             <div class="accordion-body listItemByItem">
 
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th scope="col">Adaptador Id</th>
-                            <th scope="col">Marca</th>
-                            <th scope="col">Modelo</th>
-                            <th scope="col">Disponible</th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Acer</td>
-                            <td>Aptitude</td>
-                            <td>Sí</td>
-                        </tr>
-                    </tbody>
+                <?php
                 
-                </table>
+                    $bocinas = new controladorArticulos();
+                    $bocinas->ctrObtenerAdaptadores();
+
+                ?>
 
                 <div class="d-flex justify-content-center btn-plus">
                     <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArt">
@@ -233,7 +219,7 @@
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="12345678912345671" disabled>
+                                <input type="text" id="idAdaptador" class="form-control" disabled>
                             </div>
                             <div class="col-6">
                             <div class="form-group">
@@ -247,30 +233,14 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" placeholder="Acer">
+                                <input type="text" id="marcaAdaptador">
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Modelo</label>
-                                <input type="text" placeholder="Aspire V">
+                                <input type="text" id="modeloAdaptador">
                             </div>
                         </div>
-                        <div class="row g-2 m-3">
-                            <div class="col-6">
-                                <label for="articuloSN">S/N </label>
-                                <input type="text" id="disabledTextInput" placeholder="12345678912345671">
-                            </div>
-                            <div class="col-6">
-                                <label for="">Cargador</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="articuloCg1">Sí</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="articuloCg2">No</label>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
@@ -300,7 +270,7 @@
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="12345678912345671" disabled>
+                                <input type="text" id="idBocina" class="form-control" >
                             </div>
                             <div class="col-6">
                             <div class="form-group">
@@ -314,28 +284,11 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" placeholder="Acer">
+                                <input type="text" id="marcaBocina">
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Modelo</label>
-                                <input type="text" placeholder="Aspire V">
-                            </div>
-                        </div>
-                        <div class="row g-2 m-3">
-                            <div class="col-6">
-                                <label for="articuloSN">S/N </label>
-                                <input type="text" id="disabledTextInput" placeholder="12345678912345671">
-                            </div>
-                            <div class="col-6">
-                                <label for="">Cargador</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="articuloCg1">Sí</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="articuloCg2">No</label>
-                                </div>
+                                <input type="text" id="modeloBocina">
                             </div>
                         </div>
                         <div class="row">
@@ -381,11 +334,11 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" placeholder="Acer" id>
+                                <input type="text" id="marcaCable">
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Modelo</label>
-                                <input type="text" placeholder="Aspire V">
+                                <input type="text" id="conexionCable">
                             </div>
                         </div>
                         <div class="row">
@@ -413,16 +366,17 @@
             </div>
             <div class="modal-body">
                 <div class="form-mod">
-                    <form class="form-mod-mrg-strech">
+                    <form class="form-mod-mrg-strech" name="formulario" method="post" action="#">
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="12345678912345671" disabled>
+                                <input type="text" class="form-control">
+                                <input type="hidden" id="idLaptop" name="idl">
                             </div>
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="displ" checked>
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>
@@ -431,17 +385,17 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" placeholder="Acer">
+                                <input type="text" id="marcaLaptop" name="marcal">
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Modelo</label>
-                                <input type="text" placeholder="Aspire V">
+                                <input type="text" id="modeloLaptop" name="modelol">
                             </div>
                         </div>
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloSN">S/N </label>
-                                <input type="text" id="disabledTextInput" placeholder="12345678912345671">
+                                <input type="text" id="snLaptop" name="sn">
                             </div>
                             <div class="col-6">
                                 <label for="">Cargador</label>
@@ -455,13 +409,21 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloSN">Observaciones </label>
+                                <input type="text" id="snLaptop" name="obs">
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
                                     <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
-                                <button id="btn-editar" type="button">Guardar cambios</button>
+                                <button id="btn-editar" type="submit">Guardar cambios</button>
                             </div>
                         </div>
                     </form>
@@ -470,6 +432,64 @@
         </div><!-- modal content -->
     </div><!-- modal dialog-->
 </div><!-- modal -->
+
+<?php            
+    $l = controladorArticulos::ctrActualizarLaptop();
+    
+    if($l=="ok"){
+
+        echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos actualizados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+                }
+                
+                setTimeout(function(){
+                    location.reload();
+                },900);
+                
+ 
+            </script>";
+
+    }
+    
+    else{
+        
+        if($l){
+
+            echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ocurrió un error',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+
+                }                
+            
+            </script>";
+
+        }
+
+    }
+
+?>
 
 <div class="modal fade" id="editarArtProy" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -484,7 +504,7 @@
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="12345678912345671" disabled>
+                                <input type="text" id="idProyector" class="form-control" placeholder="12345678912345671" disabled>
                             </div>
                             <div class="col-6">
                             <div class="form-group">
@@ -498,11 +518,11 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" placeholder="Acer">
+                                <input type="text" id="marcaProyector">
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Modelo</label>
-                                <input type="text" placeholder="Aspire V">
+                                <input type="text" id="modeloProyector">
                             </div>
                         </div>
                         <div class="row g-2 m-3">
