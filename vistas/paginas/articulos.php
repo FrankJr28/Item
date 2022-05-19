@@ -25,7 +25,7 @@
                 ?>
 
                 <div class="d-flex justify-content-center btn-plus">
-                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArt">
+                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtAdapt">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
                 </div>
@@ -50,7 +50,7 @@
                 ?>
 
                 <div class="d-flex justify-content-center btn-plus">
-                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArt">
+                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtBoc">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
                 </div>
@@ -71,7 +71,7 @@
                     $cables->ctrObtenerCables();
                 ?>
                 <div class="d-flex justify-content-center btn-plus">
-                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArt">
+                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtCab">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
                 </div>
@@ -96,7 +96,7 @@
                 ?>
 
                 <div class="d-flex justify-content-center btn-plus">
-                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArt">
+                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtLap">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
                 </div>
@@ -120,7 +120,7 @@
                 ?>
                 
                 <div class="d-flex justify-content-center btn-plus">
-                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArt">
+                    <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtProy">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
                 </div>
@@ -215,16 +215,17 @@
             </div>
             <div class="modal-body">
                 <div class="form-mod">
-                    <form class="form-mod-mrg-strech">
+                    <form class="form-mod-mrg-strech" name="formularioA" method="post" action="#">
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" id="idAdaptador" class="form-control" disabled>
+                                <input type="text" id="idAdaptador" class="form-control">
+                                <input type="hidden" id="idAdaptadorH" name="ida" >
                             </div>
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="dispa" checked>
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>
@@ -233,11 +234,18 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" id="marcaAdaptador">
+                                <input type="text" id="marcaAdaptador" name="marcaa">
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Modelo</label>
-                                <input type="text" id="modeloAdaptador">
+                                <input type="text" id="modeloAdaptador" name="modeloa">
+                            </div>
+                        </div>
+
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloMarca">Observaciones</label>
+                                <input type="text" id="observacionesAdaptador" name="obsa">
                             </div>
                         </div>
                         
@@ -247,7 +255,7 @@
                                     <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
-                                <button id="btn-editar" type="button">Guardar cambios</button>
+                                <button id="btn-editar" type="submit">Guardar cambios</button>
                             </div>
                         </div>
                     </form>
@@ -256,6 +264,150 @@
         </div><!-- modal content -->
     </div><!-- modal dialog-->
 </div><!-- modal -->
+
+<div class="modal fade" id="nuevoArtAdapt" tabindex="-1" role="dialog" aria-labelledby="nuevo-article">
+    <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-head">
+                <div><i class="bi bi-folder-plus"></i>
+                    Agregar un nuevo Adaptador</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-mod">
+                    <form class="form-mod-mrg-strech" name="formularioNA" method="post" action="#">
+                        <div class="row m-3">
+                            <div class="col-6">
+                                <label for="articuloId">Id</label>
+                                <input type="text" class="form-control" name="id-a">
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input form-sw" type="checkbox" name="disp-a" value="1">
+                                        <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloMarca">Marca</label>
+                                <input type="text" name="marca-a">
+                            </div>
+                            <div class="col-6">
+                                <label for="articuloModelo">Modelo</label>
+                                <input type="text" name="modelo-a">
+                            </div>
+                        </div>
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                               <label for="obs">Observaciones</label>
+                               <input type="text" name="obs-a">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="reset" data-bs-dismiss="modal">Cancelar</button>
+                                <button id="btn-editar" type="submit">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- Modal body-->
+        </div><!-- Modal content-->
+    </div><!-- Modal dialog-->
+</div><!--MODAL-->
+
+<?php
+    $na = controladorArticulos::ctrInsertarAdaptador();
+
+    if($na=="ok"){
+
+        echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos actualizados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+
+                    setTimeout(function(){
+                        location.reload();
+                    },900);  
+                }
+                
+                
+ 
+            </script>";
+
+    }
+
+    $a = controladorArticulos::ctrActualizarAdaptador();
+
+    if($a=="ok"){
+
+        echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos actualizados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+
+                    setTimeout(function(){
+                        location.reload();
+                    },900);  
+                }
+                
+                
+ 
+            </script>";
+
+    }
+    
+    else{
+        
+        if($a){
+
+            echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ocurrió un error',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+
+                }
+                 
+            
+            </script>";
+
+        }
+
+    }
+
+?>
 
 <div class="modal fade" id="editarArtBoc" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -266,16 +418,17 @@
             </div>
             <div class="modal-body">
                 <div class="form-mod">
-                    <form class="form-mod-mrg-strech">
+                    <form class="form-mod-mrg-strech" name="formularioB" method="post" action="#">
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" id="idBocina" class="form-control" >
+                                <input type="text"  id="idBocina" class="form-control" >
+                                <input type="hidden" id="idBocinaH" name="idb" >
                             </div>
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="dispb"checked>
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>
@@ -284,28 +437,182 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" id="marcaBocina">
+                                <input type="text" id="marcaBocina" name="marcab">
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Modelo</label>
-                                <input type="text" id="modeloBocina">
+                                <input type="text" id="modeloBocina" name="modelob">
                             </div>
                         </div>
+
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloMarca">Observaciones</label>
+                                <input type="text" id="observacionesBocina" name="obsb">
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
                                     <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
-                                <button id="btn-editar" type="button">Guardar cambios</button>
+                                <button id="btn-editar" type="submit">Guardar cambios</button>
                             </div>
                         </div>
                     </form>
-                </div><!-- form-mod (estilo del formulario)-->
-            </div><!-- modal body-->
-        </div><!-- modal content -->
-    </div><!-- modal dialog-->
-</div><!-- modal -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="nuevoArtBoc" tabindex="-1" role="dialog" aria-labelledby="nuevo-article">
+    <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-head">
+                <div><i class="bi bi-folder-plus"></i>
+                    Agregar una nueva Bocina</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-mod">
+                    <form class="form-mod-mrg-strech" method="post" action="#">
+                        <div class="row m-3">
+                            <div class="col-6">
+                                <label for="articuloId">Id</label>
+                                <input type="text" id="disabledTextInput" class="form-control" name="id-b">
+                            </div>
+                            <div class="col-6">
+                            <div class="form-group">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input form-sw" type="checkbox" name="disp-b">
+                                    <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloMarca">Marca</label>
+                                <input type="text" name="marca-b">
+                            </div>
+                            <div class="col-6">
+                                <label for="articuloModelo">Modelo</label>
+                                <input type="text" name="modelo-b">
+                            </div>
+                        </div>
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloSN">Observaciones </label>
+                                <input type="text" id="disabledTextInput" name="obs-b">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <div class="btn-eliminar-s">
+                                    
+                                </div>
+                                <button type="reset" data-bs-dismiss="modal">Cancelar</button>
+                                <button id="btn-editar" type="submit">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- Modal body-->
+        </div><!-- Modal content-->
+    </div><!-- Modal dialog-->
+</div><!--MODAL-->
+
+<?php
+    $nb = controladorArticulos::ctrInsertarBocina();
+
+    if($nb=="ok"){
+
+        echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos actualizados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+
+                    setTimeout(function(){
+                        location.reload();
+                    },900);  
+                }
+                
+                
+ 
+            </script>";
+
+    }
+
+    $b = controladorArticulos::ctrActualizarBocina();
+
+    if($b =="ok"){
+
+        echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos actualizados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+
+                    
+                    
+                }
+                
+            </script>";
+
+    }
+    
+    else{
+        
+        if($b){
+
+            echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ocurrió un error',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+
+                }
+
+                setTimeout(function(){
+                    location.reload();
+                },900);
+                 
+            </script>";
+
+        }
+
+    }
+?>
 
 <div class="modal fade" id="editarArtCab" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -316,16 +623,17 @@
             </div>
             <div class="modal-body">
                 <div class="form-mod">
-                    <form class="form-mod-mrg-strech">
+                    <form class="form-mod-mrg-strech" method="post" action="#">
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
                                 <input type="text" id="idCable" class="form-control">
+                                <input type="hidden" id="idCableH" name="idc" class="form-control">
                             </div>
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="dispc" checked>
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>
@@ -334,11 +642,21 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" id="marcaCable">
+                                <input type="text" id="marcaCable" name="marcac">
                             </div>
                             <div class="col-6">
-                                <label for="articuloModelo">Modelo</label>
-                                <input type="text" id="conexionCable">
+                                <label for="articuloModelo">Conexion</label>
+                                
+                                <select class="form-select" id="modeloC" name="conexion">
+                                    <!--<option value="value1">Value 1</option>
+                                    <option value="value2" selected>Value 2</option>-->
+                                    <?php
+                                    
+                                        $tipos = new controladorArticulos();
+                                        $tipos->ctrObtenerTipoConexion();
+                                    ?>
+                                </select>
+
                             </div>
                         </div>
                         <div class="row">
@@ -347,7 +665,7 @@
                                     <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
-                                <button id="btn-editar" type="button">Guardar cambios</button>
+                                <button id="btn-editar" type="submit">Guardar cambios</button>
                             </div>
                         </div>
                     </form>
@@ -356,6 +674,150 @@
         </div><!-- modal content -->
     </div><!-- modal dialog-->
 </div><!-- modal -->
+
+<div class="modal fade" id="nuevoArtCab" tabindex="-1" role="dialog" aria-labelledby="nuevo-article">
+    <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-head">
+                <div><i class="bi bi-folder-plus"></i>
+                    Agregar un nuevo Cable</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-mod">
+                    <form class="form-mod-mrg-strech" method="post" action="#">
+                        <div class="row m-3">
+                            <div class="col-6">
+                                <label for="articuloId">Id</label>
+                                <input type="text" id="disabledTextInput" class="form-control" name="id-c" >
+                            </div>
+                            <div class="col-6">
+                            <div class="form-group">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input form-sw" type="checkbox" name="disp-c" value="1">
+                                    <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloMarca">Marca</label>
+                                <input type="text" name="marca-c">
+                            </div>
+                            <div class="col-6">
+                                <label for="articuloModelo">Conexion</label>
+                                <select class="form-select" name="conexion-c">
+                                    <?php
+                                        $tipos = new controladorArticulos();
+                                        $tipos->ctrObtenerTipoConexion();
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <div class="btn-eliminar-s">
+                                    
+                                </div>
+                                <button type="reset" data-bs-dismiss="modal">Cancelar</button>
+                                <button id="btn-editar" type="submit">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- Modal body-->
+        </div><!-- Modal content-->
+    </div><!-- Modal dialog-->
+</div><!--MODAL-->
+
+<?php
+
+    $nc = controladorArticulos::ctrInsertarCable();
+
+    if($nc=="ok"){
+
+        echo "<script>
+            
+            if ( window.history.replaceState ) {
+
+                window.history.replaceState( null, null, window.location.href);
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Datos actualizados correctamente',
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 1000
+                });
+
+                setTimeout(function(){
+                    location.reload();
+                },900);  
+            }
+            
+        </script>";
+
+    }
+
+    $c = controladorArticulos::ctrActualizarCable();
+    
+    if($c=="ok"){
+
+        echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos actualizados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+                }
+                
+                setTimeout(function(){
+                    location.reload();
+                },900);
+                
+ 
+            </script>";
+
+    }
+    
+    else{
+        
+        if($c){
+
+            echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ocurrió un error',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+
+                }                
+            
+            </script>";
+
+        }
+
+    }
+
+?>
 
 <div class="modal fade" id="editarArtLap" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -366,12 +828,12 @@
             </div>
             <div class="modal-body">
                 <div class="form-mod">
-                    <form class="form-mod-mrg-strech" name="formulario" method="post" action="#">
+                    <form class="form-mod-mrg-strech" name="formularioL" method="post" action="#">
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" class="form-control">
-                                <input type="hidden" id="idLaptop" name="idl">
+                                <input type="text" id="idLaptop" class="form-control">
+                                <input type="hidden" id="idLaptopH" name="idl">
                             </div>
                             <div class="col-6">
                             <div class="form-group">
@@ -398,22 +860,8 @@
                                 <input type="text" id="snLaptop" name="sn">
                             </div>
                             <div class="col-6">
-                                <label for="">Cargador</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="articuloCg1">Sí</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="articuloCg2">No</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row g-2 m-3">
-                            <div class="col-6">
                                 <label for="articuloSN">Observaciones </label>
-                                <input type="text" id="snLaptop" name="obs">
+                                <input type="text" id="observacionesLaptop" name="obs">
                             </div>
                         </div>
 
@@ -433,7 +881,98 @@
     </div><!-- modal dialog-->
 </div><!-- modal -->
 
-<?php            
+<div class="modal fade" id="nuevoArtLap" tabindex="-1" role="dialog" aria-labelledby="nuevo-article">
+    <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-head">
+                <div><i class="bi bi-folder-plus"></i>
+                    Agregar una nueva Laptop</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-mod">
+                    <form class="form-mod-mrg-strech" method="post" action="#">
+                        <div class="row m-3">
+                            <div class="col-6">
+                                <label for="articuloId">Id</label>
+                                <input type="text" id="disabledTextInput" class="form-control" name="id-l">
+                            </div>
+                            <div class="col-6">
+                            <div class="form-group">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input form-sw" type="checkbox" name="disp-l" value="1">
+                                    <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloMarca">Marca</label>
+                                <input type="text" name="marca-l">
+                            </div>
+                            <div class="col-6">
+                                <label for="articuloModelo">Modelo</label>
+                                <input type="text" name="modelo-l">
+                            </div>
+                        </div>
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloSN">S/N </label>
+                                <input type="text" name="sn-l">
+                            </div>
+                            <div class="col-6">
+                                <label for="articuloSN">Observaciones </label>
+                                <input type="text" id="observacionesLaptop" name="obs-l">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <div class="btn-eliminar-s">
+                                    
+                                </div>
+                                <button type="reset" data-bs-dismiss="modal">Cancelar</button>
+                                <button id="btn-editar" type="submit">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- Modal body-->
+        </div><!-- Modal content-->
+    </div><!-- Modal dialog-->
+</div><!--MODAL-->
+
+<?php      
+
+    $nl = controladorArticulos::ctrInsertarLaptop();
+
+    if($nl=="ok"){
+
+        echo "<script>
+            
+            if ( window.history.replaceState ) {
+
+                window.history.replaceState( null, null, window.location.href);
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Datos actualizados correctamente',
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 1000
+                });
+
+                setTimeout(function(){
+                    location.reload();
+                },900);  
+            }
+            
+        </script>";
+
+    }
+
+
     $l = controladorArticulos::ctrActualizarLaptop();
     
     if($l=="ok"){
@@ -500,16 +1039,17 @@
             </div>
             <div class="modal-body">
                 <div class="form-mod">
-                    <form class="form-mod-mrg-strech">
+                    <form class="form-mod-mrg-strech" method="post" action="#">
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" id="idProyector" class="form-control" placeholder="12345678912345671" disabled>
+                                <input type="text" id="idProyector" class="form-control" >
+                                <input type="hidden" id="idProyectorH" name="idp" class="form-control" >
                             </div>
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="dispp" checked>
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>
@@ -518,28 +1058,21 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloMarca">Marca</label>
-                                <input type="text" id="marcaProyector">
+                                <input type="text" id="marcaProyector" name="marcap">
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Modelo</label>
-                                <input type="text" id="modeloProyector">
+                                <input type="text" id="modeloProyector" name="modelop">
                             </div>
                         </div>
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloSN">S/N </label>
-                                <input type="text" id="disabledTextInput" placeholder="12345678912345671">
+                                <input type="text" id="disabledTextInput" name="snp">
                             </div>
                             <div class="col-6">
-                                <label for="">Cargador</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="articuloCg1">Sí</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="articuloCg2">No</label>
-                                </div>
+                                <label for="articuloModelo">Observaciones</label>
+                                <input type="text" id="observacionesProyector" name="obsp">
                             </div>
                         </div>
                         <div class="row">
@@ -548,7 +1081,7 @@
                                     <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
-                                <button id="btn-editar" type="button">Guardar cambios</button>
+                                <button id="btn-editar" type="submit">Guardar cambios</button>
                             </div>
                         </div>
                     </form>
@@ -557,6 +1090,154 @@
         </div><!-- modal content -->
     </div><!-- modal dialog-->
 </div><!-- modal -->
+
+<div class="modal fade" id="nuevoArtProy" tabindex="-1" role="dialog" aria-labelledby="nuevo-article">
+    <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-head">
+                <div><i class="bi bi-folder-plus"></i>
+                    Agregar un nuevo Proyector</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-mod">
+                    <form class="form-mod-mrg-strech" method="post" action="#">
+                        <div class="row m-3">
+                            <div class="col-6">
+                                <label for="articuloId">Id</label>
+                                <input type="text" class="form-control" name="id-p">
+                            </div>
+                            <div class="col-6">
+                            <div class="form-group">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input form-sw" type="checkbox" name="disp-p" value="1" checked>
+                                    <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloMarca">Marca</label>
+                                <input type="text" name="marca-p">
+                            </div>
+                            <div class="col-6">
+                                <label for="articuloModelo">Modelo</label>
+                                <input type="text" name="modelo-p">
+                            </div>
+                        </div>
+                        <div class="row g-2 m-3">
+                            <div class="col-6">
+                                <label for="articuloSN">S/N </label>
+                                <input type="text" name="sn-p">
+                            </div>
+                            <div class="col-6">
+                                <label for="obs">Observaciones </label>
+                                <input type="text" name="obs-p" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <div class="btn-eliminar-s">
+                                    
+                                </div>
+                                <button type="reset" data-bs-dismiss="modal">Cancelar</button>
+                                <button id="btn-editar" type="submit">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- Modal body-->
+        </div><!-- Modal content-->
+    </div><!-- Modal dialog-->
+</div><!--MODAL-->
+
+<?php
+
+    $np = controladorArticulos::ctrInsertarProyector();
+
+    if($np=="ok"){
+
+        echo "<script>
+            
+            if ( window.history.replaceState ) {
+
+                window.history.replaceState( null, null, window.location.href);
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Datos actualizados correctamente',
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 1000
+                });
+
+                setTimeout(function(){
+                    location.reload();
+                },900);  
+            }
+            
+        </script>";
+
+    }
+
+    $p = controladorArticulos::ctrActualizarProyector();
+    
+    if($p=="ok"){
+
+        echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos actualizados correctamentepp',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+                }
+                
+                setTimeout(function(){
+                    location.reload();
+                },900);
+                
+ 
+            </script>";
+
+    }
+    
+    else{
+        
+        if($p){
+
+            echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ocurrió un error',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+
+                }                
+            
+            </script>";
+
+        }
+
+    }
+
+?>
 
 <div class="modal fade" id="nuevoElem" tabindex="-1" role="dialog" aria-labelledby="nuevo-article">
     <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
