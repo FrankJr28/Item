@@ -1,3 +1,9 @@
+var adaptClicked;
+var bocClicked;
+var cabClicked;
+var lapClicked;
+var proyClicked;
+
 $(".adapt").click((e) => {
     //console.log(e.currentTarget);
     var adaptador = e.currentTarget;
@@ -9,7 +15,15 @@ $(".adapt").click((e) => {
     $("#idAdaptadorH").val(idA);
     $("#marcaAdaptador").val(marcaA);
     $("#modeloAdaptador").val(modelo);
+    adaptClicked = idA; //hola
+});
 
+$("#eliminarAdapt").click((e) => {
+    //document.getElementById("idText").textContent = "hola";
+    //$("#idText").text("prueba");
+    $("#idText").text("¿Desea eliminar el adaptador con el id " + adaptClicked + " ?");
+    $("#idEliAdapt").val(adaptClicked);
+    console.log($("#idEliAdapt").val);
 });
 
 $(".boc").click((e) => {
@@ -62,4 +76,138 @@ $(".proy").click((e) => {
     $("#idProyectorH").val(idP);
     $("#marcaProyector").val(marcaP);
     $("#modeloProyector").val(modeloP);
+});
+
+$(document).ready(function() {
+
+    var tableA = $('#adminAdapt').DataTable({
+        //var table = $('#example').DataTable({
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        "pageLength": 10,
+        //para cambiar el lenguaje a español
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar:",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "sProcessing": "Procesando...",
+        },
+        "displayLength": 10
+    });
+
+    var tableB = $('#adminBoc').DataTable({
+        //var table = $('#example').DataTable({
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        "pageLength": 10,
+        //para cambiar el lenguaje a español
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar:",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "sProcessing": "Procesando...",
+        },
+        "displayLength": 10
+    });
+
+    var tableC = $('#adminCab').DataTable({
+        //var table = $('#example').DataTable({
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        "pageLength": 10,
+        //para cambiar el lenguaje a español
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar:",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "sProcessing": "Procesando...",
+        },
+        "displayLength": 10
+    });
+
+    var tableL = $('#adminLap').DataTable({
+        //var table = $('#example').DataTable({
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        "pageLength": 10,
+        //para cambiar el lenguaje a español
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar:",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "sProcessing": "Procesando...",
+        },
+        "displayLength": 10
+    });
+
+    var tableP = $('#adminProy').DataTable({
+        //var table = $('#example').DataTable({
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        "pageLength": 10,
+        //para cambiar el lenguaje a español
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar:",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "sProcessing": "Procesando...",
+        },
+        "displayLength": 10
+    });
+
 });

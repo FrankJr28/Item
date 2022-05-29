@@ -15,16 +15,16 @@
                 </button>
             </h3>
         <div id="accorAdaptador" class="accordion-collapse collapse" aria-labelledby="accorAdaptador-head" data-bs-parent="#accordionItems">
-            <div class="accordion-body listItemByItem">
+            <div class="accordion-body">
+                            
+                    <?php
 
-                <?php
-                
-                    $bocinas = new controladorArticulos();
-                    $bocinas->ctrObtenerAdaptadores();
+                        $adaptador = new controladorArticulos();
+                        $adaptador->ctrObtenerAdaptadores();
 
-                ?>
-
-                <div class="d-flex justify-content-center btn-plus">
+                    ?>
+                                  
+                <div class="d-flex justify-content-center btn-plus listItemByItem">
                     <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtAdapt">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
@@ -40,7 +40,7 @@
                 </button>
             </h3>
         <div id="accorBocina" class="accordion-collapse collapse" aria-labelledby="accorBocina-head" data-bs-parent="#accordionItems">
-            <div class="accordion-body listItemByItem">
+            <div class="accordion-body">
 
                 <?php
                 
@@ -49,7 +49,7 @@
 
                 ?>
 
-                <div class="d-flex justify-content-center btn-plus">
+                <div class="d-flex justify-content-center btn-plus listItemByItem">
                     <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtBoc">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
@@ -65,12 +65,12 @@
                 </button>
             </h3>
         <div id="accorCable" class="accordion-collapse collapse" aria-labelledby="accorCable-head" data-bs-parent="#accordionItems">
-            <div class="accordion-body listItemByItem">
+            <div class="accordion-body">
                 <?php
                     $cables = new controladorArticulos();
                     $cables->ctrObtenerCables();
                 ?>
-                <div class="d-flex justify-content-center btn-plus">
+                <div class="d-flex justify-content-center btn-plus listItemByItem">
                     <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtCab">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
@@ -86,7 +86,7 @@
                 </button>
             </h3>
         <div id="accorLaptop" class="accordion-collapse collapse" aria-labelledby="accorCable-head" data-bs-parent="#accordionItems">
-            <div class="accordion-body listItemByItem">
+            <div class="accordion-body">
                 
                 <?php
                 
@@ -95,7 +95,7 @@
 
                 ?>
 
-                <div class="d-flex justify-content-center btn-plus">
+                <div class="d-flex justify-content-center btn-plus listItemByItem">
                     <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtLap">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
@@ -111,7 +111,7 @@
                 </button>
             </h3>
         <div id="accorMonitor" class="accordion-collapse collapse" aria-labelledby="accorMonitor-head" data-bs-parent="#accordionItems">
-            <div class="accordion-body listItemByItem">
+            <div class="accordion-body ">
                 <?php
                     
                     $Proyectores = new controladorArticulos();
@@ -119,7 +119,7 @@
 
                 ?>
                 
-                <div class="d-flex justify-content-center btn-plus">
+                <div class="d-flex justify-content-center btn-plus listItemByItem">
                     <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtProy">
                         <i class="bi bi-plus-circle"></i>Nuevo
                     </button>
@@ -219,8 +219,8 @@
                         <div class="row m-3">
                             <div class="col-6">
                                 <label for="articuloId">Id</label>
-                                <input type="text" id="idAdaptador" class="form-control">
-                                <input type="hidden" id="idAdaptadorH" name="ida" >
+                                <input type="text" id="idAdaptador" class="form-control" readonly="readonly">
+                                <input type="hidden" id="idAdaptadorH" name="ida" readonly="readonly">
                             </div>
                             <div class="col-6">
                             <div class="form-group">
@@ -252,7 +252,7 @@
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
-                                    <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
+                                    <button id="eliminarAdapt" data-bs-toggle="modal" data-bs-target="#eliminarArtAdapt" type="reset" data-bs-dismiss="modal" data-id="0">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
                                 <button id="btn-editar" type="submit">Guardar cambios</button>
@@ -318,6 +318,33 @@
         </div><!-- Modal content-->
     </div><!-- Modal dialog-->
 </div><!--MODAL-->
+
+<!---modal eliminar-->
+
+<div class="modal" tabindex="-1" id="eliminarArtAdapt">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <form method="post" action="#">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Adaptador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <p id="idText"></p> 
+                <input type="hidden" name="EliAdapt" id="idEliAdapt"> 
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!--fin modal eliminar-->
 
 <?php
     $na = controladorArticulos::ctrInsertarAdaptador();
@@ -407,6 +434,44 @@
 
     }
 
+    $ea = controladorArticulos::ctrEliminarAdaptador();
+
+    if($ea){
+        if($ea=="ok"){
+            echo "<script>
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos eliminados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+                    setTimeout(function(){
+                        location.reload();
+                    },900);  
+                }
+            </script>";   
+        }
+        else{
+            echo "<script>
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: '".$ea."',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                }
+            </script>";
+
+        }
+
+    }
 ?>
 
 <div class="modal fade" id="editarArtBoc" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
@@ -455,7 +520,8 @@
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
-                                    <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
+                                    <!--<button id="eliminarAdapt" data-bs-toggle="modal" data-bs-target="#eliminarArtAdapt" type="reset" data-bs-dismiss="modal" data-id="0">Eliminar</button>-->
+                                    <button id="btn-eliminar" type="reset" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#eliminarArtBoc">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
                                 <button id="btn-editar" type="submit">Guardar cambios</button>
@@ -525,6 +591,33 @@
     </div><!-- Modal dialog-->
 </div><!--MODAL-->
 
+<!---modal eliminar-->
+
+<div class="modal" tabindex="-1" id="eliminarArtBoc">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <form method="post" action="#">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Bocina</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <p id="idTextB"></p> 
+                <input type="hidden" name="idEliBoc"> 
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!--fin modal eliminar-->
+
 <?php
     $nb = controladorArticulos::ctrInsertarBocina();
 
@@ -574,6 +667,10 @@
                         allowOutsideClick: false,
                         timer: 1000
                     });
+
+                    setTimeout(function(){
+                        location.reload();
+                    },900); 
 
                     
                     
@@ -662,7 +759,7 @@
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
-                                    <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
+                                    <button id="btn-eliminar" type="reset" data-bs-toggle="modal" data-bs-target="#eliminarArtCab" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
                                 <button id="btn-editar" type="submit">Guardar cambios</button>
@@ -731,6 +828,33 @@
         </div><!-- Modal content-->
     </div><!-- Modal dialog-->
 </div><!--MODAL-->
+
+<!---modal eliminar-->
+
+<div class="modal" tabindex="-1" id="eliminarArtCab">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <form method="post" action="#">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Cable</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <p id="idTextC"></p> 
+                <input type="hidden" name="idEliCab"> 
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!--fin modal eliminar-->
 
 <?php
 
@@ -817,6 +941,8 @@
 
     }
 
+
+
 ?>
 
 <div class="modal fade" id="editarArtLap" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
@@ -868,7 +994,7 @@
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
-                                    <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
+                                    <button id="btn-eliminar" type="reset" data-bs-toggle="modal" data-bs-target="#eliminarArtLap" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
                                 <button id="btn-editar" type="submit">Guardar cambios</button>
@@ -941,6 +1067,33 @@
         </div><!-- Modal content-->
     </div><!-- Modal dialog-->
 </div><!--MODAL-->
+
+<!---modal eliminar-->
+
+<div class="modal" tabindex="-1" id="eliminarArtLap">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <form method="post" action="#">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Laptop</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <p id="idTextL"></p> 
+                <input type="hidden" name="idEliLap"> 
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!--fin modal eliminar-->
 
 <?php      
 
@@ -1078,7 +1231,7 @@
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
-                                    <button id="btn-eliminar" type="reset" data-bs-dismiss="modal">Eliminar</button>
+                                    <button id="btn-eliminar" type="reset" data-bs-toggle="modal" data-bs-target="#eliminarArtProy" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
                                 <button id="btn-editar" type="submit">Guardar cambios</button>
@@ -1151,6 +1304,33 @@
         </div><!-- Modal content-->
     </div><!-- Modal dialog-->
 </div><!--MODAL-->
+
+<!---modal eliminar-->
+
+<div class="modal" tabindex="-1" id="eliminarArtAdapt">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <form method="post" action="#">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Proyector</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <p id="idTextP"></p> 
+                <input type="hidden" name="idEliProy"> 
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!--fin modal eliminar-->
 
 <?php
 
@@ -1273,4 +1453,3 @@
     </div><!-- Modal dialog-->
 </div><!--MODAL-->
 
-<script type="text/javascript" src="js/articulos.js"></script>

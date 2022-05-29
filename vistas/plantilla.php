@@ -177,6 +177,7 @@
             <!-- datatables JS -->
         <script type="text/javascript" src="datatables/datatables.min.js"></script>   
 
+        <script type="text/javascript" src="js/articulos.js"></script>
 
         <?php
             if(isset($_GET["pagina"])){

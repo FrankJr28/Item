@@ -358,6 +358,33 @@ class ModeloArticulos{
 
     }
 
+    static public function mdlEliminarAdaptador($id){
+
+        //try {
+            //UPDATE `adaptador` SET `disp_a` = b'0', `actS_a` = b'0' WHERE `adaptador`.`id_a` = 10
+            $sql="UPDATE adaptador SET actS_a='0' WHERE id_a=:id";
+
+            $stmt = Conexion::conectar()->prepare($sql);
+
+            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                
+                return "ok";
+                
+            }
+            else{
+                return "Error en la petición";
+            }
+
+        //} catch (Exception $e) {
+            
+        //    return $e->getMessage();
+        
+        //}
+
+    }
+
 }
 
 ?>

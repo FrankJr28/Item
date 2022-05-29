@@ -14,7 +14,7 @@ class controladorArticulos{
 
             if($informacion){
             
-                $info='<table class="table table-sm">
+                $info='<table class="table table-hover table-bordered table-des-3 table-sm" id="adminAdapt">
                 <thead>
                     <tr>
                         <th scope="col">Adaptador Id</th>
@@ -76,7 +76,7 @@ class controladorArticulos{
 
             if($informacion){
             
-                $info='<table class="table table-sm">
+                $info='<table class="table table-sm" id="adminBoc">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -136,7 +136,7 @@ class controladorArticulos{
 
             if($informacion){
             
-                $info='<table class="table table-sm">
+                $info='<table class="table table-sm" id="adminCab">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -192,7 +192,7 @@ class controladorArticulos{
 
             if($informacion){
             
-                $info='<table class="table table-sm">
+                $info='<table class="table table-sm" id="adminLap">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -253,7 +253,7 @@ class controladorArticulos{
 
             if($informacion){
             
-                $info='<table class="table table-sm">
+                $info='<table class="table table-sm" id="adminProy">
                 <thead>
                     <tr data-bs-toggle="modal" data-bs-target="#editarArt">
                         <th scope="col">Id</th>
@@ -507,6 +507,69 @@ class controladorArticulos{
         }
 
     }
+
+    static public function ctrEliminarAdaptador(){
+
+        if(isset($_POST["EliAdapt"])){
+
+            $respuesta = ModeloArticulos::mdlEliminarAdaptador($_POST["EliAdapt"]);
+
+            return $respuesta;
+        
+        }
+
+    }
+
+    static public function ctrEliminarBocina(){
+
+        if(isset($_POST["idEliBoc"])){
+
+            $respuesta = ModeloArticulos::mdlEliminarBocina($_POST["idEliBoc"]);
+
+            return $respuesta;
+        
+        }
+
+    }
+
+    static public function ctrEliminarCable(){
+        
+        if(isset($_POST["idEliCab"])){
+
+            $respuesta = ModeloArticulos::mdlEliminarCable($_POST["idEliCab"]);
+
+            return $respuesta;
+        
+        }
+
+    }
+
+    static public function ctrEliminarLaptop(){
+
+        if(isset($_POST["idEliLap"])){
+
+            $respuesta = ModeloArticulos::mdlEliminarLaptop($_POST["idEliLap"]);
+
+            return $respuesta;
+        
+        }
+
+    }
+
+    static public function ctrEliminarProyector(){
+
+        if(isset($_POST["idEliProy"])){
+
+            $respuesta = ModeloArticulos::mdlEliminarLaptop($_POST["idEliProy"]);
+
+            return $respuesta;
+        
+        }
+
+    }
+    
+
+
 
 }
 
