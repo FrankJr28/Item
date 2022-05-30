@@ -328,7 +328,7 @@
             
             <div class="modal-body">
                 <p id="idText"></p> 
-                <input type="text" name="EliAdapt" id="idEliAdapt"> 
+                <input type="hidden" name="EliAdapt" id="idEliAdapt"> 
             </div>
 
             <div class="modal-footer">
