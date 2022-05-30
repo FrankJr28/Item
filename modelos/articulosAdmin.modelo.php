@@ -362,7 +362,7 @@ class ModeloArticulos{
 
         //try {
             //UPDATE `adaptador` SET `disp_a` = b'0', `actS_a` = b'0' WHERE `adaptador`.`id_a` = 10
-            $sql="UPDATE adaptador SET actS_a='0' WHERE id_a=:id";
+            $sql="UPDATE adaptador SET actS_a=0 WHERE id_a=:id";
 
             $stmt = Conexion::conectar()->prepare($sql);
 

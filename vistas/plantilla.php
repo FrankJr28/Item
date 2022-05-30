@@ -52,13 +52,8 @@
             <div><H1>ITEM</H1></div>
             <div class="header_img"> <a href="http://cta.cusur.udg.mx/"><img src="./img/logo-CTA.png" alt="CTA-logo"></a></div>
         </header>
-
-
-
         <?php
-
-            if(isset($_GET["pagina"]) && $_GET["pagina"]!="inicio" && $_GET["pagina"]!="error"){        
-                
+            if(isset($_GET["pagina"]) && $_GET["pagina"]!="inicio" && $_GET["pagina"]!="error"){           
                 echo'<div class="l-navbar" id="nav-bar">
                     <nav class="nav_side">
                         <div> <a href="http://www.cusur.udg.mx/es/" class="nav_logo"> 
@@ -75,6 +70,7 @@
                                 <a href="index.php?pagina=adminAccept" class="nav_link"> <i class="bi bi-house nav_icon"></i> <span class="nav_name">Inicio</span> </a>
                                 <a href="index.php?pagina=generarReporte" class="nav_link"> <i class="bi bi-files nav_icon"></i><span class="nav_name">Generar reportes</span> </a>
                                 <a href="index.php?pagina=articulos" class="nav_link"> <i class="bi bi-plug-fill nav_icon"></i><span class="nav_name">Artículos</span> </a>
+                                <a href="index.php?pagina=usuarios" class="nav_link"> <i class="bi bi-person-square nav_icon"></i><span class="nav_name">Usuario</span> </a>
                                 ';
                             }
                             else if(isset($_SESSION["usuario"])){
@@ -110,6 +106,8 @@
                                 $_GET["pagina"]=="detalleUsuario" ||
                                 $_GET["pagina"]=="generarReporte" ||
                                 $_GET["pagina"]=="articulos" ||
+                                $_GET["pagina"]=="usuarios" ||
+                                $_GET["pagina"]=="crearUsuarios" ||
                                 $_GET["pagina"]=="cerrar"){
                             
                                 include "paginas/".$_GET["pagina"].".php";
@@ -165,7 +163,7 @@
         <link rel="stylesheet" href="./css/stylesVw.css">
                     -->
 
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     

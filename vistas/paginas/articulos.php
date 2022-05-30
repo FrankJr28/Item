@@ -16,14 +16,10 @@
             </h3>
         <div id="accorAdaptador" class="accordion-collapse collapse" aria-labelledby="accorAdaptador-head" data-bs-parent="#accordionItems">
             <div class="accordion-body">
-                            
                     <?php
-
                         $adaptador = new controladorArticulos();
                         $adaptador->ctrObtenerAdaptadores();
-
                     ?>
-                                  
                 <div class="d-flex justify-content-center btn-plus listItemByItem">
                     <button class="btn-plus-sty" data-bs-toggle="modal" data-bs-target="#nuevoArtAdapt">
                         <i class="bi bi-plus-circle"></i>Nuevo
@@ -332,7 +328,7 @@
             
             <div class="modal-body">
                 <p id="idText"></p> 
-                <input type="hidden" name="EliAdapt" id="idEliAdapt"> 
+                <input type="text" name="EliAdapt" id="idEliAdapt"> 
             </div>
 
             <div class="modal-footer">
