@@ -1,12 +1,9 @@
 <?php
-//require './vendor/autoload.php';
-            
-//use Spipu\Html2Pdf\Html2Pdf;
 
 $fechaInicio = $_POST["fI"];
 $fechaFin = $_POST["fF"];
 $meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-$resultado = ModeloFormularios::mdlPrestamosReporte($fechaInicio,$fechaFin);
+$resultado = ModeloReportes::mdlPrestamosReporte($fechaInicio,$fechaFin);
 $aI= substr($fechaInicio,0,4);
 $mI= substr($fechaInicio,5,2);
 $dI= substr($fechaInicio,8,2); 
@@ -65,8 +62,6 @@ $dF= substr($fechaFin,8,2);
                     <td><?php echo $dato['codigo_u']; ?></td>
                     <td><?php echo $dato['nombre_u']." ".$dato['app_u']; ?></td>
                     <td><?php echo ($dato["ubicacion"]); ?></td>
-                    
-                    
                     <td><?php echo date("d/m/y",strtotime($dato["inicio"])); ?></td>
                     <td><?php echo date("G:i",strtotime($dato["inicio"])); ?></td>
                     <td><?php echo date("d-m-Y",strtotime($dato["finalizo"])); ?></td>

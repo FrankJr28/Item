@@ -14,16 +14,6 @@
         <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
 
         <script type="text/javascript" src="jquery/jquery-3.6.0.min.js"></script>
-        
-        <?php 
-            if(isset($_GET["pagina"])){
-                if($_GET["pagina"]=="generarReporte"){
-                
-                    echo '<link rel="stylesheet" href="./css/styleModF.css">';
-
-                }
-            }
-        ?>
 
         <link rel="stylesheet" href="./css/styles.css">
         
@@ -69,6 +59,7 @@
                                 echo '
                                 <a href="index.php?pagina=adminAccept" class="nav_link"> <i class="bi bi-house nav_icon"></i> <span class="nav_name">Inicio</span> </a>
                                 <a href="index.php?pagina=generarReporte" class="nav_link"> <i class="bi bi-files nav_icon"></i><span class="nav_name">Generar reportes</span> </a>
+                                <a href="index.php?pagina=graficos" class="nav_link"> <i class="bi bi-graph-down nav_icon"></i><span class="nav_name">Gráficos</span> </a>
                                 <a href="index.php?pagina=articulos" class="nav_link"> <i class="bi bi-plug-fill nav_icon"></i><span class="nav_name">Artículos</span> </a>
                                 <a href="index.php?pagina=usuarios" class="nav_link"> <i class="bi bi-person-square nav_icon"></i><span class="nav_name">Usuario</span> </a>
                                 ';
@@ -107,6 +98,7 @@
                                 $_GET["pagina"]=="generarReporte" ||
                                 $_GET["pagina"]=="articulos" ||
                                 $_GET["pagina"]=="usuarios" ||
+                                $_GET["pagina"]=="graficos" ||
                                 $_GET["pagina"]=="crearUsuarios" ||
                                 $_GET["pagina"]=="cerrar"){
                             

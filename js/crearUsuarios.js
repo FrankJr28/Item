@@ -1,5 +1,3 @@
-console.log("Hola");
-
 $("#btn-limpiar").click(() => {
     $("#codigo").val("");
     $("#nombre").val("");

@@ -14,6 +14,10 @@ require_once "modelos/usuarios.modelo.php";
 
 require_once "controladores/usuarios.controlador.php";
 
+require_once "controladores/reportes.controlador.php";
+
+require_once "modelos/reportes.modelo.php";
+
 $plantilla = new ControladorPlantilla();
 
 $plantilla->ctrTraerPlantilla();

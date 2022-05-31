@@ -2,7 +2,7 @@
 
 <div class="mb-4">
     <div class="mb-4">
-        <h3>Generar reporte</h3>
+        <h3>Generar Gráficos</h3>
     </div>
     <div class="form-mod">
         <form class="form-mod-mrg" action="#" method="post">
@@ -19,12 +19,5 @@
                 </div>
             </div>
         </form>
-        <?php
-
-            $genera = new ControladorReportes();
-
-            $genera->ctrGenerarReporte();
-        
-        ?>
     </div>
 </div>
