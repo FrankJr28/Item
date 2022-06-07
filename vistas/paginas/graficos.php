@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./css/styleModF.css">
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <div class="mb-4">
     <div class="mb-4">
@@ -20,4 +21,17 @@
             </div>
         </form>
     </div>
+    <div id="grafico"></div>
+    <div class="w-100">
+        <?php
+            if(isset($_POST['fI']) && isset($_POST["fF"])){
+                echo "Se muestran los prestamos realizados del ".$_POST["fI"]." al ".$_POST["fF"]; 
+            }
+        ?>
+    </div>
+    <?php
+        $g= new ControladorReportes();
+        $g->ctrObtenerPeriodo();
+    ?>
+
 </div>

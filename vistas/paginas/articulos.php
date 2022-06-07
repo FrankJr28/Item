@@ -221,7 +221,7 @@
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="dispa" checked>
+                                    <input class="form-check-input form-sw" type="checkbox" id="dispAdaptador" name="dispa">
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>

@@ -10,11 +10,23 @@ $(".adapt").click((e) => {
     var idA = adaptador.dataset.id;
     var marcaA = adaptador.dataset.marca;
     var modelo = adaptador.dataset.modelo;
+    var disp = adaptador.dataset.disp;
+    var obs = adaptador.dataset.obs;
+    console.log(disp);
     //console.log(idA);
     $("#idAdaptador").val(idA);
     $("#idAdaptadorH").val(idA);
     $("#marcaAdaptador").val(marcaA);
     $("#modeloAdaptador").val(modelo);
+    if (disp == 1) {
+        $("#dispAdaptador").prop("checked", true);
+        console.log("true" + disp);
+    } else {
+        $("#dispAdaptador").prop("checked", false);
+        console.log("false" + disp);
+    }
+    $("#observacionesAdaptador").val(obs);
+
     adaptClicked = idA; //hola
 });
 

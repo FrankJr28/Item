@@ -33,18 +33,18 @@ class controladorArticulos{
                      $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtBoc" data-id="'.$dato["id_b"].'" data-marca="'.$dato["marca_b"].'" data-modelo="'.$dato["modelo_b"].'" class="boc">
                     */
 
-                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtAdapt" data-id="'.$dato["id_a"].'" data-marca="'.$dato["marca_a"].'" data-modelo="'.$dato["modelo_a"].'" class="adapt">
+                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtAdapt" data-id="'.$dato["id_a"].'" data-marca="'.$dato["marca_a"].'" data-modelo="'.$dato["modelo_a"].'" data-obs="'.$dato["obs_a"].'" data-disp="'.$dato["disp_a"].'" class="adapt">
                                 <td>'.$dato["id_a"].'</td>
                                 <td>'.$dato["marca_a"].'</td>
                                 <td>'.$dato["modelo_a"].'</td>
                                 <td>
                                     <div class="form-check form-switch m-auto">
-                                        <input class="form-check-input" type="checkbox"';
+                                        <i class="bi bi-circle-fill text-secondary';
                                         
                                         if($dato["disp_a"])
-                                            $info.='checked';
+                                            $info.=' text-success';
 
-                                        $info.='>
+                                        $info.='"></i>
                                     </div>
                                 </td>
                             </tr>';
