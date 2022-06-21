@@ -2,6 +2,8 @@
 
 class ModeloArticulos{
 
+    /*                  Obtener Registros                   */
+
     static public function mdlObtenerAdaptadores(){
         
         $sql = "SELECT * from adaptador WHERE adaptador.actS_a=1";
@@ -99,6 +101,24 @@ class ModeloArticulos{
         }
 
     }
+
+    static public function mdlObtenerTipoConexion(){
+
+        $sql="SELECT * FROM tipoCable";
+
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        if($stmt->execute()){
+            
+            return $stmt->fetchAll();
+            
+        }
+
+    }
+
+    /*                  Fin Obtener Registros                   */
+
+    /*                  Actualizar Registros                    */
 
     static public function mdlActualizarAdaptador($datos){
 
@@ -222,19 +242,9 @@ class ModeloArticulos{
 
     }
 
-    static public function mdlObtenerTipoConexion(){
+    /*                  Fin Actualizar Registros                    */
 
-        $sql="SELECT * FROM tipoCable";
-
-        $stmt = Conexion::conectar()->prepare($sql);
-
-        if($stmt->execute()){
-            
-            return $stmt->fetchAll();
-            
-        }
-
-    }
+    /*                  Insertar Registros                      */
 
     static public function mdlInsertarAdaptador($datos){
 
@@ -358,6 +368,8 @@ class ModeloArticulos{
 
     }
 
+    /*                  Fin Insertar Registros                  */
+
     static public function mdlEliminarAdaptador($id){
 
         //try {
@@ -382,6 +394,44 @@ class ModeloArticulos{
         //    return $e->getMessage();
         
         //}
+
+    }
+
+    static public function mdlEliminarBocina($id){
+
+            $sql="UPDATE bocina SET actS_b=0 WHERE id_b=:id";
+
+            $stmt = Conexion::conectar()->prepare($sql);
+
+            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                
+                return "ok";
+                
+            }
+            else{
+                return "Error en la petición";
+            }
+
+    }
+
+    static public function mdlEliminarCable($id){
+
+        $sql="UPDATE cable SET actS_c=0 WHERE id_c=:id";
+
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            
+            return "ok";
+            
+        }
+        else{
+            return "Error en la petición";
+        }
 
     }
 

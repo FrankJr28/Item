@@ -43,23 +43,55 @@ $(".boc").click((e) => {
     var idB = bocina.dataset.id;
     var marcaB = bocina.dataset.marca;
     var modeloB = bocina.dataset.modelo;
+    var dispB = bocina.dataset.disp;
     var obsB = bocina.dataset.obs;
     $("#idBocina").val(idB);
     $("#idBocinaH").val(idB);
     $("#marcaBocina").val(marcaB);
     $("#modeloBocina").val(modeloB);
+    if (dispB == 1) {
+        $("#dispBocina").prop("checked", true);
+        console.log("true" + dispB);
+    } else {
+        $("#dispBocina").prop("checked", false);
+        console.log("false" + dispB);
+    }
     $("#observacionesBocina").val(obsB);
+    bocClicked = idB;
+});
+
+$("#eliminarBoc").click((e) => {
+    //document.getElementById("idText").textContent = "hola";
+    //$("#idText").text("prueba");
+    $("#idTextB").text("¿Desea eliminar la bocina con el id " + bocClicked + "?");
+    $("#idEliBoc").val(bocClicked);
 });
 
 $(".cab").click((e) => {
     var cable = e.currentTarget;
     var idC = cable.dataset.valor;
     var marcaC = cable.dataset.marca;
+    var dispC = cable.dataset.disp;
     var conexion = cable.dataset.conexion;
     $("#idCable").val(idC);
     $("#idCableH").val(idC);
     $("#marcaCable").val(marcaC);
     $("#modeloC").val(conexion);
+    if (dispC == 1) {
+        $("#dispCable").prop("checked", true);
+        console.log("true" + dispC);
+    } else {
+        $("#dispCable").prop("checked", false);
+        console.log("false" + dispC);
+    }
+    cabClicked = idC;
+});
+
+$("#eliminarCab").click((e) => {
+    //document.getElementById("idText").textContent = "hola";
+    //$("#idText").text("prueba");
+    $("#idTextC").text("¿Desea eliminar el cable con el id " + cabClicked + "?");
+    $("#idEliCab").val(cabClicked);
 
 });
 
@@ -68,15 +100,29 @@ $(".lap").click((e) => {
     var idL = laptop.dataset.id;
     var marcaL = laptop.dataset.marca;
     var modeloL = laptop.dataset.modelo;
+    var dispL = laptop.dataset.disp;
     var snl = laptop.dataset.snl;
     var obsl = laptop.dataset.obs;
     $("#idLaptop").val(idL);
     $("#idLaptopH").val(idL);
     $("#marcaLaptop").val(marcaL);
     $("#modeloLaptop").val(modeloL);
+    if (dispL == 1) {
+        $("#dispLaptop").prop("checked", true);
+        console.log("true" + dispL);
+    } else {
+        $("#dispLaptop").prop("checked", false);
+        console.log("false" + dispL);
+    }
     $("#snLaptop").val(snl);
     $("#observacionesLaptop").val(obsl);
+    lapClicked = idL;
 
+});
+
+$("#eliminarLap").click((e) => {
+    $("#idTextL").text("¿Desea eliminar la laptop con el id " + lapClicked + "?");
+    $("#idEliLap").val(lapClicked);
 });
 
 $(".proy").click((e) => {
@@ -84,10 +130,27 @@ $(".proy").click((e) => {
     var idP = proy.dataset.id;
     var marcaP = proy.dataset.marca;
     var modeloP = proy.dataset.modelo;
+    var snp = proy.dataset.snp;
+    var dispP = proy.dataset.disp;
     $("#idProyector").val(idP);
     $("#idProyectorH").val(idP);
     $("#marcaProyector").val(marcaP);
+    if (dispP == 1) {
+        $("#dispProyector").prop("checked", true);
+        console.log("true" + dispP);
+    } else {
+        $("#dispProyector").prop("checked", false);
+        console.log("false" + dispP);
+    }
     $("#modeloProyector").val(modeloP);
+    $("#snProyector").val(snp);
+    proyClicked = idP;
+
+});
+
+$("#eliminarProy").click((e) => {
+    $("#idTextC").text("¿Desea eliminar el proyector con el id " + proyClicked + "?");
+    $("#idEliCab").val(proyClicked);
 });
 
 $(document).ready(function() {

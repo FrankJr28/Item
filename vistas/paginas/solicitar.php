@@ -2,43 +2,6 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-<!--
-<div class="container">
-    <input type="checkbox" id="btn-car">
-    
-    
-    <div class="lista-car">
-        <div class="card fade w-50">
-            <div class="card-header"><i class=""></i>
-                <h5><i class="bi bi-bag-fill"></i>Préstamo actual</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item actit d-flex align-items-start">
-                    <h6>Artículos solicitados</h6>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">
-                    <h6>Id-item</h6>
-                    <button type="button" class="btn-close btn-sm"></button>
-                </li>                          
-                <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">
-                        <h6>Id-item</h6>
-                        <button type="button" class="btn-close btn-sm"></button>
-                </li>
-            </ul> 
-            <div class="card-footer">
-                <label for="btn-car" type="button" class="card-btn b-cn">Seguir agregando</label>
-                <button id="btn-sol" class="card-btn b-yw">Solicitar préstamo</button>
-            </div>  
-        </div>
-    </div>
-
-    
-    <div class="btn-car">
-        <label for="btn-car" class="bi bi-bag-fill"></label>
-    </div>
-
-</div>
--->
 <!-- Material disponible -->   
 
 <?php
@@ -162,7 +125,42 @@
                 </ul>
             </article>
         </div><!-- TABS CONTENT ENDS--> 
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-right: 2%;">
+            <form action="#" method="post">
+                <button class="btn btn-outline b-bl-lr mb-4 mt-2 w-100" name="btnSoli" value="1">Solicitar
+                </button>
+            </form>
+            
+        </div>
 
+        <?php
+            $pres = new ControladorFormularios();
+            $pres->ctrSolicitarPrestamo();
+        ?>
+
+        <!---->
+        <div class="modal" tabindex="-1" id="soli">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form method="post" action="#">
+                        <div class="modal-header">
+                            <h5 class="modal-title">¿Desea solicitar el préstamo con los siguientes materiales?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        
+                        <div class="modal-body">
+                             
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir Agregando</button>
+                            <button type="submit" class="btn btn-primary">Solicitar21</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!---->
     <!--WRAP-->
 
     

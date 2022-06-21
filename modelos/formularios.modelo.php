@@ -1358,7 +1358,123 @@ class ModeloFormularios{
 
     }
 
-    
+    static public function mdlSolicitarPrestamo($u){
+        /*                  OBTIENE LOS ARTICULOS QUE ESTAN EN EL ESPACIO DEL USUARIO EN LA BASE DE DATOS                  */
+        /*                  ADAPTADOR                   */
+        $sql="SELECT adaptador.id_a, adaptador.disp_a FROM esp_adapt LEFT JOIN adaptador ON adaptador.id_a = esp_adapt.id_a WHERE codigo_u=:u";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":u",$u,PDO::PARAM_INT);
+        if($stmt->execute()){
+            $resultadoA = $stmt->fetchAll();
+            foreach($resultadoA as $dato){
+                if($dato["disp_a"]==0){
+                    return "ocupado Adaptador";
+                }
+            }
+        }
+        else{   
+            return "error";
+        }
+        /*                  FIN ADAPTADOR                   */
+        /*                  BOCINAS                   */
+        $sql="SELECT bocina.id_b, bocina.disp_b FROM esp_boc LEFT JOIN bocina ON bocina.id_b = esp_boc.id_b WHERE codigo_u=:u";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":u",$u,PDO::PARAM_INT);
+        if($stmt->execute()){
+            $resultadoB = $stmt->fetchAll();
+            foreach($resultadoB as $dato){
+                if($dato["disp_b"]==0){
+                    return "ocupado Bocina";
+                }
+            }
+        }
+        else{
+            return "error";
+        }
+        /*                  FIN BOCINAS                   */
+        /*                  CABLES                   */
+        $sql="SELECT cable.id_c, cable.disp_c FROM esp_cab LEFT JOIN cable ON cable.id_c = esp_cab.id_c WHERE codigo_u=:u";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":u",$u,PDO::PARAM_INT);
+        if($stmt->execute()){
+            $resultadoC = $stmt->fetchAll();
+            foreach($resultadoC as $dato){
+                if($dato["disp_c"]==0){
+                    return "ocupado Cable";
+                }
+            }
+        }
+        else{   
+            return "error";
+        }
+        /*                  FIN CABLES                   */
+        /*                  CREA EL PRESTAMO                    */
+        $sql="INSERT INTO prestamo (id_pres, id_ubi, solicitud, inicio, finalizo, codigo_a, codigo_u, activo_pres, nota) VALUES (NULL, 7, current_timestamp(), NULL, NULL, NULL, :u, 1, NULL)";
+        $pdo=Conexion::conectar();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":u",$u,PDO::PARAM_INT);
+        if($stmt->execute()){
+            $pres = $pdo->lastInsertId();
+        }
+        else{   
+            return "error";
+        }
+        /*                  FIN PRESTAMO                   */
+
+        /*                  RECORRE EL ARRAY DE ADAPTADORES PARA INSERTARLOS                  */
+
+        $valAdapts = "";
+        $valAdaptsUpdate ="";
+
+        foreach($resultadoA as $index=>$dato){
+            if($index){
+                $valAdapts.=",";
+                $valAdaptsUpdate.=" OR ";
+            }
+            $valAdapts.="(".$pres.",".$dato["id_a"].")";
+            $valAdaptsUpdate.="id_a=".$dato["id_a"];
+        }
+
+        /*                  RECORRE EL ARRAY DE ADAPTADORES PARA INSERTARLOS                  */        
+        $sql="INSERT INTO pres_adapt (id_pres, id_a) VALUES ".$valAdapts;
+        $stmt = Conexion::conectar()->prepare($sql);
+        if(!$stmt->execute()){  
+            return "error";
+        }
+
+        $sql="UPDATE adaptador SET disp_a=0 WHERE ".$valAdaptsUpdate;
+        $stmt = Conexion::conectar()->prepare($sql);
+        if(!$stmt->execute()){  
+            return "error";
+        }
+
+        $valBocs = "";
+        $valBocsUpdate = "";
+        foreach($resultadoB as $index=>$dato){
+            if($index){
+                $valBocs.=",";
+                $valBocsUpdate.=" OR ";
+            }
+            $valBocs.="(".$pres.",".$dato["id_b"].")";
+            $valBocsUpdate.="id_b=".$dato["id_b"];
+        }
+
+        /*                  RECORRE EL ARRAY DE BOCINAS PARA INSERTARLOS                  
+        $sql="INSERT INTO pres_boc (id_pres, id_b) VALUES ".$valBocs;
+        $stmt = Conexion::conectar()->prepare($sql);
+        if(!$stmt->execute()){  
+            return "error";
+        }
+        
+        $sql="UPDATE bocina SET disp_b=0 WHERE ".$valBocsUpdate;
+        $stmt = Conexion::conectar()->prepare($sql);
+        if(!$stmt->execute()){  
+            return "error";
+        }
+*/
+        return "ok";
+
+    }
 
 }   //Fin de la clase
 

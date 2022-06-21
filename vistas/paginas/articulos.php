@@ -1,6 +1,5 @@
 
 <link rel="stylesheet" href="./css/styleModF.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 <div class="mb-4">
     <h3>Artículos</h3>
@@ -221,7 +220,7 @@
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="dispAdaptador" name="dispa">
+                                    <input class="form-check-input form-sw" type="checkbox" id="dispAdaptador" name="disp-a" value="1">
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>
@@ -281,7 +280,7 @@
                                 <div class="form-group">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input form-sw" type="checkbox" name="disp-a" value="1">
-                                        <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
+                                        <label class="form-check-label form-label" >Disponible</label>
                                     </div>
                                 </div>
                             </div>
@@ -354,11 +353,11 @@
                     window.history.replaceState( null, null, window.location.href);
 
                     Swal.fire({
-                        position: 'center',
+                        position: 'top',
                         icon: 'success',
                         title: 'Datos actualizados correctamente',
                         showConfirmButton: false,
-                        allowOutsideClick: false,
+                        allowOutsideClick: true,
                         timer: 1000
                     });
 
@@ -384,7 +383,7 @@
                     window.history.replaceState( null, null, window.location.href);
 
                     Swal.fire({
-                        position: 'center',
+                        position: 'top',
                         icon: 'success',
                         title: 'Datos actualizados correctamente',
                         showConfirmButton: false,
@@ -489,8 +488,8 @@
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="dispb"checked>
-                                    <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
+                                    <input class="form-check-input form-sw" type="checkbox" id="dispBocina" name="disp-b" value="1">
+                                    <label class="form-check-label form-label" >Disponible</label>
                                 </div>
                             </div>
                         </div>
@@ -517,7 +516,7 @@
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
                                     <!--<button id="eliminarAdapt" data-bs-toggle="modal" data-bs-target="#eliminarArtAdapt" type="reset" data-bs-dismiss="modal" data-id="0">Eliminar</button>-->
-                                    <button id="btn-eliminar" type="reset" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#eliminarArtBoc">Eliminar</button>
+                                    <button id="eliminarBoc" type="reset" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#eliminarArtBoc">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
                                 <button id="btn-editar" type="submit">Guardar cambios</button>
@@ -600,7 +599,7 @@
             
             <div class="modal-body">
                 <p id="idTextB"></p> 
-                <input type="hidden" name="idEliBoc"> 
+                <input type="hidden" name="idEliBoc" id="idEliBoc"> 
             </div>
 
             <div class="modal-footer">
@@ -705,6 +704,48 @@
         }
 
     }
+
+    $eb = controladorArticulos::ctrEliminarBocina();
+
+    
+    if($eb){
+        if($eb=="ok"){
+            echo "<script>
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos eliminados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+                    setTimeout(function(){
+                        location.reload();
+                    },900);  
+                }
+            </script>";   
+        }
+        else{
+            echo "<script>
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: '".$eb."',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                }
+            </script>";
+
+        }
+
+    }
+    
+
 ?>
 
 <div class="modal fade" id="editarArtCab" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
@@ -726,7 +767,7 @@
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="dispc" checked>
+                                    <input class="form-check-input form-sw" type="checkbox" id="dispCable" name="disp-c" value="1">
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>
@@ -755,7 +796,7 @@
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
-                                    <button id="btn-eliminar" type="reset" data-bs-toggle="modal" data-bs-target="#eliminarArtCab" data-bs-dismiss="modal">Eliminar</button>
+                                    <button id="eliminarCab" type="reset" data-bs-toggle="modal" data-bs-target="#eliminarArtCab" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
                                 <button id="btn-editar" type="submit">Guardar cambios</button>
@@ -838,7 +879,7 @@
             
             <div class="modal-body">
                 <p id="idTextC"></p> 
-                <input type="hidden" name="idEliCab"> 
+                <input type="hidden" name="idEliCab" id="idEliCab"> 
             </div>
 
             <div class="modal-footer">
@@ -937,7 +978,45 @@
 
     }
 
+    $ec = controladorArticulos::ctrEliminarCable();
 
+    
+    if($ec){
+        if($ec=="ok"){
+            echo "<script>
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos eliminados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+                    setTimeout(function(){
+                        location.reload();
+                    },900);  
+                }
+            </script>";   
+        }
+        else{
+            echo "<script>
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: '".$ec."',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                }
+            </script>";
+
+        }
+
+    }
 
 ?>
 
@@ -956,11 +1035,11 @@
                                 <label for="articuloId">Id</label>
                                 <input type="text" id="idLaptop" class="form-control">
                                 <input type="hidden" id="idLaptopH" name="idl">
-                            </div>
+                            </div> 
                             <div class="col-6">
                             <div class="form-group">
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="displ" checked>
+                                <div class="form-check form-switch">                                
+                                    <input class="form-check-input form-sw" type="checkbox" id="dispLaptop" name="disp-l" value="1">
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>
@@ -990,7 +1069,7 @@
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
-                                    <button id="btn-eliminar" type="reset" data-bs-toggle="modal" data-bs-target="#eliminarArtLap" data-bs-dismiss="modal">Eliminar</button>
+                                    <button id="eliminarLap" type="reset" data-bs-toggle="modal" data-bs-target="#eliminarArtLap" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
                                 <button id="btn-editar" type="submit">Guardar cambios</button>
@@ -1077,7 +1156,7 @@
             
             <div class="modal-body">
                 <p id="idTextL"></p> 
-                <input type="hidden" name="idEliLap"> 
+                <input type="hidden" name="idEliLap" id="idEliLap"> 
             </div>
 
             <div class="modal-footer">
@@ -1177,6 +1256,47 @@
 
     }
 
+    $el = controladorArticulos::ctrEliminarLaptop();
+
+    
+    if($el){
+        if($el=="ok"){
+            echo "<script>
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Datos eliminados correctamente',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 1000
+                    });
+                    setTimeout(function(){
+                        location.reload();
+                    },900);  
+                }
+            </script>";   
+        }
+        else{
+            echo "<script>
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: '".$el."',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                }
+            </script>";
+
+        }
+
+    }
+
+
 ?>
 
 <div class="modal fade" id="editarArtProy" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
@@ -1198,7 +1318,7 @@
                             <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input form-sw" type="checkbox" id="flexSwitchCheckChecked" name="dispp" checked>
+                                    <input class="form-check-input form-sw" type="checkbox" id="dispProyector" name="disp-p" value="1">
                                     <label class="form-check-label form-label" for="flexSwitchCheckChecked">Disponible</label>
                                 </div>
                             </div>
@@ -1217,7 +1337,7 @@
                         <div class="row g-2 m-3">
                             <div class="col-6">
                                 <label for="articuloSN">S/N </label>
-                                <input type="text" id="disabledTextInput" name="snp">
+                                <input type="text" id="snProyector" name="snp">
                             </div>
                             <div class="col-6">
                                 <label for="articuloModelo">Observaciones</label>

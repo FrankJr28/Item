@@ -91,22 +91,21 @@ class controladorArticulos{
 
                     //<tr data-bs-toggle="modal" data-bs-target="#editarArtCab" id="'.$dato["id_c"].$index.'" data-valor="'.$dato["id_c"].'" data-marca="'.$dato["marca_c"].'" data-conexion="'.$dato["conexion"].'"class="cab" value="10">
 
-                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtBoc" data-id="'.$dato["id_b"].'" data-marca="'.$dato["marca_b"].'" data-modelo="'.$dato["modelo_b"].'" data-obs="'.$dato["obs_b"].'" class="boc">
+                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtBoc" data-id="'.$dato["id_b"].'" data-marca="'.$dato["marca_b"].'" data-modelo="'.$dato["modelo_b"].'" data-obs="'.$dato["obs_b"].'" data-disp="'.$dato["disp_b"].'" class="boc">
                                 
                                 <td>'.$dato["id_b"].'</td>
                                 <td>'.$dato["marca_b"].'</td>
                                 <td>'.$dato["modelo_b"].'</td>
                                 <td>
                                     <div class="form-check form-switch m-auto">
-                                        <input class="form-check-input" type="checkbox" disabled';
+                                        <i class="bi bi-circle-fill text-secondary';
                                         
                                         if($dato["disp_b"])
-                                            $info.='checked';
-                                        
-                                        $info.='>
+                                            $info.=' text-success';
+
+                                        $info.='"></i>
                                     </div>
                                 </td>
-
                             </tr>';
 
                 }
@@ -149,18 +148,19 @@ class controladorArticulos{
 
                 foreach($informacion as $index => $dato){
 
-                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtCab" id="'.$dato["id_c"].$index.'" data-valor="'.$dato["id_c"].'" data-marca="'.$dato["marca_c"].'" data-conexion="'.$dato["id_tc"].'"class="cab" >
+                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtCab" id="'.$dato["id_c"].$index.'" data-valor="'.$dato["id_c"].'" data-marca="'.$dato["marca_c"].'" data-conexion="'.$dato["id_tc"].'" data-disp="'.$dato["disp_c"].'" class="cab" >
                                 <td>'.$dato["id_c"].'</td>
                                 <td>'.$dato["marca_c"].'</td>
                                 <td>'.$dato["conexion"].'</td>
+
                                 <td>
                                     <div class="form-check form-switch m-auto">
-                                        <input class="form-check-input" type="checkbox" disabled';
-
-                                        if($dato["disp_c"])
-                                            $info.='checked';
+                                        <i class="bi bi-circle-fill text-secondary';
                                         
-                                        $info.='>
+                                        if($dato["disp_c"])
+                                            $info.=' text-success';
+
+                                        $info.='"></i>
                                     </div>
                                 </td>
                             </tr>';
@@ -206,22 +206,19 @@ class controladorArticulos{
 
                 foreach($informacion as $dato){
 
-                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtLap" data-id="'.$dato["id_l"].'" data-marca="'.$dato["marca_l"].'" data-modelo="'.$dato["modelo_l"].'" data-snL="'.$dato["sn_l"].'" data-obs="'.$dato["obs_l"].'" class="lap">
+                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtLap" data-id="'.$dato["id_l"].'" data-marca="'.$dato["marca_l"].'" data-modelo="'.$dato["modelo_l"].'" data-snL="'.$dato["sn_l"].'" data-obs="'.$dato["obs_l"].'" data-disp="'.$dato["disp_l"].'" class="lap">
                                 <td>'.$dato["id_l"].'</td>
                                 <td>'.$dato["marca_l"].'</td>
                                 <td>'.$dato["modelo_l"].'</td>
                                 <td>'.$dato["sn_l"].'</td>
                                 <td>
                                     <div class="form-check form-switch m-auto">
-                                        <input class="form-check-input" type="checkbox"';
+                                        <i class="bi bi-circle-fill text-secondary';
                                         
-                                        if($dato["disp_l"]){
-                                            
-                                            $info.="checked";
-                                        
-                                        }
-                                        
-                                        $info.='>
+                                        if($dato["disp_l"])
+                                            $info.=' text-success';
+
+                                        $info.='"></i>
                                     </div>
                                 </td>
                             </tr>';
@@ -266,13 +263,18 @@ class controladorArticulos{
 
                 foreach($informacion as $dato){
 
-                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtProy" data-id="'.$dato["id_p"].'" data-marca="'.$dato["marca_p"].'" data-modelo="'.$dato["modelo_p"].'" class="proy">
+                    $info.='<tr data-bs-toggle="modal" data-bs-target="#editarArtProy" data-id="'.$dato["id_p"].'" data-marca="'.$dato["marca_p"].'" data-modelo="'.$dato["modelo_p"].'" data-snp="'.$dato["sn_p"].'" data-disp="'.$dato["disp_p"].'" class="proy">
                                 <td>'.$dato["id_p"].'</td>
                                 <td>'.$dato["marca_p"].'</td>
                                 <td>'.$dato["modelo_p"].'</td>
                                 <td>
                                     <div class="form-check form-switch m-auto">
-                                        <input class="form-check-input" type="checkbox" disabled>
+                                        <i class="bi bi-circle-fill text-secondary';
+                                        
+                                        if($dato["disp_p"])
+                                            $info.=' text-success';
+
+                                        $info.='"></i>
                                     </div>
                                 </td>
                             </tr>';
@@ -304,6 +306,10 @@ class controladorArticulos{
 
     }
 
+    /*                  Fin Obtener Registros                   */
+
+    /*                  Actualizar Registros                    */
+
     static public function ctrActualizarAdaptador(){
         
         if(isset($_POST["ida"])){
@@ -312,8 +318,12 @@ class controladorArticulos{
                             'marca' => $_POST["marcaa"],
                             'modelo' => $_POST["modeloa"],
                             'obs' => $_POST["obsa"],
-                            'disp' => $_POST["dispa"]
+                            'disp' => 0
                         );
+
+            if(isset($_POST["disp-a"])){
+                $ar['disp']=1;
+            }
 
             $respuesta = ModeloArticulos::mdlActualizarAdaptador($ar);
 
@@ -331,8 +341,12 @@ class controladorArticulos{
                             'marca' => $_POST["marcab"],
                             'modelo' => $_POST["modelob"],
                             'obs' => $_POST["obsb"],
-                            'disp' => $_POST["dispb"]
+                            'disp' => 0
                         );
+            
+            if(isset($_POST["disp-b"])){
+                $ar['disp']=1;
+            }
 
             $respuesta = ModeloArticulos::mdlActualizarBocina($ar);
 
@@ -349,8 +363,12 @@ class controladorArticulos{
             $ar = array('id' => $_POST["idc"],
                             'marca' => $_POST["marcac"],
                             'conexion' => $_POST["conexion"],
-                            'disp' => $_POST["dispc"]
+                            'disp' => 0
                         );
+
+            if(isset($_POST["disp-c"])){
+                $ar['disp']=1;
+            }
 
             $respuesta = ModeloArticulos::mdlActualizarCable($ar);
 
@@ -369,8 +387,12 @@ class controladorArticulos{
                         'modelo' => $_POST["modelol"],
                         'sn' => $_POST["sn"],
                         'obs' => $_POST["obs"],
-                        'disp' => $_POST["displ"]
+                        'disp' => 0
                     );
+
+            if(isset($_POST["disp-l"])){
+                $ar['disp']=1;
+            }
 
             $respuesta = ModeloArticulos::mdlActualizarLaptop($ar);
 
@@ -389,8 +411,12 @@ class controladorArticulos{
                         'modelo' => $_POST["modelop"],
                         'sn' => $_POST["snp"],
                         'obs' => $_POST["obsp"],
-                        'disp' => $_POST["dispp"]
+                        'disp' => 0
                     );
+
+            if(isset($_POST["disp-p"])){
+                $ar['disp']=1;
+            }
 
             $respuesta = ModeloArticulos::mdlActualizarProyector($ar);
 
@@ -399,6 +425,10 @@ class controladorArticulos{
         }
 
     }
+
+    /*                  Fin Actualizar Registros                    */
+
+    /*                  Insertar Registros                      */
 
     static public function ctrInsertarAdaptador(){
         
@@ -508,6 +538,10 @@ class controladorArticulos{
 
     }
 
+    /*                  Fin Insertar Registros                  */
+
+    /*                  Eliminar Registros                  */
+
     static public function ctrEliminarAdaptador(){
 
         if(isset($_POST["EliAdapt"])){
@@ -568,7 +602,7 @@ class controladorArticulos{
 
     }
     
-
+    /*                  Fin Eliminar Registros              */
 
 
 }

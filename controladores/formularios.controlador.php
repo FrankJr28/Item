@@ -959,4 +959,59 @@ class ControladorFormularios{
 
     }
 
+    public function ctrSolicitarPrestamo(){
+
+        if(isset($_POST["btnSoli"])){
+            
+            $u = $_SESSION["usuario"]["codigo_u"];
+        
+            $respuesta = ModeloFormularios::mdlSolicitarPrestamo($u);
+
+            if($respuesta=="ok"){
+                echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'success',
+                        title: 'Solicitud enviada',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 2000
+                    });
+                }
+                
+            </script>";
+            }
+
+            else{
+                echo "<script>
+                
+                if ( window.history.replaceState ) {
+
+                    window.history.replaceState( null, null, window.location.href);
+
+                    Swal.fire({
+                        position: 'top',
+                        title: 'error ".$respuesta."',
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        timer: 5000
+                    });
+                }
+                
+                </script>";
+            }
+        
+        }
+
+    }
+
+
+
+
+
 }//Fin de la clase
