@@ -134,7 +134,7 @@
         </div>
 
         <?php
-            $pres = new ControladorFormularios();
+            $pres = new ControladorSolicitar();
             $pres->ctrSolicitarPrestamo();
         ?>
 
@@ -163,42 +163,40 @@
         <!---->
     <!--WRAP-->
 
-    
-
-            <div><!-- modal-monitor-->
-                <div class="modal fade" id="modal-monitor" tabindex="-1" aria-labelledby="modal-monitor" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <i class="fa fa-light fa-desktop"></i>
-                            <h5 class="modal-title" id="exampleModalLabel">Monitores</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="list-group">
-                                <a class="list-group-item actit d-flex justify-content-between align-items-start">
-                                    <h6>Monitor Id</h6>
-                                    <h6>Solicitar</h6>
-                                </a>
-                                <a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">
-                                    <h6>Id-item</h6>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                                    </div>
-                                </a>
-                                <a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">
-                                    <h6>Id-item</h6>
-                                    <div>
-                                        <button type="button" class="no-dis" disabled> </button>
-                                    </div>
-                                </a>
+    <div><!-- modal-monitor-->
+        <div class="modal fade" id="modal-monitor" tabindex="-1" aria-labelledby="modal-monitor" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa fa-light fa-desktop"></i>
+                    <h5 class="modal-title" id="exampleModalLabel">Monitores</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <a class="list-group-item actit d-flex justify-content-between align-items-start">
+                            <h6>Monitor Id</h6>
+                            <h6>Solicitar</h6>
+                        </a>
+                        <a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">
+                            <h6>Id-item</h6>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                             </div>
-                        </div>
-                    </div>
+                        </a>
+                        <a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">
+                            <h6>Id-item</h6>
+                            <div>
+                                <button type="button" class="no-dis" disabled> </button>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </div><!-- modal-monitor ends-->
+            </div>
+            </div>
+        </div>
+    </div><!-- modal-monitor ends-->
 
 </div><!--MATERIAL DISPONIBLE FIN-->
 

@@ -361,283 +361,6 @@ class ModeloFormularios{
         
     }
 
-    static public function mdlGetAdapt($u){
-
-        //$sql='SELECT adaptador.*, esp_adapt.codigo_u FROM adaptador LEFT JOIN esp_adapt ON esp_adapt.codigo_u = :u AND actS_a=1 AND disp_a=1 group by adaptador.id_a';
-
-        $sql='SELECT adaptador.*, esp_adapt.codigo_u from adaptador LEFT JOIN esp_adapt ON esp_adapt.codigo_u IS NULL WHERE adaptador.disp_a=1 UNION 
-        SELECT adaptador.*, esp_adapt.codigo_u FROM adaptador LEFT JOIN esp_adapt ON esp_adapt.id_a = adaptador.id_a WHERE esp_adapt.codigo_u = :u AND adaptador.disp_a=1 ORDER BY id_a ASC';
-
-        $stmt = Conexion::conectar()->prepare($sql);
-
-        $stmt->bindParam(':u',$u,PDO::PARAM_INT);
-
-        $informacion='';
-
-        if($stmt->execute()){
-            
-            $informacion = $stmt->fetchAll();
-
-            $informacion=array_values($informacion);
-              
-            for($i = count($informacion)-1; $i>=0; --$i){
-                
-                    if(!$informacion[$i]["codigo_u"]){
-                        
-                        if(isset($informacion[$i-1]["id_a"])){
-
-                            if($informacion[$i]["id_a"]==$informacion[$i-1]["id_a"]){
-                                
-                                    unset($informacion[$i]);
-                                
-                            }
-
-                        }
-         
-                    }
-                    
-            }
-            
-        }
-
-        else{
-
-            $informacion='error';
-        
-        }
-        
-        return $informacion;
-        
-    }
-
-    static public function mdlGetBoc($u){
-
-        $sql = "SELECT bocina.*, esp_boc.codigo_u from bocina LEFT JOIN esp_boc ON esp_boc.codigo_u IS NULL WHERE bocina.disp_b=1 
-        UNION SELECT bocina.*, esp_boc.codigo_u FROM bocina LEFT JOIN esp_boc ON esp_boc.id_b = bocina.id_b WHERE esp_boc.codigo_u = :u AND bocina.disp_b=1 ORDER BY id_b ASC";
-
-        $stmt = Conexion::conectar()->prepare($sql);
-
-        //$stmt->bindParam(":c",$c,PDO::PARAM_INT);
-
-        $stmt->bindParam(':u',$u,PDO::PARAM_INT);
-
-        $informacion='';
-
-        if($stmt->execute()){
-            
-            $informacion = $stmt->fetchAll();
-
-            $informacion=array_values($informacion);
-              
-            for($i = count($informacion)-1; $i>=0; --$i){
-                
-                    if(!$informacion[$i]["codigo_u"]){
-                        
-                        if(isset($informacion[$i-1]["id_b"])){
-
-                            if($informacion[$i]["id_b"]==$informacion[$i-1]["id_b"]){
-                                
-                                    unset($informacion[$i]);
-                                
-                            }
-
-                        }
-
-                        else if(isset($informacion[$i+1]["id_b"])){
-
-                            if($informacion[$i]["id_b"]==$informacion[$i+1]["id_b"]){
-
-                                unset($informacion[$i]);
-
-                            }   
-
-                        }
-         
-                    }
-    
-            }
-
-        }
-
-        else{
-
-            $informacion='error';
-        
-        }
-        
-        return $informacion;
-        
-    }
-
-    static public function mdlGetCables($u){
-
-        $sql='SELECT cable.*, tipocable.*, esp_cab.codigo_u FROM cable 
-        LEFT join tipocable on tipocable.id_tc = cable.id_tc 
-        LEFT JOIN esp_cab ON esp_cab.codigo_u IS NULL WHERE cable.disp_c=1 
-        UNION SELECT cable.*, tipocable.*, esp_cab.codigo_u FROM cable 
-        LEFT join tipocable on tipocable.id_tc = cable.id_tc 
-        LEFT JOIN esp_cab ON esp_cab.id_c = cable.id_c WHERE esp_cab.codigo_u = :u AND cable.disp_c=1 
-        ORDER BY id_c ASC';
-
-        //$sql = "SELECT bocina.*, esp_boc.codigo_u from bocina LEFT JOIN esp_boc ON esp_boc.codigo_u IS NULL WHERE bocina.disp_b=1 
-        //UNION SELECT bocina.*, esp_boc.codigo_u FROM bocina LEFT JOIN esp_boc ON esp_boc.id_b = bocina.id_b WHERE esp_boc.codigo_u = :u AND bocina.disp_b=1 ORDER BY id_b ASC";
-
-        $stmt = Conexion::conectar()->prepare($sql);
-
-        //$stmt->bindParam(":c",$c,PDO::PARAM_INT);
-
-        $stmt->bindParam(':u',$u,PDO::PARAM_INT);
-
-        $informacion='';
-
-        if($stmt->execute()){
-            
-            $informacion = $stmt->fetchAll();
-
-            $informacion=array_values($informacion);
-              
-            for($i = count($informacion)-1; $i>=0; --$i){
-                
-                    if(!$informacion[$i]["codigo_u"]){
-                        
-                        if(isset($informacion[$i-1]["id_c"])){
-
-                            if($informacion[$i]["id_c"]==$informacion[$i-1]["id_c"]){
-                                
-                                    unset($informacion[$i]);
-                                
-                            }
-
-                        }
-         
-                    }
-                    
-            }
-
-        }
-
-        else{
-
-            $informacion='error';
-        
-        }
-        
-        return $informacion;
-        
-    }
-
-    static public function mdlGetProy($u){
-        
-        $sql="SELECT proyector.*, esp_proy.codigo_u from proyector LEFT JOIN esp_proy ON esp_proy.codigo_u IS NULL WHERE proyector.disp_p=1 
-        UNION SELECT proyector.*, esp_proy.codigo_u FROM proyector LEFT JOIN esp_proy ON esp_proy.id_p = proyector.id_p 
-        WHERE esp_proy.codigo_u = :u AND proyector.disp_p=1 ORDER BY id_p ASC";
-
-        $stmt = Conexion::conectar()->prepare($sql);
-
-        //$stmt->bindParam(":c",$c,PDO::PARAM_INT);
-
-        $stmt->bindParam(':u',$u,PDO::PARAM_INT);
-
-        $informacion='';
-
-        if($stmt->execute()){
-            
-            $informacion = $stmt->fetchAll();
-
-            $informacion=array_values($informacion);
-            
-            for($i = count($informacion)-1; $i>=0; --$i){
-                
-                    if(!$informacion[$i]["codigo_u"]){
-                        
-                        if(isset($informacion[$i-1]["id_p"])){
-
-                            if($informacion[$i]["id_p"]==$informacion[$i-1]["id_p"]){
-                                
-                                    unset($informacion[$i]);
-                                
-                            }
-
-                        }
-        
-                    }
-                    
-            }
-
-        }
-
-        else{
-
-            $informacion='error';
-
-        }
-
-        return $informacion;
-
-    }
-
-    static public function mdlGetLap($u){
-        
-        $sql="SELECT laptop.*, esp_lap.codigo_u FROM laptop LEFT JOIN esp_lap ON esp_lap.codigo_u IS NULL WHERE laptop.disp_l=1
-        UNION SELECT laptop.*, esp_lap.codigo_u FROM laptop LEFT JOIN esp_lap ON esp_lap.id_l = laptop.id_l 
-        WHERE esp_lap.codigo_u = :u AND laptop.disp_l=1 ORDER BY marca_l ASC";
-
-        $stmt = Conexion::conectar()->prepare($sql);
-
-        //$stmt->bindParam(":c",$c,PDO::PARAM_INT);
-
-        $stmt->bindParam(':u',$u,PDO::PARAM_INT);
-
-        $informacion='';
-
-        if($stmt->execute()){
-            
-            $informacion = $stmt->fetchAll();
-
-            $informacion=array_values($informacion);
-            
-            for($i = count($informacion)-1; $i>=0; --$i){
-                
-                    if(!$informacion[$i]["codigo_u"]){
-                        
-                        if(isset($informacion[$i-1]["id_l"])){
-
-                            if($informacion[$i]["id_l"]==$informacion[$i-1]["id_l"]){
-                                
-                                    unset($informacion[$i]);
-                                
-                            }
-
-                        }
-
-                        //
-                        else if(isset($informacion[$i+1]["id_l"])){
-
-                            if($informacion[$i]["id_l"]==$informacion[$i+1]["id_l"]){
-
-                                unset($informacion[$i]);
-
-                            }   
-
-                        }
-                        //
-        
-                    }
-                    
-            }
-
-        }
-
-        else{
-
-            $informacion='error';
-
-        }
-
-        return $informacion;
-    
-    }
-
     static public function mdlObtenerPrestamosAceptar(){
     
         $sql='SELECT * FROM prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE inicio is NULL';
@@ -1358,121 +1081,98 @@ class ModeloFormularios{
 
     }
 
-    static public function mdlSolicitarPrestamo($u){
-        /*                  OBTIENE LOS ARTICULOS QUE ESTAN EN EL ESPACIO DEL USUARIO EN LA BASE DE DATOS                  */
-        /*                  ADAPTADOR                   */
-        $sql="SELECT adaptador.id_a, adaptador.disp_a FROM esp_adapt LEFT JOIN adaptador ON adaptador.id_a = esp_adapt.id_a WHERE codigo_u=:u";
+    static public function mdlInsertarEspacioLap($c,$u){
+
+        $sql="INSERT INTO esp_lap (codigo_u, id_l) VALUES (:u, :c)";
+
         $stmt = Conexion::conectar()->prepare($sql);
+        
+        //$_SESSION["usuario"]["codigo_u"]
+
         $stmt->bindParam(":u",$u,PDO::PARAM_INT);
+
+        $stmt->bindParam(":c",$c,PDO::PARAM_INT);
+
         if($stmt->execute()){
-            $resultadoA = $stmt->fetchAll();
-            foreach($resultadoA as $dato){
-                if($dato["disp_a"]==0){
-                    return "ocupado Adaptador";
-                }
-            }
+
+            return "ok";
+
         }
-        else{   
-            return "error";
+
+        else{
+
+            return "error ";
+
         }
-        /*                  FIN ADAPTADOR                   */
-        /*                  BOCINAS                   */
-        $sql="SELECT bocina.id_b, bocina.disp_b FROM esp_boc LEFT JOIN bocina ON bocina.id_b = esp_boc.id_b WHERE codigo_u=:u";
+
+    }
+
+    static public function mdlEliminarEspacioLap($c,$u){
+
+        $sql="DELETE FROM esp_lap WHERE codigo_u=:u AND id_l=:c";
+
         $stmt = Conexion::conectar()->prepare($sql);
+
         $stmt->bindParam(":u",$u,PDO::PARAM_INT);
+
+        $stmt->bindParam(":c",$c,PDO::PARAM_INT);
+
         if($stmt->execute()){
-            $resultadoB = $stmt->fetchAll();
-            foreach($resultadoB as $dato){
-                if($dato["disp_b"]==0){
-                    return "ocupado Bocina";
-                }
-            }
+            return "ok";
         }
         else{
             return "error";
         }
-        /*                  FIN BOCINAS                   */
-        /*                  CABLES                   */
-        $sql="SELECT cable.id_c, cable.disp_c FROM esp_cab LEFT JOIN cable ON cable.id_c = esp_cab.id_c WHERE codigo_u=:u";
+
+    }
+
+    static public function mdlInsertarEspacioProy($c,$u){
+
+        $sql="INSERT INTO esp_proy (codigo_u, id_p) VALUES (:u, :c)";
+
         $stmt = Conexion::conectar()->prepare($sql);
+        
+        //$_SESSION["usuario"]["codigo_u"]
+
         $stmt->bindParam(":u",$u,PDO::PARAM_INT);
+
+        $stmt->bindParam(":c",$c,PDO::PARAM_INT);
+
         if($stmt->execute()){
-            $resultadoC = $stmt->fetchAll();
-            foreach($resultadoC as $dato){
-                if($dato["disp_c"]==0){
-                    return "ocupado Cable";
-                }
-            }
+
+            return "ok";
+
         }
-        else{   
-            return "error";
+
+        else{
+
+            return "error ip".implode(" ",$stmt->errorInfo());
+
         }
-        /*                  FIN CABLES                   */
-        /*                  CREA EL PRESTAMO                    */
-        $sql="INSERT INTO prestamo (id_pres, id_ubi, solicitud, inicio, finalizo, codigo_a, codigo_u, activo_pres, nota) VALUES (NULL, 7, current_timestamp(), NULL, NULL, NULL, :u, 1, NULL)";
-        $pdo=Conexion::conectar();
-        $stmt = $pdo->prepare($sql);
+
+    }
+
+    static public function mdlEliminarEspacioProy($c,$u){
+
+        $sql="DELETE FROM esp_proy WHERE codigo_u=:u AND id_p=:c";
+
+        $stmt = Conexion::conectar()->prepare($sql);
+
         $stmt->bindParam(":u",$u,PDO::PARAM_INT);
+
+        $stmt->bindParam(":c",$c,PDO::PARAM_INT);
+
         if($stmt->execute()){
-            $pres = $pdo->lastInsertId();
-        }
-        else{   
-            return "error";
-        }
-        /*                  FIN PRESTAMO                   */
-
-        /*                  RECORRE EL ARRAY DE ADAPTADORES PARA INSERTARLOS                  */
-
-        $valAdapts = "";
-        $valAdaptsUpdate ="";
-
-        foreach($resultadoA as $index=>$dato){
-            if($index){
-                $valAdapts.=",";
-                $valAdaptsUpdate.=" OR ";
-            }
-            $valAdapts.="(".$pres.",".$dato["id_a"].")";
-            $valAdaptsUpdate.="id_a=".$dato["id_a"];
-        }
-
-        /*                  RECORRE EL ARRAY DE ADAPTADORES PARA INSERTARLOS                  */        
-        $sql="INSERT INTO pres_adapt (id_pres, id_a) VALUES ".$valAdapts;
-        $stmt = Conexion::conectar()->prepare($sql);
-        if(!$stmt->execute()){  
-            return "error";
-        }
-
-        $sql="UPDATE adaptador SET disp_a=0 WHERE ".$valAdaptsUpdate;
-        $stmt = Conexion::conectar()->prepare($sql);
-        if(!$stmt->execute()){  
-            return "error";
-        }
-
-        $valBocs = "";
-        $valBocsUpdate = "";
-        foreach($resultadoB as $index=>$dato){
-            if($index){
-                $valBocs.=",";
-                $valBocsUpdate.=" OR ";
-            }
-            $valBocs.="(".$pres.",".$dato["id_b"].")";
-            $valBocsUpdate.="id_b=".$dato["id_b"];
-        }
-
-        /*                  RECORRE EL ARRAY DE BOCINAS PARA INSERTARLOS                  
-        $sql="INSERT INTO pres_boc (id_pres, id_b) VALUES ".$valBocs;
-        $stmt = Conexion::conectar()->prepare($sql);
-        if(!$stmt->execute()){  
-            return "error";
+        
+            return "ok";
+        
         }
         
-        $sql="UPDATE bocina SET disp_b=0 WHERE ".$valBocsUpdate;
-        $stmt = Conexion::conectar()->prepare($sql);
-        if(!$stmt->execute()){  
-            return "error";
+        else{
+
+            return "error ep";
+        
         }
-*/
-        return "ok";
 
     }
 

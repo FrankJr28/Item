@@ -21,51 +21,27 @@ const contLap = document.getElementById("contenedor-laptops");
 
 
 var tiempo = setInterval(function() {
-
-        //Adaptadores
-
         $.ajax({
             type: 'POST',
             url: './controladores/user.php?op=adapts',
             dataType: 'json',
             success: function(data) {
-
                 if (data) {
-
                     r = data;
-
                     r2 = data;
-
-                    //console.log("Despues de la peticion");
-
-                    //console.log(r)
-
                     adaptadores.forEach((e) => {
-
                         encontrado = false;
-
-
                         for (var i = r.length - 1; i >= 0; i--) { //para buscar en el json devuelto por el server
-
                             if (r[i][0] == e.value) {
-
                                 encontrado = true;
-
                                 r2.splice(i, 1);
-
                             }
-
                         }
-
                         if (!encontrado) {
-
                             var fila = e.parentNode.parentNode;
-
                             inp = e.target;
-
                             if (e.checked) {
                                 console.log("está seleccionado");
-
                                 Swal.fire({
                                     position: 'center',
                                     //icon: 'error',
@@ -73,86 +49,48 @@ var tiempo = setInterval(function() {
                                     showConfirmButton: false,
                                     timer: 2000
                                 });
-
                             }
-
                             var fila = e.parentNode.parentNode;
-
                             console.log(fila);
-
                             fila.remove();
-
                             adaptadores = document.querySelectorAll('.adapt');
-
                         }
-
-
-
                     });
 
                     if (r2.length) { //Si R todavia tiene puedo crear nuevos elementos
-
                         console.log("hay un nuevo elemento " + r2[0][0]);
-
                         var nE;
-
                         for (var j = 0; j < r2.length; j++) {
-
                             const eta = document.createElement("a");
-
                             eta.className = "list-group-item d-flex justify-content-between align-items-start list-group-item-action";
-
                             const tit = document.createElement("h6");
-
                             tit.innerHTML = r2[j][1] + " " + r2[j][2];
-
                             const etdiv = document.createElement("div");
-
                             etdiv.className = "form-check form-switch";
-
                             const etinp = document.createElement("input");
-
                             etinp.className = "form-check-input adapt";
-
                             etinp.type = "checkbox";
-
                             etinp.name = "adapt";
-
                             etinp.value = r2[j][0];
-
                             etdiv.appendChild(etinp);
-
                             eta.appendChild(tit);
-
                             eta.appendChild(etdiv)
-
                             contAdapt.appendChild(eta);
-
                             adaptadores = document.querySelectorAll('.adapt');
-
                             console.log("append: " + r2[j][0]);
-
                             Swal.fire({
                                 position: 'center',
                                 title: 'Hay más adaptadores disponibles',
                                 showConfirmButton: false,
                                 timer: 2000
                             });
-
                         }
-
                     }
-
                 }
-
-
             }
         });
-
         // Fin Adaptadores
-
         // Bocinas
-
         $.ajax({
             type: 'POST',
             url: './controladores/user.php?op=bocs',
@@ -841,6 +779,70 @@ on(document, 'click', '.cab', e => {
         $.ajax({
             type: 'POST',
             url: './controladores/user.php?op=eliminarCab',
+            data: { "valor": fn },
+            success: function(data) {
+                console.log(data);
+            }
+        });
+        alert(fn);
+    }
+});
+
+on(document, 'click', '.lap', e => {
+
+    const fila = e.target;
+    var fn = fila.value;
+
+    if (fila.checked) {
+
+        $.ajax({
+            type: 'POST',
+            url: './controladores/user.php?op=insertLap',
+            data: { "valor": fn },
+            success: function(data) {
+                console.log(data);
+            }
+
+        });
+
+        alert(fn);
+
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: './controladores/user.php?op=eliminarLap',
+            data: { "valor": fn },
+            success: function(data) {
+                console.log(data);
+            }
+        });
+        alert(fn);
+    }
+});
+
+on(document, 'click', '.proy', e => {
+
+    const fila = e.target;
+    var fn = fila.value;
+
+    if (fila.checked) {
+
+        $.ajax({
+            type: 'POST',
+            url: './controladores/user.php?op=insertProy',
+            data: { "valor": fn },
+            success: function(data) {
+                console.log(data);
+            }
+
+        });
+
+        alert(fn);
+
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: './controladores/user.php?op=eliminarProy',
             data: { "valor": fn },
             success: function(data) {
                 console.log(data);

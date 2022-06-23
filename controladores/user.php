@@ -11,7 +11,7 @@
 
                 $u = $_SESSION["usuario"]["codigo_u"];
 
-                $respuesta = ModeloFormularios::mdlGetAdapt($u);
+                $respuesta = ModeloUsuario::mdlGetAdapt($u);
 
                 $respuesta=array_values($respuesta);    //Rordena el array de manera que elimina el array asociativo y se puede trabajar un json en el front
                 
@@ -249,6 +249,65 @@
 
             break;
         
+        case "insertLap":
+
+            if(isset($_POST["valor"])){
+                //var_dump($_POST);
+                
+                $u = $_SESSION["usuario"]["codigo_u"];
+                
+                $c=$_POST["valor"];
+
+                $r=ControladorFormularios::ctrInsertarEspacioLap($c,$u);
+                echo $r;
+
+            }
+            break;
+
+        case "eliminarLap":
+
+            if(isset($_POST["valor"])){
+                //var_dump($_POST);
+                
+                $u = $_SESSION["usuario"]["codigo_u"];
+                
+                $c=$_POST["valor"];
+
+                $r=ControladorFormularios::ctrEliminarEspacioLap($c,$u);
+                echo $r;
+
+            }
+            break;
+
+        case "insertProy":
+
+            if(isset($_POST["valor"])){
+                
+                $u = $_SESSION["usuario"]["codigo_u"];
+                
+                $c=$_POST["valor"];
+                
+                $r=ModeloFormularios::mdlInsertarEspacioProy($c,$u);
+                
+                echo $r;
+
+            }
+            break;
+
+        case "eliminarProy":
+
+            if(isset($_POST["valor"])){
+                
+                $u = $_SESSION["usuario"]["codigo_u"];
+                
+                $c=$_POST["valor"];
+
+                $r=ModeloFormularios::mdlEliminarEspacioProy($c,$u);
+                
+                echo $r;
+
+            }
+            break;
     }
 
 ?>

@@ -66,7 +66,7 @@
                             }
                             else if(isset($_SESSION["usuario"])){
                                 echo '
-                                <a href="index.php?pagina=inicio" class="nav_link"> <i class="bi bi-house nav_icon"></i> <span class="nav_name">Inicio</span> </a>
+                                <a href="index.php?pagina=solicitar" class="nav_link"> <i class="bi bi-house nav_icon"></i> <span class="nav_name">Inicio</span> </a>
                                 <a href="index.php?pagina=infoUsuario" class="nav_link"> <i class="bi bi-person-rolodex nav_icon"></i><span class="nav_name">Actualizar datos</span> </a>
                                 ';
                             }

@@ -18,6 +18,12 @@ require_once "controladores/reportes.controlador.php";
 
 require_once "modelos/reportes.modelo.php";
 
+require_once "controladores/solicitar.controlador.php";
+
+require_once "modelos/solicitar.modelo.php";
+
+require_once "modelos/user.modelo.php";
+
 $plantilla = new ControladorPlantilla();
 
 $plantilla->ctrTraerPlantilla();

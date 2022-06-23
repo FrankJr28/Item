@@ -292,7 +292,7 @@ class ControladorFormularios{
                                 '.$dato["id_p"]." ".$dato["modelo_p"].'
                             </h6>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" value="'.$dato["id_p"].'" name=pro>
+                                <input class="form-check-input proy" type="checkbox" id="flexSwitchCheckDefault" value="'.$dato["id_p"].'" name=pro>
                             </div>
                         </a>';   
 
@@ -959,59 +959,20 @@ class ControladorFormularios{
 
     }
 
-    public function ctrSolicitarPrestamo(){
+    static public function ctrInsertarEspacioLap($c,$u){
 
-        if(isset($_POST["btnSoli"])){
-            
-            $u = $_SESSION["usuario"]["codigo_u"];
+        $respuesta = ModeloFormularios::mdlInsertarEspacioLap($c,$u);
         
-            $respuesta = ModeloFormularios::mdlSolicitarPrestamo($u);
-
-            if($respuesta=="ok"){
-                echo "<script>
-                
-                if ( window.history.replaceState ) {
-
-                    window.history.replaceState( null, null, window.location.href);
-
-                    Swal.fire({
-                        position: 'top',
-                        icon: 'success',
-                        title: 'Solicitud enviada',
-                        showConfirmButton: false,
-                        allowOutsideClick: false,
-                        timer: 2000
-                    });
-                }
-                
-            </script>";
-            }
-
-            else{
-                echo "<script>
-                
-                if ( window.history.replaceState ) {
-
-                    window.history.replaceState( null, null, window.location.href);
-
-                    Swal.fire({
-                        position: 'top',
-                        title: 'error ".$respuesta."',
-                        showConfirmButton: false,
-                        allowOutsideClick: false,
-                        timer: 5000
-                    });
-                }
-                
-                </script>";
-            }
-        
-        }
+        return $respuesta;
 
     }
 
+    static public function ctrEliminarEspacioLap($c,$u){
 
-
-
+        $respuesta = ModeloFormularios::mdlEliminarEspacioLap($c,$u);
+        
+        return $respuesta;
+        
+    }
 
 }//Fin de la clase
