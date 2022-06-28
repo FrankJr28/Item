@@ -2,6 +2,7 @@
 
     require_once "../controladores/formularios.controlador.php";
     require_once "../modelos/formularios.modelo.php";
+    require_once "../modelos/user.modelo.php";
 
     session_start();
 
@@ -16,6 +17,11 @@
                 $respuesta=array_values($respuesta);    //Rordena el array de manera que elimina el array asociativo y se puede trabajar un json en el front
                 
                 echo json_encode($respuesta);
+
+                /*
+                SELECT adaptador.*, esp_adapt.codigo_u from adaptador LEFT JOIN esp_adapt ON esp_adapt.codigo_u IS NULL WHERE adaptador.disp_a=1 UNION 
+                SELECT adaptador.*, esp_adapt.codigo_u FROM adaptador LEFT JOIN esp_adapt ON esp_adapt.id_a = adaptador.id_a WHERE esp_adapt.codigo_u = :u AND adaptador.disp_a=1 ORDER BY id_a ASC
+                */
 
             break;
     
@@ -82,7 +88,7 @@
 
                 $u = $_SESSION["usuario"]["codigo_u"];
 
-                $respuesta = ModeloFormularios::mdlGetBoc($u);
+                $respuesta = ModeloUsuario::mdlGetBoc($u);
 
                 $respuesta=array_values($respuesta);
 
@@ -161,7 +167,7 @@
 
             $u = $_SESSION["usuario"]["codigo_u"];
 
-            $respuesta = ModeloFormularios::mdlGetCables($u);
+            $respuesta = ModeloUsuario::mdlGetCab($u);
 
             $respuesta=array_values($respuesta);
 
@@ -241,7 +247,7 @@
             
             $u = $_SESSION["usuario"]["codigo_u"];
 
-            $respuesta = ModeloFormularios::mdlGetLap($u);
+            $respuesta = ModeloUsuario::mdlGetLap($u);
 
             $respuesta=array_values($respuesta);
 

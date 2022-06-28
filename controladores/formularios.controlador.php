@@ -125,7 +125,7 @@ class ControladorFormularios{
         
         $u = $_SESSION["usuario"]["codigo_u"];
 
-        $informacion = ModeloFormularios::mdlGetLap($u);
+        $informacion = ModeloUsuario::mdlGetLap($u);
 
         if($informacion != 'error'){
 
@@ -229,7 +229,7 @@ class ControladorFormularios{
         
         $u = $_SESSION["usuario"]["codigo_u"];
 
-        $informacion = ModeloFormularios::mdlGetProy($u);
+        $informacion = ModeloUsuario::mdlGetProy($u);
 
         if($informacion != 'error'){
 
@@ -324,42 +324,81 @@ class ControladorFormularios{
     }
 
     public function ctrObtenerBocinas(){
-
         $u = $_SESSION["usuario"]["codigo_u"];
-         
-        $respuesta = ModeloFormularios::mdlObtenerBocinas($u);
+        $informacion = ModeloUsuario::mdlGetBoc($u);
+        if($informacion != 'error'){
+            $informacion2="";    
+            foreach($informacion as $dato){
+                $informacion2=$informacion2.'<a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
+                    <h6><strong>Id: </strong>'.$dato[0].' modelo: '.$dato[2].'</h6>
+                        <div class="form-check form-switch">
 
-        if($respuesta != 'error'){
+                            <input class="form-check-input boc" type="checkbox" value="'.$dato[0].'" name="adapt" dbs-name="'.$dato["codigo_u"].'"';
+                            
+                        if($dato["codigo_u"])
+                            $informacion2=$informacion2.'checked';                                
 
-            echo $respuesta;    
+                    $informacion2=$informacion2.'>
+                        </div>
+                </a>';
+
+            }
+            
+            echo $informacion2;
 
         }
 
     }
 
     public function ctrObtenerCables(){
-
         $u = $_SESSION["usuario"]["codigo_u"];
-         
-        $respuesta = ModeloFormularios::mdlObtenerCables($u);
+        $informacion = ModeloUsuario::mdlGetCab($u);
+        if($informacion != 'error'){
+            $informacion2="";    
 
-        if($respuesta != 'error'){
-
-            echo $respuesta;    
-
+            foreach($informacion as $dato){
+                $informacion2=$informacion2.'<a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
+                    <h6><strong>Id: </strong>'.$dato[0].' marca: '.$dato[1].'</h6>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input cab" type="checkbox" value="'.$dato[0].'" name="adapt" dbs-name="'.$dato["codigo_u"].'"';
+                        if($dato["codigo_u"])
+                            $informacion2=$informacion2.'checked';                                
+                    $informacion2=$informacion2.'>
+                        </div>
+                </a>';
+            }
+            echo $informacion2;
         }
-
     }
 
     public function ctrObtenerAdaptadores(){
         
         $u = $_SESSION["usuario"]["codigo_u"];
 
-        $respuesta = ModeloFormularios::mdlObtenerAdaptadores($u);
+        $informacion = ModeloUsuario::mdlGetAdapt($u);
 
-        if($respuesta != 'error'){
+        if($informacion != 'error'){
 
-            echo $respuesta;    
+            $informacion2='';
+
+            foreach($informacion as $dato){
+                
+                $informacion2=$informacion2.'<a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">
+                    <h6><strong>Id: </strong>'.$dato[0].' modelo: '.$dato[2].'</h6>
+                        <div class="form-check form-switch">
+
+                            <input class="form-check-input adapt" type="checkbox" value="'.$dato[0].'" name="adapt" dbs-name="'.$dato["codigo_u"].'"';
+                            
+                        if($dato["codigo_u"])
+                            $informacion2=$informacion2.'checked';                                
+
+                    $informacion2=$informacion2.'>
+                        </div>
+                </a>';
+
+            }
+            
+            echo $informacion2;
 
         }
 
