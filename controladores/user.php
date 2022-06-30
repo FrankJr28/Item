@@ -285,6 +285,18 @@
             }
             break;
 
+        case "proyectores":
+        
+            $u = $_SESSION["usuario"]["codigo_u"];
+
+            $respuesta = ModeloUsuario::mdlGetProy($u);
+
+            $respuesta=array_values($respuesta);
+
+            echo json_encode($respuesta);
+
+            break;
+            
         case "insertProy":
 
             if(isset($_POST["valor"])){

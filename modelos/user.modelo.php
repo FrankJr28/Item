@@ -164,22 +164,23 @@ class ModeloUsuario{
             $informacion=array_values($informacion);
             
             $recorrio=1;
-            $i=count($informacion)-1;
-            while($recorrio){
-                 if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
-                    if(isset($informacion[$i+1]["id_l"])){  //si el anterios tiene articulo
-                        if($informacion[$i]["id_l"]==$informacion[$i+1]["id_l"]){   //si son iguales
-                                unset($informacion[$i]);
+            if(count($informacion)>1){
+                $i=count($informacion)-1;
+                while($recorrio){
+                    if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
+                        if(isset($informacion[$i+1]["id_l"])){  //si el anterios tiene articulo
+                            if($informacion[$i]["id_l"]==$informacion[$i+1]["id_l"]){   //si son iguales
+                                    unset($informacion[$i]);
+                            }
                         }
                     }
-                 }
-                 if(!isset($informacion[$i-1])){
-                    $recorrio=0;
-                 }
-                $i--;
+                    if(!isset($informacion[$i-1])){
+                        $recorrio=0;
+                    }
+                    $i--;
+                }
+                $informacion=array_values($informacion);
             }
-            $informacion=array_values($informacion);
-            
         }
 
         else{
@@ -197,37 +198,30 @@ class ModeloUsuario{
         $sql="SELECT proyector.*, esp_proy.codigo_u from proyector LEFT JOIN esp_proy ON esp_proy.codigo_u IS NULL WHERE proyector.disp_p=1 
         UNION SELECT proyector.*, esp_proy.codigo_u FROM proyector LEFT JOIN esp_proy ON esp_proy.id_p = proyector.id_p 
         WHERE esp_proy.codigo_u = :u AND proyector.disp_p=1 ORDER BY marca_p, id_p, codigo_u ASC";
-
         $stmt = Conexion::conectar()->prepare($sql);
-
         //$stmt->bindParam(":c",$c,PDO::PARAM_INT);
-
         $stmt->bindParam(':u',$u,PDO::PARAM_INT);
-
         $informacion='';
-
         if($stmt->execute()){
-            
             $informacion = $stmt->fetchAll();
-
             $informacion=array_values($informacion);
-            
-            for($i = count($informacion)-1; $i>=0; --$i){
-                
-                    if(!$informacion[$i]["codigo_u"]){
-                        
-                        if(isset($informacion[$i-1]["id_p"])){
-
-                            if($informacion[$i]["id_p"]==$informacion[$i-1]["id_p"]){
-                                
+            $recorrio=1;
+            if(count($informacion)>1){
+                $i=count($informacion)-1;
+                while($recorrio){
+                    if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
+                        if(isset($informacion[$i+1]["id_l"])){  //si el anterios tiene articulo
+                            if($informacion[$i]["id_l"]==$informacion[$i+1]["id_l"]){   //si son iguales
                                     unset($informacion[$i]);
-                                
                             }
-
                         }
-        
                     }
-                    
+                    if(!isset($informacion[$i-1])){
+                        $recorrio=0;
+                    }
+                    $i--;
+                }
+                $informacion=array_values($informacion);
             }
 
         }

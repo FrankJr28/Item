@@ -211,11 +211,11 @@ class ControladorFormularios{
                     </div>
                 </div>';
 
-                $info.='<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-lap-' . $marca_l1 . '">
+                $info.='<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-lap-' . $marca_l1 . '" id="li-lap-'.$marca_l1.'">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">' . $marca_l1 . '</div>
                     </div>
-                        <span class="badge bg-primary rounded-pill">'.$c.'</span>
+                        <span class="badge bg-primary rounded-pill" id="sp-' . $marca_l1 . '">'.$c.'</span>
                 </li>';
             }
             
@@ -255,31 +255,31 @@ class ControladorFormularios{
 
                     if($marca_p1){
 
-                        $info.='<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-lap-' . $marca_p1 . '">
+                        $info.='<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-proy-' . $marca_p1 . '" id="li-proy-' . $marca_p1 . '">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">' . $marca_p1 . '</div>
                             </div>
-                                <span class="badge bg-primary rounded-pill">'.$c.'</span>
+                                <span class="badge bg-primary rounded-pill" id="sp-proy-' . $marca_p1 .'" >'.$c.'</span>
                         </li>';
 
                         $c=0;
 
                     }
 
-                    $info.='<div class="modal fade" id="modal-lap-'.$dato["marca_p"].'" tabindex="-1" aria-labelledby="modal-lap" aria-hidden="true">
+                    $info.='<div class="modal fade" id="modal-proy-'.$dato["marca_p"].'" tabindex="-1" aria-labelledby="modal-proy" aria-hidden="true">
                         
                             <div class="modal-dialog">
                             
                                 <div class="modal-content">
                         
                                     <div class="modal-header">
-                                        <i class="fa fa-light fa-laptop"></i>
-                                        <h5 class="modal-title" id="exampleModalLabel">Laptops</h5>
+                                        <i class="fa fa-light fa-desktop"></i>
+                                        <h5 class="modal-title" id="exampleModalLabel">Proyectores</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     
                                     <div class="modal-body">
-                                        <div class="list-group">
+                                        <div class="list-group" id="contProy'.$dato["marca_p"].'">
                                             
                                             <a class="list-group-item actit d-flex justify-content-between align-items-start">
                                                 <h6>Laptop Id</h6>
@@ -292,7 +292,7 @@ class ControladorFormularios{
                                 '.$dato["id_p"]." ".$dato["modelo_p"].'
                             </h6>
                             <div class="form-check form-switch">
-                                <input class="form-check-input proy" type="checkbox" id="flexSwitchCheckDefault" value="'.$dato["id_p"].'" name=pro>
+                                <input class="form-check-input proy" type="checkbox" id="flexSwitchCheckDefault" value="'.$dato["id_p"].'" name="'.$marca_p1.'">
                             </div>
                         </a>';   
 
@@ -309,11 +309,11 @@ class ControladorFormularios{
                     </div>
                 </div>';
 
-                $info.='<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-lap-' . $marca_p1 . '">
+                $info.='<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-proy-' . $marca_p1 . '">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">' . $marca_p1 . '</div>
                     </div>
-                        <span class="badge bg-primary rounded-pill">'.$c.'</span>
+                        <span class="badge bg-primary rounded-pill" id="sp-proy-' . $marca_p1 .'">'.$c.'</span>
                 </li>';
             }
             

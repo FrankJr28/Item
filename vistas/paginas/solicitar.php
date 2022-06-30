@@ -115,7 +115,7 @@
             
 
             <article id="item5">
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" id="contenedor-proyectores">
         
                     <?php
                         $proyectores = new ControladorFormularios();

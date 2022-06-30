@@ -4,15 +4,17 @@ var adaptadores = document.querySelectorAll('.adapt');
 var bocinas = document.querySelectorAll('.boc');
 var cables = document.querySelectorAll('.cab');
 var laptops = document.querySelectorAll('.lap');
+var proyectores = document.querySelectorAll('.proy');
 
 const contBoc = document.getElementById("contenedor-bocinas");
 const contAdapt = document.getElementById("contenedor-adaptadores");
 const contCab = document.getElementById("contenedor-cables");
 const contLap = document.getElementById("contenedor-laptops");
+const contProy = document.getElementById("contenedor-proyectores");
 
 var tiempo = setInterval(function() {
-        //Adaptadores
-        $.ajax({
+
+        $.ajax({ //Adaptadores
             type: 'POST',
             url: './controladores/user.php?op=adapts',
             dataType: 'json',
@@ -76,10 +78,10 @@ var tiempo = setInterval(function() {
                     }
                 }
             }
-        });
-        // Fin Adaptadores
-        // Bocinas
-        $.ajax({
+        }); // Fin Adaptadores
+
+
+        $.ajax({ // Bocinas
             type: 'POST',
             url: './controladores/user.php?op=bocs',
             dataType: 'json',
@@ -124,7 +126,7 @@ var tiempo = setInterval(function() {
                             eta = '<a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">';
                             eta += '<h6><strong>Id: </strong>' + r2[j][0] + '   modelo: ' + r2[j][2] + '</h6>';
                             eta += '<div class="form-check form-switch">';
-                            eta += '<input class="form-check-input boc" type="checkbox" value="' + r2[j][0] + '" name="adapt" dbs-name="3000000015" ';
+                            eta += '<input class="form-check-input boc" type="checkbox" value="' + r2[j][0] + '" name="boc" dbs-name="3000000015" ';
                             if (r2[j][6]) {
                                 eta += 'checked';
                             }
@@ -145,11 +147,9 @@ var tiempo = setInterval(function() {
                     }
                 }
             }
-        });
-        // Fin bocinas
+        }); // Fin bocinas
 
-        // Cables
-        $.ajax({
+        $.ajax({ // Cables
             type: 'POST',
             url: './controladores/user.php?op=cables',
             dataType: 'json',
@@ -190,7 +190,7 @@ var tiempo = setInterval(function() {
                             eta = '<a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action">';
                             eta += '<h6><strong>Id: </strong>' + r2[j][0] + '   marca: ' + r2[j][1] + '</h6>';
                             eta += '<div class="form-check form-switch">';
-                            eta += '<input class="form-check-input cab" type="checkbox" value="' + r2[j][0] + '" name="adapt" dbs-name="3000000015" ';
+                            eta += '<input class="form-check-input cab" type="checkbox" value="' + r2[j][0] + '" name="cab" dbs-name="3000000015" ';
                             if (r2[j][7]) {
                                 eta += 'checked';
                             }
@@ -207,22 +207,13 @@ var tiempo = setInterval(function() {
                                 showConfirmButton: false,
                                 timer: 2000
                             });
-
                         }
-
                     }
-
                 }
-
-
             }
-        });
+        }); // Fin Cables
 
-        // Fin Cables
-
-        // Laptops
-
-        $.ajax({
+        $.ajax({ // Laptops
             type: 'POST',
             url: './controladores/user.php?op=laptops',
             dataType: 'json',
@@ -238,9 +229,9 @@ var tiempo = setInterval(function() {
                                 r2.splice(i, 1);
                             }
                         }
-                        if (!encontrado) {
-                            var fila = e.parentNode.parentNode;
-                            inp = e.target;
+                        if (!encontrado) { //Sino lo encuentra lo debe eliminar
+                            var fila = e.parentNode.parentNode; //Etiqueta <a> de cada articulo
+                            inp = e.target; //El input
                             if (e.checked) {
                                 Swal.fire({
                                     position: 'center',
@@ -250,11 +241,18 @@ var tiempo = setInterval(function() {
                                 });
                             }
                             var marca_l = e.name;
-                            if ((document.getElementsByName(marca_l).length) < 2) {
-                                var etiquetaLi = document.getElementById("li-lap-" + marca_l);
+                            if ((document.getElementsByName(marca_l).length) < 2) { //que sea el ultima para eliminar los contenedores
+                                console.log(marca_l);
                                 var etiquetaDiv = document.getElementById("modal-lap-" + marca_l);
-                                etiquetaDiv.remove();
-                                etiquetaLi.remove();
+                                if (etiquetaDiv)
+                                    etiquetaDiv.remove();
+                                var etiquetaLi = document.getElementById("li-lap-" + marca_l);
+                                if (etiquetaLi)
+                                    etiquetaLi.remove();
+                                var f = document.getElementsByClassName("modal-backdrop")[0];
+                                if (f)
+                                    f.remove();
+                                //f.classList.remove("show");
 
                             } else {
                                 //decrementar la cantidad del span azul
@@ -266,10 +264,8 @@ var tiempo = setInterval(function() {
                                 }
                             }
                             var fila = e.parentNode.parentNode;
-                            console.log(fila);
                             fila.remove();
                             laptops = document.querySelectorAll('.lap');
-                            /*data.forEach(function(dato) {if(dato.asistio) {asistieron++;}});*/
                         }
 
 
@@ -277,18 +273,14 @@ var tiempo = setInterval(function() {
                     });
 
                     if (r2.length) { //Si R todavia tiene puedo crear nuevos elementos
-
-                        console.log("hay un nuevo elemento " + r2[0][0]);
-
                         var nE;
-
                         for (var j = 0; j < r2.length; j++) {
 
                             var eta = '';
                             eta = '<a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">';
                             eta += '<h6><strong>Id: </strong>' + r2[j][0] + '   modelo: ' + r2[j][2] + '</h6>';
                             eta += '<div class="form-check form-switch">';
-                            eta += '<input class="form-check-input lap" type="checkbox" value="' + r2[j][0] + '" name="adapt" dbs-name="3000000015" ';
+                            eta += '<input class="form-check-input lap" type="checkbox" value="' + r2[j][0] + '" name="' + r[j]["marca_l"] + '" dbs-name="3000000015" ';
                             if (r2[j][8]) {
                                 eta += 'checked';
                             }
@@ -296,47 +288,23 @@ var tiempo = setInterval(function() {
                             eta += '</div>';
                             eta += '</a>';
 
-                            /*
-                            const eta = document.createElement("a");
-                            eta.className = "list-group-item d-flex justify-content-between align-items-start list-group-item-action";
-                            const tit = document.createElement("h6");
-                            tit.innerHTML = r2[j][1] + " " + r2[j][2];
-                            const etdiv = document.createElement("div");
-                            etdiv.className = "form-check form-switch";
-                            const etinp = document.createElement("input");
-                            etinp.className = "form-check-input lap";
-                            etinp.type = "checkbox";
-                            etinp.name = "lap";
-                            etinp.value = r2[j][0];
-                            etinp.name = r2[j][1];
-                            etdiv.appendChild(etinp);
-                            eta.appendChild(tit);
-                            eta.appendChild(etdiv)
-*/
-
-                            //Aquí se añade al contenedor correspondiente
-                            //contCab.appendChild(eta);
-
-                            //id="modal-lap-'.$dato["marca_l"]
-
-                            //document.getElementById("cont" + r[j]["marca_l"]).appendChild(eta);
-
                             if ($('#cont' + r[j]["marca_l"]).length) {
                                 // si existe un contenedor de la marca
+                                console.log("marca: " + r[j]["marca_l"]);
                                 var spVal = document.getElementById("sp-" + r[j]["marca_l"]).innerText;
                                 var intsp = parseInt(spVal);
                                 intsp++;
-                                document.getElementById("sp-" + r[j]["marca_l"]).innerText = intsp;
+                                document.getElementById("sp-" + r[j]["marca_l"]).textContent = intsp;
                                 console.log("decrementó");
                                 document.getElementById("cont" + r[j]["marca_l"]).insertAdjacentHTML('beforeend', eta);
                             } else {
                                 /*Agregar el LI*/
                                 var etli = '';
-                                etli = '<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-lap-' + r[j]["marca_l"] + '" id="li-lap-Acer">';
+                                etli = '<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-lap-' + r[j]["marca_l"] + '" id="li-lap-' + r[j]["marca_l"] + '">';
                                 etli += '<div class="ms-2 me-auto">';
                                 etli += '<div class="fw-bold">' + r[j]["marca_l"] + '</div>';
                                 etli += '</div>';
-                                etli += '<span class="badge bg-primary rounded-pill" id="sp-' + r[j]["marca_l"] + '">3</span>';
+                                etli += '<span class="badge bg-primary rounded-pill" id="sp-' + r[j]["marca_l"] + '">1</span>';
                                 etli += '</li>';
                                 /*Agregar Modal*/
                                 var etd = '';
@@ -361,86 +329,6 @@ var tiempo = setInterval(function() {
                                 etd += '</div>';
                                 etd += '</div>';
                                 etd += '</div>';
-                                /*Agregar Modal*/
-                                /*Agregar el LI*
-                                const etli = document.createElement("li");
-                                etli.className = "list-group-item list-group-item-action d-flex align-items-start";
-                                etli.dataset.bsToggle = "modal";
-                                etli.dataset.bsTarget = "#modal-lap-" + r[j]["marca_l"];
-                                etli.id = "li-lap-" + r[j]["marca_l"];
-                                var divM = document.createElement("div");
-                                divM.className = "ms-2 me-auto";
-                                var divMn = document.createElement("div");
-                                divMn.className = "fw-bold";
-                                //tit.innerHTML = r2[j][1] + " " + r2[j][2];
-                                divMn.innerHTML = r2[j][1];
-                                var spn = document.createElement("span");
-                                spn.className = "badge bg-primary rounded-pill";
-                                spn.id = "sp-" + r2[j][1];
-                                spn.innerHTML = "1";
-                                divM.appendChild(divMn);
-                                etli.appendChild(divM);
-                                etli.appendChild(spn);
-                                etli.appendChild(eta);
-                                /*Agregar LI*/
-
-
-
-                                /*Agregar Modal
-
-                                var div1 = document.createElement("div");
-                                div1.className = "modal fade";
-                                div1.id = "modal-lap-" + r[j]["marca_l"];
-                                div1.tabIndex = -1;
-                                div1.arialabelledby = "modal-lap";
-                                div1.ariaHidden = "true";
-                                var div2 = document.createElement("div");
-                                div2.className = "modal-dialog";
-                                var div3 = document.createElement("div");
-                                div3.className = "modal-content";
-                                var div4 = document.createElement("div");
-                                div4.className = "modal-header"
-                                var div4i = document.createElement("i");
-                                div4i.className = "fa fa-light fa-laptop";
-                                var div4h5 = document.createElement("h5");
-                                div4h5.className = "modal-title";
-                                div4h5.id = "exampleModalLabel";
-                                div4h5.innerHTML = "Laptops";
-                                var div4b = document.createElement("button");
-                                div4b.type = "button";
-                                div4b.className = "btn-close";
-                                //etli.dataset.bsToogle = "modal";
-                                div4b.dataset.bsDismiss = "modal";
-                                div4b.ariaLabel = "Close";
-                                div4.appendChild(div4i);
-                                div4.appendChild(div4h5);
-                                div4.appendChild(div4b);
-                                var div42 = document.createElement("div");
-                                div42.className = "modal-body";
-                                var div5 = document.createElement("div");
-                                div5.className = "list-group";
-                                div5.id = "cont" + r[j]["marca_l"];
-                                var a6 = document.createElement("a");
-                                a6.className = "list-group-item actit d-flex justify-content-between align-items-start";
-                                var h671 = document.createElement("h6");
-                                h671.innerHTML = "Laptop Id";
-                                var h672 = document.createElement("h6");
-                                h672.innerHTML = "Solicitar";
-                                a6.appendChild(h671);
-                                a6.appendChild(h672);
-                                div5.appendChild(a6);
-                                div5.appendChild(eta);
-                                div42.appendChild(div5);
-                                div3.appendChild(div4);
-                                div3.appendChild(div42);
-                                div2.appendChild(div3);
-                                div1.appendChild(div2);
-                                contLap.appendChild(div1);
-                                contLap.appendChild(etli);
-
-                                /*Agregar Modal*/
-
-                                // no existe
 
                                 contLap.insertAdjacentHTML('beforeend', etli);
 
@@ -460,20 +348,153 @@ var tiempo = setInterval(function() {
                                 showConfirmButton: false,
                                 timer: 2000
                             });
-
                         }
-
                     }
-
                 }
-
-
             }
         });
-
         // Fin Laptops
 
+        $.ajax({ // Proyectores
+            type: 'POST',
+            url: './controladores/user.php?op=proyectores',
+            dataType: 'json',
+            success: function(data) {
+                if (data) {
+                    r = data;
+                    r2 = data;
 
+                    proyectores.forEach((e) => {
+                        encontrado = false;
+                        for (var i = r.length - 1; i >= 0; i--) { //para buscar en el json devuelto por el server
+                            if (r[i][0] == e.value) {
+                                encontrado = true;
+                                r2.splice(i, 1);
+                            }
+                        }
+                        if (!encontrado) { //Sino lo encuentra lo debe eliminar
+                            var fila = e.parentNode.parentNode; //Etiqueta <a> de cada articulo
+                            inp = e.target; //El input
+                            if (e.checked) {
+                                Swal.fire({
+                                    position: 'center',
+                                    title: 'Uno de los proyectores ha sido ocupado',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                });
+                            }
+                            var marca_p = e.name; //Aqui esta el problema
+                            if ((document.getElementsByName(marca_p).length) < 2) { //que sea el ultima para eliminar los contenedores
+                                console.log(marca_p);
+                                var etiquetaDiv = document.getElementById("modal-proy-" + marca_p);
+                                if (etiquetaDiv)
+                                    etiquetaDiv.remove();
+                                var etiquetaLi = document.getElementById("li-proy-" + marca_p);
+                                if (etiquetaLi)
+                                    etiquetaLi.remove();
+                                var f = document.getElementsByClassName("modal-backdrop")[0];
+                                if (f)
+                                    f.remove();
+                            } else {
+                                //decrementar la cantidad del span azul
+                                if ($("#sp-proy" + marca_p).length) {
+                                    var spVal = document.getElementById("sp-" + marca_p).innerText;
+                                    var intsp = parseInt(spVal);
+                                    intsp--;
+                                    document.getElementById("sp-" + marca_p).innerText = intsp;
+                                }
+                            }
+                            var fila = e.parentNode.parentNode;
+                            fila.remove();
+                            proyectores = document.querySelectorAll('.proy');
+                        }
+
+
+
+                    });
+
+                    if (r2.length) { //Si R todavia tiene puedo crear nuevos elementos
+                        var nE;
+                        for (var j = 0; j < r2.length; j++) {
+
+                            var eta = '';
+                            eta = '<a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">';
+                            eta += '<h6><strong>Id: </strong>' + r2[j][0] + '   modelo: ' + r2[j][2] + '</h6>';
+                            eta += '<div class="form-check form-switch">';
+                            eta += '<input class="form-check-input proy" type="checkbox" value="' + r2[j][0] + '" name="' + r[j]["marca_p"] + '"';
+                            if (r2[j][7]) { //si está el usuario
+                                eta += 'checked';
+                            }
+                            eta += '>';
+                            eta += '</div>';
+                            eta += '</a>';
+
+                            if ($('#contProy' + r[j]["marca_p"]).length) {
+                                // si existe un contenedor de la marca
+                                console.log("marca: " + r[j]["marca_p"]);
+                                var spVal = document.getElementById("sp-proy-" + r[j]["marca_p"]).innerText;
+                                var intsp = parseInt(spVal);
+                                intsp++;
+                                document.getElementById("sp-proy-" + r[j]["marca_p"]).textContent = intsp;
+                                console.log("incrementó");
+                                document.getElementById("contProy" + r[j]["marca_p"]).insertAdjacentHTML('beforeend', eta);
+                            } else {
+                                /*Agregar el LI*/
+                                var etli = '';
+                                etli = '<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-proy-' + r[j]["marca_p"] + '" id="li-proy-' + r[j]["marca_p"] + '">';
+                                etli += '<div class="ms-2 me-auto">';
+                                etli += '<div class="fw-bold">' + r[j]["marca_p"] + '</div>';
+                                etli += '</div>';
+                                etli += '<span class="badge bg-primary rounded-pill" id="sp-proy-' + r[j]["marca_p"] + '">1</span>';
+                                etli += '</li>';
+                                /*Agregar Modal*/
+                                var etd = '';
+                                etd += '<div class="modal fade" id="modal-proy-' + r[j]["marca_p"] + '" tabindex="-1" aria-labelledby="modal-proy" style="display: none;" aria-hidden="true">';
+                                etd += '<div class="modal-dialog">';
+                                etd += '<div class="modal-content">';
+                                etd += '<div class="modal-header">';
+                                etd += '<i class="fa fa-light fa-desktop" aria-hidden="true"></i>';
+                                etd += '<h5 class="modal-title">Proyectores</h5>';
+                                etd += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+                                etd += '</div>'
+
+                                etd += '<div class="modal-body">';
+                                etd += '<div class="list-group" id="contProy' + r[j]["marca_p"] + '">';
+                                etd += '<a class="list-group-item actit d-flex justify-content-between align-items-start">';
+                                etd += '<h6>Laptop Id</h6>';
+                                etd += '<h6>Solicitar</h6>';
+                                etd += '</a>';
+                                etd += '</div>';
+                                etd += '</div>';
+
+                                etd += '</div>';
+                                etd += '</div>';
+                                etd += '</div>';
+
+                                contProy.insertAdjacentHTML('beforeend', etli);
+
+                                contProy.insertAdjacentHTML('beforeend', etd);
+
+                                document.getElementById("contProy" + r[j]["marca_p"]).insertAdjacentHTML('beforeend', eta);
+
+                            }
+
+                            proyectores = document.querySelectorAll('.proy');
+
+                            console.log("append: " + r2[j][0]);
+
+                            Swal.fire({
+                                position: 'center',
+                                title: 'Hay más proyectores disponibles',
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                        }
+                    }
+                }
+            }
+        });
+        // Fin Laptops
 
     },
     2000);
@@ -499,11 +520,9 @@ on(document, 'click', '.adapt', e => {
             url: './controladores/user.php?op=insertAdapt',
             data: { "valor": fn },
             success: function(data) {
-                console.log(data);
+                //console.log(data);
             }
-
         });
-
         alert(fn);
 
     } else {
