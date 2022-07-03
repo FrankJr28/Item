@@ -1,29 +1,18 @@
 <?php
-
 $validar = new ControladorFormularios();
 $validar->ctrValidarSesionAdmin();
-
-
 ?>
-
 <div class="mb-4">
-
     <div class="mb-4">
         <h3>Ver préstamo</h3>
     </div>
-
     <?php
-
     if(!isset($_POST["folio"])){
         echo '<script>
-        
             window.location = "index.php?pagina=adminAccept";
-
         </script>';
     }
-
-        $pres = ControladorFormularios::ctrObtenerDetallePrestamo();
-        
+        $pres = ControladorDetalles::ctrObtenerDetallePrestamo();   
     ?>
 
     <div class="form-view">
@@ -33,7 +22,7 @@ $validar->ctrValidarSesionAdmin();
 
             <div class="col-auto">
             <form action="index.php?pagina=detallePrestamo"method="post">
-                <label for="start">Folio:</label>
+                <label for="start"><strong>Id del préstamo: </strong></label>
                 <input type="hidden" value="<?= $pres["id_pres"] ?>" name="folio">
                 <button type="submit" style="background:transparent; border:none;"><?= $pres["id_pres"] ?></button></form>
             </div>
@@ -44,7 +33,7 @@ $validar->ctrValidarSesionAdmin();
             <div class="col-auto">
                 
             <form action="index.php?pagina=detalleUsuario" method="post">
-                <label for="start">Código usuario:</label>
+                <label for="start"><strong>Código usuario: </strong></label>
                 <input type="hidden" id="start" name="codigo" value="<?= $pres["codigo_u"] ?>">
                 <button type="submit" style="background:transparent; border:none;"><?= $pres["codigo_u"] ?></button>
             </form>
@@ -52,34 +41,33 @@ $validar->ctrValidarSesionAdmin();
         </div>
         <div class="row">
             <div class="col-auto">
-            <label for="start">Nombre usuario:</label>
-            <a href="./user-view.html"><input type="text" id="start" name="trip-start" value="<?= $pres["nombre_u"].' '.$pres["app_u"] ?>"></a>
+                <label for="start"><strong>Nombre usuario: </strong><?= $pres["nombre_u"].' '.$pres["app_u"] ?></label>
             </div>
         </div>
 
         <div class="row">
             <div class="col-auto">
-            <label for="start">Fecha de solicitud:</label>
-            <input type="text" id="start" name="trip-start" value="<?= $pres["solicitud"] ?>">
+                <label for="start"><strong>Fecha de solicitud: </strong><?= date("d-m-y",strtotime($pres["solicitud"]))?><strong> Hora: </strong><?= date("G:i",strtotime($pres["solicitud"]))?></label>
             </div>
         </div>
 
         <div class="row">
             <div class="col-auto">
-            <label for="start">Fecha de inicio:</label>
-            <input type="text" id="start" name="trip-start" value="<?= $pres["inicio"] ?>">
+                <?php if($pres["inicio"]):?>   
+                    <label for="start"><strong>Fecha de Inicio: </strong><?= date("d-m-y",strtotime($pres["inicio"])) ?><strong> Hora: </strong><?= date("G:i",strtotime($pres["inicio"])) ?></label>
+                <?php endif?>
             </div>
         </div>
         <div class="row">
             <div class="col-auto">
-            <label for="start">Fecha de fin:</label>
-            <input type="text" id="start" name="trip-start" value="<?= $pres["finalizo"] ?>">
+                <?php if($pres["finalizo"]):?>   
+                    <label for="start"><strong>Fecha Fin: </strong><?= date("d-m-y",strtotime($pres["finalizo"])) ?><strong> Hora: </strong><?= date("G:i",strtotime($pres["finalizo"])) ?></label>
+                <?php endif?>
             </div>
         </div>
         <div class="row">
             <div class="col-auto">
-            <label for="start">Ubicacion: </label>
-            <input type="text" id="start" name="trip-start" value="<?= $pres["ubicacion"] ?>">
+            <label for="start"><strong>Ubicacion: </strong><?= $pres["ubicacion"] ?></label>
             </div>
         </div>
         <div class="line"></div>
@@ -92,46 +80,34 @@ $validar->ctrValidarSesionAdmin();
         <div class="card">
             <ul class="list-group list-group-flush">
                 <?php
-                
-                $respuesta = ControladorFormularios::ctrObtenerDetallePresProy();
-
+                $respuesta = ControladorDetalles::ctrObtenerDetallePresProy();
                 foreach($respuesta as $dato){
                     if($dato["id_p"]){
-                        echo '<li class="list-group-item">
+                        echo '<li class="list-group-item list-group-item-info">
                                 <h6 class="card-title">Proyector</h6>
-                                <p class="card-text">'.$dato["id_p"].'<br>'.$dato["marca_p"].' '.$dato["modelo_p"].'</p>
+                                <p class="card-text"><strong>ID: </strong>'.$dato["id_p"].'<br><strong>Marca: </strong>'.$dato["marca_p"].' <strong> Modelo: </strong>'.$dato["modelo_p"].'</p>
                             </li>';
                     }
                 }
-
-                $respuesta = ControladorFormularios::ctrObtenerDetallePresLap();
-
+                $respuesta = ControladorDetalles::ctrObtenerDetallePresLap();
                 foreach($respuesta as $dato){
                     if($dato["id_l"]){
-                        echo '<li class="list-group-item">
+                        echo '<li class="list-group-item list-group-item-warning">
                                 <h6 class="card-title">Laptop</h6>
-                                <p class="card-text">'.$dato["id_l"].'<br>'.$dato["marca_l"].' '.$dato["modelo_l"].'</p>
+                                <p class="card-text"><strong>ID: </strong>'.$dato["id_l"].'<br><strong>Marca: </strong>'.$dato["marca_l"].' <strong> Modelo: </strong> '.$dato["modelo_l"].'</p>
                             </li>';
                     }
                 }
-
-                $respuesta = ControladorFormularios::ctrObtenerDetallePresBoc();
-
+                $respuesta = ControladorDetalles::ctrObtenerDetallePresBoc();
                 foreach($respuesta as $dato){
                     if($dato["id_b"]){
-                        echo '<li class="list-group-item">
+                        echo '<li class="list-group-item list-group-item-success">
                                 <h6 class="card-title">Bocina</h6>
-                                <p class="card-text">'.$dato["id_b"].'<br>'.$dato["marca_b"].' '.$dato["modelo_b"].'</p>
+                                <p class="card-text"><strong>ID: </strong>'.$dato["id_b"].'<br><strong>Marca: </strong>'.$dato["marca_b"].' <strong> Modelo: </strong>'.$dato["modelo_b"].'</p>
                             </li>';
                     }
                 }
-                
                 ?>
-                
-                <li class="list-group-item">
-                    <h6 class="card-title">Cable</h6>
-                    <p class="card-text">25<br>HDMI</p>
-                </li>
             </ul>
             </div>
     </div>

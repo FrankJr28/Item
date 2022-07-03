@@ -200,6 +200,20 @@
 
 </div><!--MATERIAL DISPONIBLE FIN-->
 
+<div class="mb-4">
+    <h3>Mi espacio</h3>
+    <ul class="list-group" id="mi-espacio-adapt">
+    </ul>
+    <ul class="list-group" id="mi-espacio-boc">
+    </ul>
+    <ul class="list-group" id="mi-espacio-cab">
+    </ul>
+    <ul class="list-group" id="mi-espacio-lap">
+    </ul>
+    <ul class="list-group" id="mi-espacio-proy">
+    </ul>
+</div>
+
 <script type="text/javascript" src="./js/alerts.js"></script>                
 
 <script type="text/javascript" src="./js/user.js"></script>

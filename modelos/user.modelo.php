@@ -210,8 +210,8 @@ class ModeloUsuario{
                 $i=count($informacion)-1;
                 while($recorrio){
                     if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
-                        if(isset($informacion[$i+1]["id_l"])){  //si el anterios tiene articulo
-                            if($informacion[$i]["id_l"]==$informacion[$i+1]["id_l"]){   //si son iguales
+                        if(isset($informacion[$i+1]["id_p"])){  //si el anterios tiene articulo
+                            if($informacion[$i]["id_p"]==$informacion[$i+1]["id_p"]){   //si son iguales
                                     unset($informacion[$i]);
                             }
                         }

@@ -12,6 +12,12 @@ const contCab = document.getElementById("contenedor-cables");
 const contLap = document.getElementById("contenedor-laptops");
 const contProy = document.getElementById("contenedor-proyectores");
 
+var mis_adaptadores;
+var mis_bocinas;
+var mis_cables;
+var mis_laptops;
+var mis_proyectores;
+
 var tiempo = setInterval(function() {
 
         $.ajax({ //Adaptadores
@@ -76,6 +82,7 @@ var tiempo = setInterval(function() {
                             });
                         }
                     }
+                    checarEspacioAdapt();
                 }
             }
         }); // Fin Adaptadores
@@ -145,6 +152,7 @@ var tiempo = setInterval(function() {
                             });
                         }
                     }
+                    checarEspacioBoc();
                 }
             }
         }); // Fin bocinas
@@ -199,8 +207,6 @@ var tiempo = setInterval(function() {
                             eta += '</a>';
                             contCab.insertAdjacentHTML('beforeend', eta);
                             cables = document.querySelectorAll('.cab');
-                            console.log("Hay mas bocinas disponibles");
-                            console.log("append: " + r2[j][0]);
                             Swal.fire({
                                 position: 'center',
                                 title: 'Hay más cables disponibles',
@@ -209,6 +215,7 @@ var tiempo = setInterval(function() {
                             });
                         }
                     }
+                    checarEspacioCab();
                 }
             }
         }); // Fin Cables
@@ -242,7 +249,6 @@ var tiempo = setInterval(function() {
                             }
                             var marca_l = e.name;
                             if ((document.getElementsByName(marca_l).length) < 2) { //que sea el ultima para eliminar los contenedores
-                                console.log(marca_l);
                                 var etiquetaDiv = document.getElementById("modal-lap-" + marca_l);
                                 if (etiquetaDiv)
                                     etiquetaDiv.remove();
@@ -252,8 +258,6 @@ var tiempo = setInterval(function() {
                                 var f = document.getElementsByClassName("modal-backdrop")[0];
                                 if (f)
                                     f.remove();
-                                //f.classList.remove("show");
-
                             } else {
                                 //decrementar la cantidad del span azul
                                 if ($("#sp-" + marca_l).length) {
@@ -290,12 +294,10 @@ var tiempo = setInterval(function() {
 
                             if ($('#cont' + r[j]["marca_l"]).length) {
                                 // si existe un contenedor de la marca
-                                console.log("marca: " + r[j]["marca_l"]);
                                 var spVal = document.getElementById("sp-" + r[j]["marca_l"]).innerText;
                                 var intsp = parseInt(spVal);
                                 intsp++;
                                 document.getElementById("sp-" + r[j]["marca_l"]).textContent = intsp;
-                                console.log("decrementó");
                                 document.getElementById("cont" + r[j]["marca_l"]).insertAdjacentHTML('beforeend', eta);
                             } else {
                                 /*Agregar el LI*/
@@ -329,18 +331,12 @@ var tiempo = setInterval(function() {
                                 etd += '</div>';
                                 etd += '</div>';
                                 etd += '</div>';
-
                                 contLap.insertAdjacentHTML('beforeend', etli);
-
                                 contLap.insertAdjacentHTML('beforeend', etd);
-
                                 document.getElementById("cont" + r[j]["marca_l"]).insertAdjacentHTML('beforeend', eta);
 
                             }
-
                             laptops = document.querySelectorAll('.lap');
-
-                            console.log("append: " + r2[j][0]);
 
                             Swal.fire({
                                 position: 'center',
@@ -350,6 +346,7 @@ var tiempo = setInterval(function() {
                             });
                         }
                     }
+                    checarEspacioLap();
                 }
             }
         });
@@ -383,9 +380,8 @@ var tiempo = setInterval(function() {
                                     timer: 2000
                                 });
                             }
-                            var marca_p = e.name; //Aqui esta el problema
+                            var marca_p = e.name;
                             if ((document.getElementsByName(marca_p).length) < 2) { //que sea el ultima para eliminar los contenedores
-                                console.log(marca_p);
                                 var etiquetaDiv = document.getElementById("modal-proy-" + marca_p);
                                 if (etiquetaDiv)
                                     etiquetaDiv.remove();
@@ -397,11 +393,11 @@ var tiempo = setInterval(function() {
                                     f.remove();
                             } else {
                                 //decrementar la cantidad del span azul
-                                if ($("#sp-proy" + marca_p).length) {
-                                    var spVal = document.getElementById("sp-" + marca_p).innerText;
+                                if ($("#sp-proy-" + marca_p).length) {
+                                    var spVal = document.getElementById("sp-proy-" + marca_p).innerText;
                                     var intsp = parseInt(spVal);
                                     intsp--;
-                                    document.getElementById("sp-" + marca_p).innerText = intsp;
+                                    document.getElementById("sp-proy-" + marca_p).innerText = intsp;
                                 }
                             }
                             var fila = e.parentNode.parentNode;
@@ -431,12 +427,10 @@ var tiempo = setInterval(function() {
 
                             if ($('#contProy' + r[j]["marca_p"]).length) {
                                 // si existe un contenedor de la marca
-                                console.log("marca: " + r[j]["marca_p"]);
                                 var spVal = document.getElementById("sp-proy-" + r[j]["marca_p"]).innerText;
                                 var intsp = parseInt(spVal);
                                 intsp++;
                                 document.getElementById("sp-proy-" + r[j]["marca_p"]).textContent = intsp;
-                                console.log("incrementó");
                                 document.getElementById("contProy" + r[j]["marca_p"]).insertAdjacentHTML('beforeend', eta);
                             } else {
                                 /*Agregar el LI*/
@@ -478,11 +472,7 @@ var tiempo = setInterval(function() {
                                 document.getElementById("contProy" + r[j]["marca_p"]).insertAdjacentHTML('beforeend', eta);
 
                             }
-
                             proyectores = document.querySelectorAll('.proy');
-
-                            console.log("append: " + r2[j][0]);
-
                             Swal.fire({
                                 position: 'center',
                                 title: 'Hay más proyectores disponibles',
@@ -491,6 +481,7 @@ var tiempo = setInterval(function() {
                             });
                         }
                     }
+                    checarEspacioProy();
                 }
             }
         });
@@ -499,6 +490,100 @@ var tiempo = setInterval(function() {
     },
     2000);
 
+function checarEspacioAdapt() {
+    var adaptsAct = [];
+    var adapts = document.querySelectorAll(".adapt");
+    adapts.forEach(element => {
+        if (element.checked) {
+            adaptsAct.push(element.value);
+        }
+    });
+
+    if (adaptsAct != mis_adaptadores) {
+        var aux = "";
+        for (var i = 0; i < adaptsAct.length; i++) {
+            aux += '<li class="list-group-item list-group-item-primary m-1">Adaptador <strong>ID:</strong>' + adaptsAct[i] + '</li>';
+        }
+        document.getElementById("mi-espacio-adapt").innerHTML = aux;
+        mis_adaptadores = adaptsAct;
+    }
+}
+
+function checarEspacioBoc() {
+    var bocsAct = [];
+    var bocs = document.querySelectorAll(".boc");
+    bocs.forEach(element => {
+        if (element.checked) {
+            bocsAct.push(element.value);
+        }
+    });
+
+    if (bocsAct != mis_bocinas) {
+        var aux = "";
+        for (var i = 0; i < bocsAct.length; i++) {
+            aux += '<li class="list-group-item list-group-item-success m-1">Bocinas <strong>ID:</strong>' + bocsAct[i] + '</li>';
+        }
+        document.getElementById("mi-espacio-boc").innerHTML = aux;
+        mis_bocinas = bocsAct;
+    }
+}
+
+function checarEspacioCab() {
+    var cabsAct = [];
+    var cabs = document.querySelectorAll(".cab");
+    cabs.forEach(element => {
+        if (element.checked) {
+            cabsAct.push(element.value);
+        }
+    });
+
+    if (cabsAct != mis_cables) {
+        var aux = "";
+        for (var i = 0; i < cabsAct.length; i++) {
+            aux += '<li class="list-group-item list-group-item-dark m-1">Cable <strong>ID:</strong>' + cabsAct[i] + '</li>';
+        }
+        document.getElementById("mi-espacio-cab").innerHTML = aux;
+        mis_cables = cabsAct;
+    }
+}
+
+function checarEspacioLap() {
+    var lapsAct = [];
+    var laps = document.querySelectorAll(".lap");
+    laps.forEach(element => {
+        if (element.checked) {
+            lapsAct.push(element.value);
+        }
+    });
+
+    if (lapsAct != mis_laptops) {
+        var aux = "";
+        for (var i = 0; i < lapsAct.length; i++) {
+            aux += '<li class="list-group-item list-group-item-warning m-1">Laptop <strong>ID:</strong>' + lapsAct[i] + '</li>';
+        }
+        document.getElementById("mi-espacio-lap").innerHTML = aux;
+        mis_laptops = lapsAct;
+    }
+}
+
+function checarEspacioProy() {
+    var proysAct = [];
+    var proys = document.querySelectorAll(".proy");
+    proys.forEach(element => {
+        if (element.checked) {
+            proysAct.push(element.value);
+        }
+    });
+
+    if (proysAct != mis_proyectores) {
+        var aux = "";
+        for (var i = 0; i < proysAct.length; i++) {
+            aux += '<li class="list-group-item list-group-item-info m-1">Proyector <strong>ID:</strong>' + proysAct[i] + '</li>';
+        }
+        document.getElementById("mi-espacio-proy").innerHTML = aux;
+        mis_proyectores = proysAct;
+    }
+}
 
 const on = (element, event, selector, handler) => {
     element.addEventListener(event, e => {
@@ -519,9 +604,7 @@ on(document, 'click', '.adapt', e => {
             type: 'POST',
             url: './controladores/user.php?op=insertAdapt',
             data: { "valor": fn },
-            success: function(data) {
-                //console.log(data);
-            }
+            success: function(data) {}
         });
         alert(fn);
 
@@ -530,9 +613,7 @@ on(document, 'click', '.adapt', e => {
             type: 'POST',
             url: './controladores/user.php?op=eliminarAdapt',
             data: { "valor": fn },
-            success: function(data) {
-                console.log(data);
-            }
+            success: function(data) {}
         });
         alert(fn);
     }
@@ -549,9 +630,7 @@ on(document, 'click', '.boc', e => {
             type: 'POST',
             url: './controladores/user.php?op=insertBoc',
             data: { "valor": fn },
-            success: function(data) {
-                console.log(data);
-            }
+            success: function(data) {}
 
         });
 
@@ -562,9 +641,7 @@ on(document, 'click', '.boc', e => {
             type: 'POST',
             url: './controladores/user.php?op=eliminarBoc',
             data: { "valor": fn },
-            success: function(data) {
-                console.log(data);
-            }
+            success: function(data) {}
         });
         alert(fn);
     }
@@ -581,9 +658,7 @@ on(document, 'click', '.cab', e => {
             type: 'POST',
             url: './controladores/user.php?op=insertCab',
             data: { "valor": fn },
-            success: function(data) {
-                console.log(data);
-            }
+            success: function(data) {}
 
         });
 
@@ -594,9 +669,7 @@ on(document, 'click', '.cab', e => {
             type: 'POST',
             url: './controladores/user.php?op=eliminarCab',
             data: { "valor": fn },
-            success: function(data) {
-                console.log(data);
-            }
+            success: function(data) {}
         });
         alert(fn);
     }
@@ -613,9 +686,7 @@ on(document, 'click', '.lap', e => {
             type: 'POST',
             url: './controladores/user.php?op=insertLap',
             data: { "valor": fn },
-            success: function(data) {
-                console.log(data);
-            }
+            success: function(data) {}
 
         });
 
@@ -626,9 +697,7 @@ on(document, 'click', '.lap', e => {
             type: 'POST',
             url: './controladores/user.php?op=eliminarLap',
             data: { "valor": fn },
-            success: function(data) {
-                console.log(data);
-            }
+            success: function(data) {}
         });
         alert(fn);
     }
@@ -645,9 +714,7 @@ on(document, 'click', '.proy', e => {
             type: 'POST',
             url: './controladores/user.php?op=insertProy',
             data: { "valor": fn },
-            success: function(data) {
-                console.log(data);
-            }
+            success: function(data) {}
 
         });
 
@@ -658,9 +725,7 @@ on(document, 'click', '.proy', e => {
             type: 'POST',
             url: './controladores/user.php?op=eliminarProy',
             data: { "valor": fn },
-            success: function(data) {
-                console.log(data);
-            }
+            success: function(data) {}
         });
         alert(fn);
     }

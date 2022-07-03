@@ -128,17 +128,10 @@ class ControladorFormularios{
         $informacion = ModeloUsuario::mdlGetLap($u);
 
         if($informacion != 'error'){
-
             $info="";
-
             $marca_l1="";
-
             $marca_l2="";
-
             $c=0;
-
-
-
             foreach($informacion as $index => $dato){
                 
                 if($marca_l1!=$dato["marca_l"]){     //Si la marca cambió en la iteracion 
@@ -189,10 +182,13 @@ class ControladorFormularios{
                 
                 $info.='<a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">
                             <h6>
-                                '.$dato["id_l"]." ".$dato["modelo_l"].'
+                                <strong>Id: </strong>'.$dato["id_l"]." modelo: ".$dato["modelo_l"].'
                             </h6>
                             <div class="form-check form-switch">
-                                <input class="form-check-input lap" type="checkbox" id="flexSwitchCheckDefault" value="'.$dato["id_l"].'" name="'.$dato["marca_l"].'">
+                                <input class="form-check-input lap" type="checkbox" id="flexSwitchCheckDefault" value="'.$dato["id_l"].'" name="'.$dato["marca_l"].'"';
+                                if($dato["codigo_u"])
+                                    $info.=' checked';
+                                $info.='>
                             </div>
                         </a>';   
 
@@ -289,10 +285,13 @@ class ControladorFormularios{
                 
                 $info.='<a class="list-group-item d-flex justify-content-between align-items-start list-group-item-action ">
                             <h6>
-                                '.$dato["id_p"]." ".$dato["modelo_p"].'
+                                <strong>Id: </strong>'.$dato["id_p"]." modelo: ".$dato["modelo_p"].'
                             </h6>
                             <div class="form-check form-switch">
-                                <input class="form-check-input proy" type="checkbox" id="flexSwitchCheckDefault" value="'.$dato["id_p"].'" name="'.$marca_p1.'">
+                                <input class="form-check-input proy" type="checkbox" id="flexSwitchCheckDefault" value="'.$dato["id_p"].'" name="'.$dato["marca_p"].'"';
+                                if($dato["codigo_u"])
+                                    $info.=' checked';
+                                $info.='>
                             </div>
                         </a>';   
 
@@ -309,7 +308,7 @@ class ControladorFormularios{
                     </div>
                 </div>';
 
-                $info.='<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-proy-' . $marca_p1 . '">
+                $info.='<li class="list-group-item list-group-item-action d-flex align-items-start" data-bs-toggle="modal" data-bs-target="#modal-proy-' . $marca_p1 . '" id="li-proy-' . $marca_p1 . '">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">' . $marca_p1 . '</div>
                     </div>
@@ -462,7 +461,28 @@ class ControladorFormularios{
 
         if($respuesta != 'error'){
             //echo "<script>alert('no ocurrió un error"+$respuesta+"');</script>";
-            echo $respuesta;    
+            $informacion="";//formatear fecha date("d/m/y",strtotime($dato["inicio"]));
+            foreach($respuesta as $dato){
+                $informacion=$informacion.'<tr>
+                    <td><form action="index.php?pagina=detallePrestamo"
+                    method="post"><input type="hidden" value="'.$dato["id_pres"].'" name="folio">
+                    <button type="submit" style="background:transparent; border:none;">'.$dato["id_pres"].'</button></form></td>
+                    <td><form action="index.php?pagina=detalleUsuario" method="post">
+                        <input type="hidden" id="start" name="codigo" value="'.$dato["codigo_u"].'">
+                        <button type="submit" style="background:transparent; border:none;">'.$dato["codigo_u"].'</button>
+                    </form></td>
+                    
+                    <td>'.$dato["nombre_u"].' '.$dato["app_u"].'</td>
+                    <td>'.date("d-m-y",strtotime($dato["solicitud"])).'</td>
+                    <td id="actions" >
+                        <div class="d-flex justify-content-center" >
+                            <form action="#" method="post"><input type="hidden" value="'.$dato["id_pres"].'" name="cPA"><button type="submit" style="background:transparent; border:none;"><i class="bi bi-check-square"></i></button></form>
+                            <form action="#" method="post"><input type="hidden" value="'.$dato["id_pres"].'" name="cPR"><button type="submit" style="background:transparent; border:none;"><i class="bi bi-trash"></i></button></form>
+                        </div>
+                    </td>
+                </tr>'; 
+            }
+            echo $informacion;
 
         }
         else{
@@ -627,72 +647,6 @@ class ControladorFormularios{
                 }
             }
         }
-    }
-
-    static public function ctrObtenerDetallePrestamo(){
-        if(isset($_POST["folio"])){
-            
-            $fol = $_POST["folio"];
-
-            $respuesta = ModeloFormularios::mdlObtenerDetallePrestamo($fol);
-
-            return $respuesta; 
-
-        }
-    }
-
-    static public function ctrObtenerDetalleUsuario(){
-        if(isset($_POST["codigo"])){
-            
-            $u = $_POST["codigo"];
-
-            $respuesta = ModeloFormularios::mdlObtenerDetalleUsuario($u);
-
-            return $respuesta; 
-
-        }
-    }
-
-    static public function ctrObtenerDetallePresProy(){
-
-        if(isset($_POST["folio"])){
-            
-            $fol = $_POST["folio"];
-
-            $respuesta = ModeloFormularios::mdlObtenerDetallePresProy($fol);
-
-            return $respuesta; 
-
-        }
-
-    }
-
-    static public function ctrObtenerDetallePresLap(){
-
-        if(isset($_POST["folio"])){
-            
-            $fol = $_POST["folio"];
-
-            $respuesta = ModeloFormularios::mdlObtenerDetallePresLap($fol);
-
-            return $respuesta; 
-
-        }
-
-    }
-
-    static public function ctrObtenerDetallePresBoc(){
-
-        if(isset($_POST["folio"])){
-            
-            $fol = $_POST["folio"];
-
-            $respuesta = ModeloFormularios::mdlObtenerDetallePresBoc($fol);
-
-            return $respuesta; 
-
-        }
-
     }
 
     public function ctrAceptarPrestamo(){
