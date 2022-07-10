@@ -20,6 +20,9 @@ require_once "modelos/detalles.modelo.php";
 require_once "controladores/solicitar.controlador.php";
 require_once "modelos/solicitar.modelo.php";
 
+require_once "controladores/infoUsuario.controlador.php";
+require_once "modelos/infoUsuario.modelo.php";
+
 require_once "modelos/user.modelo.php";
 
 $plantilla = new ControladorPlantilla();

@@ -120,7 +120,7 @@ class ControladorFormularios{
         }                        
 
     }
-
+    
     public function ctrObtenerLaptops(){
         
         $u = $_SESSION["usuario"]["codigo_u"];

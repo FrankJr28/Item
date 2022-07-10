@@ -80,6 +80,33 @@ $validar->ctrValidarSesionAdmin();
         <div class="card">
             <ul class="list-group list-group-flush">
                 <?php
+                $respuesta = ControladorDetalles::ctrObtenerDetallePresAdapt();
+                foreach($respuesta as $dato){
+                    if($dato["id_a"]){
+                        echo '<li class="list-group-item list-group-item-primary">
+                                <h6 class="card-title">Adaptador</h6>
+                                <p class="card-text"><strong>ID: </strong>'.$dato["id_a"].'<br><strong>Marca: </strong>'.$dato["marca_a"].' <strong> Modelo: </strong>'.$dato["modelo_a"].'</p>
+                            </li>';
+                    }
+                }
+                $respuesta = ControladorDetalles::ctrObtenerDetallePresBoc();
+                foreach($respuesta as $dato){
+                    if($dato["id_b"]){
+                        echo '<li class="list-group-item list-group-item-success">
+                                <h6 class="card-title">Bocina</h6>
+                                <p class="card-text"><strong>ID: </strong>'.$dato["id_b"].'<br><strong>Marca: </strong>'.$dato["marca_b"].' <strong> Modelo: </strong>'.$dato["modelo_b"].'</p>
+                            </li>';
+                    }
+                }
+                $respuesta = ControladorDetalles::ctrObtenerDetallePresCab();
+                foreach($respuesta as $dato){
+                    if($dato["id_c"]){
+                        echo '<li class="list-group-item list-group-item-dark">
+                                <h6 class="card-title">Cable</h6>
+                                <p class="card-text"><strong>ID: </strong>'.$dato["id_c"].'<br><strong>Marca: </strong>'.$dato["marca_c"].' <strong> Entrada: </strong>'.$dato["conexion"].'</p>
+                            </li>';
+                    }
+                }
                 $respuesta = ControladorDetalles::ctrObtenerDetallePresProy();
                 foreach($respuesta as $dato){
                     if($dato["id_p"]){
@@ -98,15 +125,7 @@ $validar->ctrValidarSesionAdmin();
                             </li>';
                     }
                 }
-                $respuesta = ControladorDetalles::ctrObtenerDetallePresBoc();
-                foreach($respuesta as $dato){
-                    if($dato["id_b"]){
-                        echo '<li class="list-group-item list-group-item-success">
-                                <h6 class="card-title">Bocina</h6>
-                                <p class="card-text"><strong>ID: </strong>'.$dato["id_b"].'<br><strong>Marca: </strong>'.$dato["marca_b"].' <strong> Modelo: </strong>'.$dato["modelo_b"].'</p>
-                            </li>';
-                    }
-                }
+                
                 ?>
             </ul>
             </div>

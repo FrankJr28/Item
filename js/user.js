@@ -87,7 +87,6 @@ var tiempo = setInterval(function() {
             }
         }); // Fin Adaptadores
 
-
         $.ajax({ // Bocinas
             type: 'POST',
             url: './controladores/user.php?op=bocs',

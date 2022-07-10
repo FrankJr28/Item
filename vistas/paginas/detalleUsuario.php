@@ -11,7 +11,7 @@
         </script>';
     }
 
-    $usu = ControladorFormularios::ctrObtenerDetalleUsuario();
+    $usu = ControladorDetalles::ctrObtenerDetalleUsuario();
 
 ?>
 <div style="height:50px; width: 100%;">
@@ -24,42 +24,42 @@
     </div>
     <div class="form-view">
         <form class="" action="" method="post">
-            <fieldset disabled>
-            <div class="row">
-                <div class="col-4">
-                <label for="start">Código:</label>
-                <input type="text" id="start" name="trip-start" value="<?= $usu["codigo_u"] ?>">
-                </div><div class="col-1"></div><div class="col-4">
-                <label for="start">Nombre:</label>
-                <input type="text" id="start" name="trip-start" value="<?= $usu["nombre_u"].' '.$usu["app_u"] ?>">
+            <!--<fieldset disabled>-->
+            <div class="row w-100">
+                <div class="col-xl-4 col-md-5 col-xs-12">
+                    <label for="start"><strong>Código usuario: </strong><?= $usu["codigo_u"] ?></label>
+                </div>
+                <div class="col-xl-4 col-md-2"></div>
+                <div class="col-xl-4 col-md-5 col-xs-12">
+                    <label for="start"><strong>Nombre: </strong><?= $usu["nombre_u"].' '.$usu["app_u"] ?></label>
+                </div>
+            </div>
+            <div class="row w-100">
+                <div class="col-xl-4 col-md-5 col-xs-12">
+                    <label for="start"><strong>Carrera: </strong><?= $usu["carrera"] ?></label>
+                </div>
+                <div class="col-xl-4 col-md-2"></div>
+                <div class="col-xl-4 col-md-5 col-xs-12">
+                    <label for="semestre"><strong>Semestre: </strong><?= $usu["semestre"] ?>o</label>
+                </div>
+            </div>
+            <div class="row w-100">
+                <div class="col-xl-4 col-md-5 col-xs-12">
+                    <label for="correo"><strong>Correo: </strong><?= $usu["correo_u"] ?></label>
+                </div>
+                <div class="col-xl-4 col-md-2"></div>
+                <div class="col-xl-4 col-md-5 col-xs-12">
+                    <label for="telefono"><strong>Teléfono: </strong><?= $usu["telefono"] ?></label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4">
-                <label for="start">Carrera:</label>
-                <input type="text" id="start" name="trip-start" value="<?= $usu["carrera"] ?>">
-                </div><div class="col-1"></div><div class="col-4">
-                <label for="start">Semestre:</label>
-                <input type="text" id="start" name="trip-start" value="<?= $usu["semestre"] ?>o">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                <label for="start">Correo:</label>
-                <input type="text" id="start" name="trip-start" value="<?= $usu["correo_u"] ?>">
-                </div><div class="col-1"></div><div class="col-4">
-                <label for="start">Teléfono:</label>
-                <input type="text" id="start" name="trip-start" value="<?= $usu["telefono"] ?>">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                <label for="start">Credencial:</label><br><br>
+                <label for="credencial">Credencial:</label><br><br>
                 <img src="./img/proof.jpg" class="img-fluid rounded" alt="Credencial">
                 </div><div class="col-4"></div>
             </div>
             <div class="line"></div>
-            </fieldset>
+            <!--</fieldset>-->
             </form>
     </div>
     <div class="mb-3">

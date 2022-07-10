@@ -14,10 +14,24 @@ class ControladorDetalles{
             return $respuesta; 
         }
     }
-    static public function ctrObtenerDetallePresProy(){
+    static public function ctrObtenerDetallePresAdapt(){
         if(isset($_POST["folio"])){
             $fol = $_POST["folio"];
-            $respuesta = ModeloDetalles::mdlObtenerDetallePresProy($fol);
+            $respuesta = ModeloDetalles::mdlObtenerDetallePresAdapt($fol);
+            return $respuesta; 
+        }
+    }
+    static public function ctrObtenerDetallePresBoc(){
+        if(isset($_POST["folio"])){
+            $fol = $_POST["folio"];
+            $respuesta = ModeloDetalles::mdlObtenerDetallePresBoc($fol);
+            return $respuesta; 
+        }
+    }
+    static public function ctrObtenerDetallePresCab(){
+        if(isset($_POST["folio"])){
+            $fol = $_POST["folio"];
+            $respuesta = ModeloDetalles::mdlObtenerDetallePresCab($fol);
             return $respuesta; 
         }
     }
@@ -28,10 +42,10 @@ class ControladorDetalles{
             return $respuesta; 
         }
     }
-    static public function ctrObtenerDetallePresBoc(){
+    static public function ctrObtenerDetallePresProy(){
         if(isset($_POST["folio"])){
             $fol = $_POST["folio"];
-            $respuesta = ModeloDetalles::mdlObtenerDetallePresBoc($fol);
+            $respuesta = ModeloDetalles::mdlObtenerDetallePresProy($fol);
             return $respuesta; 
         }
     }
