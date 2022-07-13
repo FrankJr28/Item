@@ -200,7 +200,7 @@
 
 </div><!--MATERIAL DISPONIBLE FIN-->
 
-<div class="mb-4">
+<div class="mb-4" style="min-height:50px">
     <h3>Mi espacio</h3>
     <ul class="list-group" id="mi-espacio-adapt">
     </ul>
@@ -213,6 +213,41 @@
     <ul class="list-group" id="mi-espacio-proy">
     </ul>
 </div>
+
+<div class="mb-4" style="min-height:50px">
+    <h3>Prestamo Activo:</h3>
+    <?php
+   
+        $p = new ControladorInfoUsuario();
+        $p->ctrObtenerPrestamoActivo();
+   
+        ?>
+</div>
+
+
+<div class="mb-3">
+    <h3>Historial de préstamos</h3>
+</div>
+
+<div class="mb-3">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Inició</th>
+                        <th>Finalizó</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $pres = new ControladorDetalles();
+                        $pres->ctrObtenerPrestamosUsuario($_SESSION["usuario"]["codigo_u"]);
+                    ?>
+                </tbody>
+            </table>
+        </div><!--TABLE-->  
+    </div>
 
 <script type="text/javascript" src="./js/alerts.js"></script>                
 

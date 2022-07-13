@@ -84,6 +84,26 @@ class ModeloInfoUsuario{
         }
     }
 
+    //SELECT * from prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE usuario.codigo_u = 210569874 AND prestamo.finalizo IS NULL;
+
+    static public function mdlObtenerPrestamoActivo($c){
+
+        $sql="SELECT * from prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE usuario.codigo_u = :c AND prestamo.finalizo IS NULL";
+
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        $stmt->bindParam(":c",$c,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            
+            $resultado = $stmt->fetchAll();
+
+            return $resultado;
+
+        }
+
+    }
+
     static public function mdlObtenerCarreras($c){
 
         $sql='SELECT * FROM carrera';

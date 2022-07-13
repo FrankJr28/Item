@@ -121,54 +121,5 @@
         $actualizar = new ControladorInfoUsuario();
         $actualizar->ctrActualizarInfoUsuario();
         ?>
-    </div><!--MARGIN-->
-
-    <div class="mb-3">
-        <h4>Historial de préstamos</h4>
-    </div>
-    <div class="mb-3">
-        <div class="table-responsive">
-            <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Inició</th>
-                        <th>Finalizó</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $pres = new ControladorDetalles();
-                        $pres->ctrObtenerPrestamosUsuario($_SESSION["usuario"]["codigo_u"]);
-                    ?>
-                    <!--<tr onclick="location.href='./loan-view.html'">
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                    <tr onclick="location.href='./loan-view.html'">
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                    </tr>
-                    <tr onclick="location.href='./loan-view.html'">
-                        <td>3</td>
-                        <td>Larry the Bird</td>
-                        <td>jj</td>
-                    </tr>
-                    <tr onclick="location.href='./loan-view.html'">
-                        <td>4</td>
-                        <td>Larry the Bird</td>
-                        <td>jj</td>
-                    </tr>
-                    <tr onclick="location.href='./loan-view.html'">
-                        <td>5</td>
-                        <td>Larry the Bird</td>
-                        <td>jj</td>
-                    </tr>-->
-                </tbody>
-            </table>
-        </div><!--TABLE-->  
-    </div>
-
+    </div><!--MARGIN-->  
 </div><!--Container-->

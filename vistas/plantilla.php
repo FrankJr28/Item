@@ -166,7 +166,7 @@
                 if( $_GET["pagina"]=="adminAccept" ||
                     $_GET["pagina"]=="adminActive" ||
                     $_GET["pagina"]=="adminHistory" ||
-                    $_GET["pagina"]=="detalleUsuario"){
+                    $_GET["pagina"]=="solicitar"){
                 
                     echo '<script type="text/javascript" src="./js/main.js"></script>';
 
