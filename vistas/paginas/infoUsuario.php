@@ -1,34 +1,17 @@
 <!--Container-->
-
 <link rel="stylesheet" href="./css/stylesUsDt.css"/>
-
 <?php
-    $usuario = ControladorFormularios::ctrObtenerDatosUsuario();
+    $usuario = ControladorInfoUsuario::ctrObtenerDatosUsuario();
 ?>
-
 <div class="height-100">
     <div class="margin-cont">
-        <div class="mb-4">
-            <div class="modal fade" id="editarArt" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header modal-head"><i class="bi bi-vector-pen"></i>
-                            Editar datos del artículo
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                    </div>
-                </div><!--MODAL DIALOG-->
-            </div><!-- MODAL -->
-        </div><!-- DIV MODAL-->
-        <div class="accord-format mb-4">
-            <form class="" action="" method="post" enctype="multipart/form-data">
+        <form class="" action="#" method="post" enctype="multipart/form-data">    
+            <div class="accord-format mb-4">
                 <div class="accordion" >
                     <div class="accordion-item">
                         <h3 class="accordion-header" id="panelsStayOpen-headingOne">
                         <button class="" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                            Datos del usuario
+                            Mis Datos
                         </button>
                         </h3>
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
@@ -42,7 +25,7 @@
                                         </div>
                                         <div class="col-xl-5 col-md-6 col-xs-12">
                                             <label for="start"><strong>Nombre: </strong></label>
-                                            <input type="text" id="start" name="codigo" value="<?= $usuario["codigo_u"] ?>">
+                                            <input type="text" id="start" name="nombre" value="<?= $usuario["nombre_u"] ?>">
                                         </div>
                                     </div>
 
@@ -52,7 +35,7 @@
                                             <input type="text" id="start" name="apellidoP" value="<?= $usuario["app_u"] ?>">
                                         </div>
                                         <div class="col-xl-5 col-md-6 col-xs-12">
-                                            <label for="start">Nombre:</label>
+                                            <label for="start">Apellido Materno:</label>
                                             <input type="text" id="start" name="apellidoM" value="<?= $usuario["apm_u"] ?>">
                                         </div>
                                     </div>
@@ -61,26 +44,25 @@
                                         <div class="col-xl-5 col-md-6 col-xs-12">
                                             <label for="start">Carrera:</label>
                                             <select class="" name="carrera" aria-label="Default select example">
-                                                <option selected>...</option>
                                                 <?php
-                                                    $carrera = new ControladorFormularios();
-                                                    $carrera->ctrObtenerCarreras();
+                                                    $carrera = new ControladorInfoUsuario();
+                                                    $carrera->ctrObtenerCarreras($usuario["id_car"]);
                                                 ?>
                                             </select>
                                         </div>
                                         <div class="col-xl-5 col-md-6 col-xs-12">
                                             <label for="start">Semestre:</label>
-                                            <select class="" name="semestre" aria-label="Default select example">
+                                            <select name="semestre" aria-label="Default select example">
                                                 <option value="0" <?php if($usuario["semestre"]==0) echo "selected" ?>>...</option>
                                                 <option value="1" <?php if($usuario["semestre"]==1) echo "selected" ?>>1ro</option>
                                                 <option value="2" <?php if($usuario["semestre"]==2) echo "selected" ?>>2do</option>
-                                                <option value="3">3ro</option>
-                                                <option value="4">4to</option>
-                                                <option value="5">5to</option>
-                                                <option value="6">6to</option>
-                                                <option value="7">7mo</option>
-                                                <option value="8">8vo</option>
-                                                <option value="9">9no</option>
+                                                <option value="3" <?php if($usuario["semestre"]==3) echo "selected" ?>>3ro</option>
+                                                <option value="4" <?php if($usuario["semestre"]==4) echo "selected" ?>>4to</option>
+                                                <option value="5" <?php if($usuario["semestre"]==5) echo "selected" ?>>5to</option>
+                                                <option value="6" <?php if($usuario["semestre"]==6) echo "selected" ?>>6to</option>
+                                                <option value="7" <?php if($usuario["semestre"]==7) echo "selected" ?>>7mo</option>
+                                                <option value="8" <?php if($usuario["semestre"]==8) echo "selected" ?>>8vo</option>
+                                                <option value="9" <?php if($usuario["semestre"]==9) echo "selected" ?>>9no</option>
                                             </select>
                                         </div>
                                     </div>
@@ -94,11 +76,11 @@
                                             <label for="start">Teléfono:</label>
                                             <div class="input-group mb-2">
                                                 <span class="input-group-text span-fj">+52</span>
-                                                <input type="text" id="span-fj-tel" name="telefono" value="3411178092">
+                                                <input type="text" id="span-fj-tel" name="telefono" value="<?= $usuario["telefono"] ?>">
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                    <div class="row"><?php echo $_SESSION["usuario"]["correo_u"] ?></div>
                                 </div>
                             </div>
                         </div>
@@ -106,29 +88,87 @@
                     <div class="accordion-item">
                         <h3 class="accordion-header" id="panelsStayOpen-headingTwo">
                         <button class="collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                            Credencial del usuario
+                            Credencial
                         </button>
                         </h3>
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                             <div class="accordion-body">
                                 <div class="row m-1">
-                                    <div class="col-12" style="overflow: scroll">
-                                        <input type="file" src="" alt="credencial" >
+                                    <div class="col-12 mtb-4 p-2" style="overflow: scroll">
+                                        <label for="cred">Cambiar:</label>
+                                        <input type="file" name="Imagen" multiple/>
+                                    </div>
+                                    
+                                    <div class="col-xl-6 col-sm-12 p-1 mt-4 text-center" style="overflow: scroll" >
+                                        <img src="data:image/jpg;base64,<?php echo base64_encode($usuario["cred_u"]) ?>" alt="Credencial" style="max-height:300px" />
                                     </div>
                                 </div>
                             </div><!--ACORD-BODY-2-->
                         </div>
                     </div>
                 </div><!---- ACCORD END----->
-            </form>
-        </div>
-        <div class="mb-4" style="padding-bottom: 3rem">
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-end">
-                    <button id="btn-cancel" type="reset">Cancelar</button>
-                    <button id="btn-agregar" type="reset">Guardar cambios</button>
-                </div>
-                </div>
-        </div>
+            </div>
+            <div class="mb-4" style="padding-bottom: 3rem">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                        <button id="btn-cancel" type="reset">Cancelar</button>
+                        <button type="submit" id="btn-agregar">Guardar cambios</button>
+                    </div>
+                    </div>
+            </div>
+        </form>
+        <?php
+        $actualizar = new ControladorInfoUsuario();
+        $actualizar->ctrActualizarInfoUsuario();
+        ?>
     </div><!--MARGIN-->
+
+    <div class="mb-3">
+        <h4>Historial de préstamos</h4>
+    </div>
+    <div class="mb-3">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Inició</th>
+                        <th>Finalizó</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $pres = new ControladorDetalles();
+                        $pres->ctrObtenerPrestamosUsuario($_SESSION["usuario"]["codigo_u"]);
+                    ?>
+                    <!--<tr onclick="location.href='./loan-view.html'">
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                    </tr>
+                    <tr onclick="location.href='./loan-view.html'">
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                    </tr>
+                    <tr onclick="location.href='./loan-view.html'">
+                        <td>3</td>
+                        <td>Larry the Bird</td>
+                        <td>jj</td>
+                    </tr>
+                    <tr onclick="location.href='./loan-view.html'">
+                        <td>4</td>
+                        <td>Larry the Bird</td>
+                        <td>jj</td>
+                    </tr>
+                    <tr onclick="location.href='./loan-view.html'">
+                        <td>5</td>
+                        <td>Larry the Bird</td>
+                        <td>jj</td>
+                    </tr>-->
+                </tbody>
+            </table>
+        </div><!--TABLE-->  
+    </div>
+
 </div><!--Container-->

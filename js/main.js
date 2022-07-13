@@ -18,7 +18,7 @@ $(document).ready(function() {
 //alert("desde datatables");
 
 $(document).ready(function() {
-    var table = $('#example').DataTable({
+    var table = $('#tablaDatos').DataTable({
         //var table = $('#example').DataTable({
         "lengthMenu": [
             [10, 25, 50, -1],

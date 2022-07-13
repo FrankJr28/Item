@@ -13,7 +13,7 @@ class ModeloFormularios{
 
     static public function mdlIniciarSesionUsuario($datos){
 
-        $sql="SELECT * FROM usuario WHERE codigo_u=:login AND contra_u=:password AND banned=0";
+        $sql="SELECT * FROM usuario WHERE codigo_u=:login AND contra_u=:password AND actS_u=1";
 
         $stmt = Conexion::conectar()->prepare($sql);
 
@@ -267,24 +267,6 @@ class ModeloFormularios{
             $resultado = $stmt->fetch();
 
             return $resultado["link_photo"];
-
-        }
-
-    }
-
-    static public function mdlObtenerDatosUsuario(){
-
-        $sql="SELECT * FROM usuario LEFT JOIN carrera ON usuario.id_car WHERE correo_u=:login";
-
-        $stmt = Conexion::conectar()->prepare($sql);
-
-        $stmt->bindParam(":login",$_SESSION["usuario"]["correo_u"],PDO::PARAM_STR);
-
-        if($stmt->execute()){
-            
-            $resultado = $stmt->fetch();
-
-            return $resultado;
 
         }
 

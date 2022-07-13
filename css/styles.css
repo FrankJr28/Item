@@ -247,3 +247,12 @@ body {
     display: flex;
     align-items: center;
 }
+
+::-webkit-scrollbar {
+    width: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #216e8a;
+    border-radius: 5px;
+}

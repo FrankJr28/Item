@@ -79,7 +79,7 @@ $('#btn-editar').on('click', function() {
         }
     })
 });*/
-
+/*
 $('#btn-agregar').on('click', function() {
     Swal.fire(
         'Artículo agregado',
@@ -87,7 +87,7 @@ $('#btn-agregar').on('click', function() {
         'success'
     )
 });
-
+*/
 $('#btn-sol').on('click', function() {
     swal({
         title: 'Procesando solicitud',

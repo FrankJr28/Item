@@ -12,22 +12,25 @@ class ControladorFormularios{
             $respuesta = ModeloFormularios::mdlIniciarSesionUsuario($datos);
 
             if($respuesta){
+                try{
+                    if($respuesta["codigo_u"] == $_POST["codigo"] && $respuesta["contra_u"] == $_POST["contra"]){                    
 
-                if($respuesta["codigo_u"] == $_POST["codigo"] && $respuesta["contra_u"] == $_POST["contra"]){                    
+                        $_SESSION["usuario"] = $respuesta;
 
-                    $_SESSION["usuario"] = $respuesta;
+                        echo '<script>
 
-                    echo '<script>
+                            if ( window.history.replaceState ) {
 
-                        if ( window.history.replaceState ) {
+                                window.history.replaceState( null, null, window.location.href );
 
-                            window.history.replaceState( null, null, window.location.href );
+                                window.location = "index.php?pagina=solicitar";
+                                
+                            }
 
-                            window.location = "index.php?pagina=solicitar";
-                            
-                        }
-
-                    </script>';
+                        </script>';
+                        
+                    }
+                }catch(Exception $e){
                     
                 }
 
@@ -517,14 +520,6 @@ class ControladorFormularios{
             echo "<script>alert('ocurrió un error');</script>";
         }
 
-    }
-
-    static public function ctrObtenerDatosUsuario(){
-        
-        $respuesta = ModeloFormularios::mdlObtenerDatosUsuario();
-
-        return $respuesta;
-    
     }
 
     public function ctrValidarSesionUsuario(){

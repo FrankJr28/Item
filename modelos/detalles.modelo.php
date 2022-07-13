@@ -12,7 +12,17 @@ class ModeloDetalles{
             return "error";
         }
     }
-
+    static public function mdlObtenerPrestamosUsuario($c){
+        $sql="SELECT usuario.codigo_u, prestamo.* FROM prestamo LEFT JOIN usuario ON prestamo.codigo_u = usuario.codigo_u WHERE usuario.codigo_u=:c";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":c",$c,PDO::PARAM_INT);
+        if($stmt->execute()){  
+            return $stmt->fetchAll();
+        }
+        else{
+            return "error";
+        }
+    }
     static public function mdlObtenerDetalleUsuario($u){
         $sql="SELECT * FROM usuario  LEFT JOIN carrera ON usuario.id_car WHERE codigo_u=:login";
         $stmt = Conexion::conectar()->prepare($sql);
@@ -22,7 +32,6 @@ class ModeloDetalles{
             return $resultado;
         }
     }
-
     static public function mdlObtenerDetallePresAdapt($f){
         $sql="SELECT * FROM prestamo 
         LEFT JOIN pres_adapt on prestamo.id_pres = pres_adapt.id_pres 
@@ -37,7 +46,6 @@ class ModeloDetalles{
             return "error";
         }
     }
-
     static public function mdlObtenerDetallePresBoc($f){
         $sql="SELECT * FROM prestamo 
         LEFT JOIN pres_boc on prestamo.id_pres = pres_boc.id_pres
@@ -52,8 +60,6 @@ class ModeloDetalles{
             return "error";
         }
     }
-
-    
     static public function mdlObtenerDetallePresCab($f){
         $sql="SELECT * FROM prestamo 
         LEFT JOIN pres_cab on pres_cab.id_pres = prestamo.id_pres 
@@ -69,7 +75,6 @@ class ModeloDetalles{
             return "error";
         }
     }
-
     static public function mdlObtenerDetallePresLap($f){
         $sql="SELECT * FROM prestamo 
         LEFT JOIN pres_lap on prestamo.id_pres = pres_lap.id_pres

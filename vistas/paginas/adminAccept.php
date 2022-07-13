@@ -20,7 +20,7 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-hover table-bordered table-des-3 table-sm" id="example">
+        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
             <thead>
                 <tr>
                     <th>Folio</th>

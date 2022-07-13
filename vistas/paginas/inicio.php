@@ -28,9 +28,9 @@
                         <input type="text" name="codigo" placeholder="Ingresar usuario">
                         <label for="password">Contraseña</label>
                         <input type="password" name="contra" placeholder="Ingresar contraseña">
-                        <input type="submit" value="Log In"><br>
-                        <a href="#">He olvidado mi contraseña</a><br>
-                        <a href="#">No tengo una cuenta</a>
+                        <input type="submit" value="Iniciar Sesión"><br>
+                        <!--<a href="#">He olvidado mi contraseña</a><br>
+                        <a href="#">No tengo una cuenta</a>-->
                     </form>
                     </div>
                 </div>
