@@ -474,7 +474,14 @@ class ControladorFormularios{
                         <input type="hidden" id="start" name="codigo" value="'.$dato["codigo_u"].'">
                         <button type="submit" style="background:transparent; border:none;">'.$dato["codigo_u"].'</button>
                     </form></td>
-                    
+                    <td>
+                        
+                            <i class="bi bi-circle-fill text-success';
+                            if($dato["act"]){
+                                $informacion.=" text-danger";
+                            }
+                            $informacion.='"></i>
+                    </td>
                     <td>'.$dato["nombre_u"].' '.$dato["app_u"].'</td>
                     <td>'.date("d-m-y",strtotime($dato["solicitud"])).'</td>
                     <td id="actions" >

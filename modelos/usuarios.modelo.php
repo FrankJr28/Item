@@ -22,7 +22,7 @@ class ModeloUsuarios{
     
     static public function mdlActualizarUsuario($datos){
 
-        $sql="UPDATE usuario SET nombre_u=:nom, app_u=:app, apm_u=:apm, correo_u=:cor, telefono=:tel, semestre=:sem, id_car=:idc WHERE codigo_u=:cod";
+        $sql="UPDATE usuario SET nombre_u=:nom, app_u=:app, apm_u=:apm, correo_u=:cor, telefono=:tel, semestre=:sem, id_car=:idc, act=:ac WHERE codigo_u=:cod";
 
         $stmt = Conexion::conectar()->prepare($sql);
 
@@ -41,6 +41,8 @@ class ModeloUsuarios{
         $stmt->bindParam(":idc",$datos["carrera"],PDO::PARAM_INT);
 
         $stmt->bindParam(":cod",$datos["codigo"],PDO::PARAM_INT);
+        
+        $stmt->bindParam(":ac",$datos["act"],PDO::PARAM_INT);
         
         if($stmt->execute()){
             

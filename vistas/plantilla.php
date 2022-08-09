@@ -98,10 +98,9 @@
                                 $_GET["pagina"]=="usuarios" ||
                                 $_GET["pagina"]=="graficos" ||
                                 $_GET["pagina"]=="crearUsuarios" ||
+                                $_GET["pagina"]=="creditos" ||
                                 $_GET["pagina"]=="cerrar"){
-                            
                                 include "paginas/".$_GET["pagina"].".php";
-
                             }
 
                             else{
@@ -123,7 +122,7 @@
                 </div>
                 <div style="height:40px"></div>
                 <footer class="mt-3 w-100" style="position:fixed; left:auto; bottom:0px; height:auto; background:#FFF; text-align: center;">
-                        <div style="font-size: 12px; width: 90%;">CTA CUSUR © 2022. CRÉDITOS DE LA APLICACIÓN | POLÍTICA DE PRIVACIDAD Y MANEJO DE DATOS</div>
+                        <div style="font-size: 12px; width: 90%;">CTA CUSUR © 2022. <a href="index.php?pagina=creditos">CRÉDITOS DE LA APLICACIÓN </a> | POLÍTICA DE PRIVACIDAD Y MANEJO DE DATOS</div>
                 </footer>
         </div>
         <!--Container Main end-->
@@ -134,18 +133,6 @@
         <script type="text/javascript" src="./js/alerts.js"></script>
 
         <script type="text/javascript" src="./js/file.js"></script>
-
-        <!--
-        <script src="popper/popper.min.js"></script>-->
-
-
-
-        <!--<script type="module" src="./dist/main.js"></script>-->
-        
-
-        <!--Para ver si funciona lo de brenda
-        <link rel="stylesheet" href="./css/stylesVw.css">
-                    -->
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 

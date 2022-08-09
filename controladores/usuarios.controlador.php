@@ -16,6 +16,7 @@ class controladorUsuarios{
                 <thead>
                     <tr>
                         <th scope="col">Código</th>
+                        <th></th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Paterno</th>
                         <th scope="col">Materno</th>
@@ -31,9 +32,15 @@ class controladorUsuarios{
 
                     $info.='<tr data-bs-toggle="modal" data-bs-target="#editarUsuario" data-id="'.$dato["codigo_u"].'" 
                     data-nombre="'.$dato["nombre_u"].'" data-app="'.$dato["app_u"].'" data-apm="'.$dato["apm_u"].'" data-correo="'.$dato["correo_u"].'"
-                    data-telefono="'.$dato["telefono"].'" data-carrera="'.$dato["id_car"].'" data-semestre="'.$dato["semestre"].'" class="usuario" >
+                    data-telefono="'.$dato["telefono"].'" data-carrera="'.$dato["id_car"].'" data-semestre="'.$dato["semestre"].'" data-act="'.$dato["act"].'" class="usuario" >
                                 <td>'.$dato["codigo_u"].'</td>
-                                <td>'.$dato["nombre_u"].'</td>
+                                <td><i class="bi bi-circle-fill text-success';
+                                
+                                    if($dato["act"]){
+                                        $info.=" text-danger";
+                                    }
+
+                                $info.='"></td><td>'.$dato["nombre_u"].'</td>
                                 <td>'.$dato["app_u"].'</td>
                                 <td>'.$dato["apm_u"].'</td>
                                 <td>'.$dato["correo_u"].'</td>
@@ -91,7 +98,8 @@ class controladorUsuarios{
                             'correo' => $_POST["correou"],
                             'telefono' => $_POST["telefonou"],
                             'carrera' => $_POST["carrerau"],
-                            'semestre' => $_POST["semestreu"]
+                            'semestre' => $_POST["semestreu"],
+                            'act' => $_POST["verificadou"]
                         );
               
                 $respuesta = ModeloUsuarios::mdlActualizarUsuario($ar);

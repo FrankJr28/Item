@@ -1,3 +1,7 @@
+<style>
+
+</style>
+
 <div class="mb-4">
 
     <ul class="nav nav-tabs">
@@ -20,11 +24,12 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
+        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos" style="width:100%;">
             <thead>
                 <tr>
                     <th>Folio</th>
                     <th># usuario</th>
+                    <th></th>
                     <th>Nombre</th>
                     <th>Fecha de solicitud</th>
                     <th>Acciones</th>

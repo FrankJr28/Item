@@ -10,6 +10,8 @@ $(".usuario").click((e) => {
     var telefonou = usuario.dataset.telefono;
     var carrerau = usuario.dataset.carrera;
     var semestreu = usuario.dataset.semestre;
+    var act = usuario.dataset.act;
+
     $("#idUsuario").val(codigou);
     $("#nUsuario").val(nombreu);
     $("#pUsuario").val(appu);
@@ -18,6 +20,8 @@ $(".usuario").click((e) => {
     $("#tUsuario").val(telefonou);
     $("#carUsuario").val(carrerau);
     $("#sUsuario").val(semestreu);
+    $("#verificadou").val(act);
+
     usuarioClicked = usuario.dataset.id;
 });
 

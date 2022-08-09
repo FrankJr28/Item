@@ -22,7 +22,7 @@
 ?>
 
 <div class="mb-4">
-    <h3>Material disponible</h3>
+    <h3>Material Disponible</h3>
 
     <div class="">
         <!-- NAV TABS -->   
@@ -103,25 +103,18 @@
 
             <article id="item4">
                 <ul class="list-group list-group-flush" id="contenedor-laptops">
-
                     <?php
                         $laptops = new ControladorFormularios();
                         $laptops->ctrObtenerLaptops();
                     ?>
-
                 </ul>
             </article>
-
-            
-
             <article id="item5">
                 <ul class="list-group list-group-flush" id="contenedor-proyectores">
-        
                     <?php
                         $proyectores = new ControladorFormularios();
                         $proyectores->ctrObtenerProyectores();
                     ?>
-                    
                 </ul>
             </article>
         </div><!-- TABS CONTENT ENDS--> 
@@ -132,12 +125,10 @@
             </form>
             
         </div>
-
         <?php
             $pres = new ControladorSolicitar();
             $pres->ctrSolicitarPrestamo();
         ?>
-
         <!---->
         <div class="modal" tabindex="-1" id="soli">
             <div class="modal-dialog modal-dialog-centered">
@@ -162,7 +153,6 @@
         </div>
         <!---->
     <!--WRAP-->
-
     <div><!-- modal-monitor-->
         <div class="modal fade" id="modal-monitor" tabindex="-1" aria-labelledby="modal-monitor" aria-hidden="true">
             <div class="modal-dialog">
@@ -197,11 +187,9 @@
             </div>
         </div>
     </div><!-- modal-monitor ends-->
-
 </div><!--MATERIAL DISPONIBLE FIN-->
-
 <div class="mb-4" style="min-height:50px">
-    <h3>Mi espacio</h3>
+    <h3>Mi Espacio</h3>
     <ul class="list-group" id="mi-espacio-adapt">
     </ul>
     <ul class="list-group" id="mi-espacio-boc">
@@ -215,39 +203,37 @@
 </div>
 
 <div class="mb-4" style="min-height:50px">
-    <h3>Prestamo Activo:</h3>
+    <h3>Prestamo Activo</h3>
     <?php
-   
+
         $p = new ControladorInfoUsuario();
         $p->ctrObtenerPrestamoActivo();
-   
+
         ?>
 </div>
 
-
-<div class="mb-3">
+<div class="mb-4">
     <h3>Historial de préstamos</h3>
 </div>
-
-<div class="mb-3">
-        <div class="table-responsive">
-            <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Inició</th>
-                        <th>Finalizó</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $pres = new ControladorDetalles();
-                        $pres->ctrObtenerPrestamosUsuario($_SESSION["usuario"]["codigo_u"]);
-                    ?>
-                </tbody>
-            </table>
-        </div><!--TABLE-->  
-    </div>
+<div class="mb-4">
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Inició</th>
+                    <th>Finalizó</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $pres = new ControladorDetalles();
+                    $pres->ctrObtenerPrestamosUsuario($_SESSION["usuario"]["codigo_u"]);
+                ?>
+            </tbody>
+        </table>
+    </div><!--TABLE-->  
+</div>
 
 <script type="text/javascript" src="./js/alerts.js"></script>                
 

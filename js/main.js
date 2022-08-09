@@ -43,4 +43,6 @@ $(document).ready(function() {
         },
         "displayLength": 10
     });
+    $('#container').css('display', 'block');
+    table.columns.adjust().draw();
 });

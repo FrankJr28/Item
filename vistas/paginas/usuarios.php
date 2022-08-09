@@ -58,6 +58,7 @@
                                 <input type="text" id="corUsuario" name="correou">
                             </div>
                         </div>
+                        
                         <div class="row g-2 m-3">
                             <div class="col-3">
                                 <label for="telefono">Teléfono</label>
@@ -89,6 +90,14 @@
                                     <option value="8">8vo</option>
                                     <option value="9">9no</option>
                                     <option value="10">10mo</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label for="Verificado">Verificado:</label>
+                                <!--<input type="text" id="sUsuario" name="semestreu">-->
+                                <select class="form-select" id="verificadou" name="verificadou">
+                                    <option value="0">Sí</option>
+                                    <option value="1">No</option>
                                 </select>
                             </div>
                         </div>
