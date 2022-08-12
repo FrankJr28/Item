@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
-
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +25,6 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     </head>
-
     <body id="body-pd">
         <header class="header" id="header">
             <?php
@@ -38,7 +36,6 @@
                 echo '<div></div>';
             }
             ?>
-
             <div><H1>ITEM</H1></div>
             <div class="header_img"> <a href="http://cta.cusur.udg.mx/"><img src="./img/logo-CTA.png" alt="CTA-logo"></a></div>
         </header>
@@ -91,6 +88,7 @@
                                 $_GET["pagina"]=="adminAccept" ||
                                 $_GET["pagina"]=="adminActive" ||
                                 $_GET["pagina"]=="adminHistory" ||
+                                $_GET["pagina"]=="pruebaDataTables" ||
                                 $_GET["pagina"]=="detallePrestamo" ||
                                 $_GET["pagina"]=="detalleUsuario" ||
                                 $_GET["pagina"]=="generarReporte" ||
@@ -135,14 +133,9 @@
         <script type="text/javascript" src="./js/file.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    
         <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> 
-
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>--> 
-
-     
             <!-- datatables JS -->
         <script type="text/javascript" src="datatables/datatables.min.js"></script>   
 
@@ -153,6 +146,7 @@
                 if( $_GET["pagina"]=="adminAccept" ||
                     $_GET["pagina"]=="adminActive" ||
                     $_GET["pagina"]=="adminHistory" ||
+                    $_GET["pagina"]=="pruebaDataTables" ||
                     $_GET["pagina"]=="solicitar"){
                 
                     echo '<script type="text/javascript" src="./js/main.js"></script>';

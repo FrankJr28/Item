@@ -125,7 +125,7 @@ class ModeloFormularios{
 
     static public function mdlObtenerPrestamosAceptar(){
     
-        $sql='SELECT * FROM prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE inicio is NULL';
+        $sql='SELECT id_pres, prestamo.codigo_u, nombre_u, inicio, solicitud FROM prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE inicio is NULL';
     
         $stmt = Conexion::conectar()->prepare($sql);
 
