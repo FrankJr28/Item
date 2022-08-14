@@ -17,23 +17,23 @@
         <h3>Historial de préstamos</h3>
     </div>
     <div class="table-responsive">
-        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos" style="width:100%;">
+        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
             <thead>
                 <tr>
                     <th>Folio</th>
                     <th># de usuario</th>
                     <th>Nombre</th>
-                    <th>Fecha Inicio</th>
-                    <th>Hora</th>
-                    <th>Fecha Termino</th>
-                    <th>Hora</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de termino</th>
                 </tr>
             </thead>
-            
+            <tbody>
+                <?php 
+                    $presh = new ControladorFormularios;
+                    $presh->ctrObtenerPrestamosHistorial();
+                ?>
+            </tbody>
         </table>
     </div><!--TABLE-->
 
 </div>
-
-<script type="text/javascript" src="datatables/datatables.min.js"></script>
-<script type="text/javascript" src="./js/tablas/tablaAdminHistory.js"></script>

@@ -146,7 +146,7 @@ class ModeloFormularios{
 
     static public function mdlObtenerPrestamosActivos(){
     
-        $sql='SELECT * FROM prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE inicio AND Finalizo is NULL';
+        $sql='SELECT id_pres, usuario.codigo_u, nombre_u, inicio FROM prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE inicio AND Finalizo is NULL';
     
         $stmt = Conexion::conectar()->prepare($sql);
 
@@ -154,33 +154,14 @@ class ModeloFormularios{
 
         if($stmt->execute()){
             
-            $presa = $stmt->fetchAll();
-
-            foreach($presa as $dato){
-                $informacion=$informacion.'<tr>
-                <td><form action="index.php?pagina=detallePrestamo"
-                method="post"><input type="hidden" value="'.$dato["id_pres"].'" name="folio">
-                <button type="submit" style="background:transparent; border:none;">'.$dato["id_pres"].'</button></form></td>
-                
-                <td><form action="index.php?pagina=detalleUsuario" method="post">
-                    <input type="hidden" id="start" name="codigo" value="'.$dato["codigo_u"].'">
-                    <button type="submit" style="background:transparent; border:none;">'.$dato["codigo_u"].'</button>
-                </form></td>
-
-                <td>'.$dato["nombre_u"].' '.$dato["app_u"].'</td>
-                <td>'.$dato["inicio"].'</td>
-                <td id="actions" >
-                    <div class="d-flex justify-content-center" >
-                        <form action="#" method="post"><input type="hidden" value="'.$dato["id_pres"].'" name="cPF"><button type="submit" style="background:transparent; border:none;"><i class="bi bi-check-circle-fill"></i></button></form>
-                    </div>
-                </td>
-            </tr>';
-            //$informacion=$informacion .'<option value=5>edificio</option>';
-            }
+            $informacion = $stmt->fetchAll();
 
         }
+        
         else{
+        
             $informacion='error';
+        
         }
 
         return $informacion;
@@ -189,7 +170,7 @@ class ModeloFormularios{
 
     static public function mdlObtenerPrestamosHistorial(){
     
-        $sql='SELECT * FROM prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE inicio AND Finalizo';
+        $sql='SELECT id_pres, usuario.codigo_u, nombre_u, app_u, inicio, finalizo FROM prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE inicio AND Finalizo';
     
         $stmt = Conexion::conectar()->prepare($sql);
 
@@ -197,26 +178,7 @@ class ModeloFormularios{
 
         if($stmt->execute()){
             
-            $presa = $stmt->fetchAll();
-
-            foreach($presa as $dato){
-                $informacion=$informacion.'<tr>
-                <td><form action="index.php?pagina=detallePrestamo"
-                method="post"><input type="hidden" value="'.$dato["id_pres"].'" name="folio">
-                <button type="submit" style="background:transparent; border:none;">'.$dato["id_pres"].'</button></form></td>
-                
-                <td><form action="index.php?pagina=detalleUsuario" method="post">
-                    <input type="hidden" id="start" name="codigo" value="'.$dato["codigo_u"].'">
-                    <button type="submit" style="background:transparent; border:none;">'.$dato["codigo_u"].'</button>
-                </form></td>
-
-                <td>'.$dato["nombre_u"].' '.$dato["app_u"].'</td>
-                <td>'.$dato["inicio"].'</td>
-                <td>'.$dato["finalizo"].'</td>
-                
-            </tr>';
-            //$informacion=$informacion .'<option value=5>edificio</option>';
-            }
+            $informacion = $stmt->fetchAll();
 
         }
         else{

@@ -1,25 +1,6 @@
-//Código para Datables
-
-//var table = $('#example').DataTable(); //Para inicializar datatables de la manera más simple
-/*
-$(document).ready(function() {
-    $('#example').DataTable({
-        columns: [
-            //"dummy" configuration
-            { visible: true }, //col 1
-            { visible: true }, //col 2
-            { visible: true }, //col 3
-            { visible: true }, //col 4
-            { visible: true } //col 5
-        ]
-    });
-});
-*/
-//alert("desde datatables");
-
 $(document).ready(function() {
 
-    var table = $('#tablaDatos').DataTable({
+    var table = $('#tablaDatos2').DataTable({
         //var table = $('#example').DataTable({
         "lengthMenu": [
             [10, 25, 50, -1],
@@ -49,10 +30,10 @@ $(document).ready(function() {
 
     //alert("desde el datatable");
 
-    var table2 = $('#tablaDatos2').DataTable({
+    var table2 = $('#tablaDatos').DataTable({
         //var table = $('#example').DataTable({
         ajax: {
-            url: './controladores/ajaxTables.php',
+            url: './controladores/tablas/tablaAdminAccept.php',
             dataSrc: ''
         },
         columns: [{
@@ -65,6 +46,7 @@ $(document).ready(function() {
                 },
 
             },
+
             {
                 data: 1,
 
@@ -77,9 +59,7 @@ $(document).ready(function() {
 
             },
             { data: 2 },
-            //{ data: 3 },
 
-            //
             {
                 className: '', // used by world-flags-sprite library
                 data: 1,
@@ -98,8 +78,30 @@ $(document).ready(function() {
                 },
             },
             //
+            {
+                data: 4,
+                render: function(data) {
+                    //var m = moment(data, "YYYY-MM-DD HH:mm:ss");
+                    //return m.format('MMMM Do, YYYY');
 
-            { data: 4 },
+                    let fecha = new Date(data);
+                    return fecha.getDay() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
+
+                },
+            },
+            //
+            {
+                data: 4,
+                render: function(data) {
+                    //var m = moment(data, "YYYY-MM-DD HH:mm:ss");
+                    //return m.format('MMMM Do, YYYY');
+
+                    let fecha = new Date(data);
+                    return fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
+
+                },
+            },
+
             {
                 defaultContent: '<div class="d-flex justify-content-center">' +
                     '<form action="#" method="post"><input type="hidden" value="78" name="cPA"><button type="submit" style="background:transparent; border:none;"><i class="bi bi-check-square"></i></button></form>' +
@@ -129,7 +131,7 @@ $(document).ready(function() {
             },
             "sProcessing": "Procesando...",
         },
-        "displayLength": 10
+        "displayLength": 50
     });
     $('#container').css('display', 'block');
     table2.columns.adjust().draw();

@@ -31,11 +31,18 @@
                     <th># usuario</th>
                     <th></th>
                     <th>Nombre</th>
-                    <th>Fecha Solicitud</th>
-                    <th>Hora</th>
+                    <th>Fecha de solicitud</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
+            <tbody>
+                <?php 
+                    $presa = new ControladorFormularios;
+                    $presa->ctrObtenerPrestamosAceptar();
+                ?>
+                
+                
+            </tbody>
         </table>
     </div><!--TABLE-->
 
@@ -49,5 +56,3 @@
 
 </div>
 
-<script type="text/javascript" src="datatables/datatables.min.js"></script>
-<script type="text/javascript" src="./js/tablas/tablaAdminAccept.js"></script>

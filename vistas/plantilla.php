@@ -88,6 +88,9 @@
                                 $_GET["pagina"]=="adminAccept" ||
                                 $_GET["pagina"]=="adminActive" ||
                                 $_GET["pagina"]=="adminHistory" ||
+                                $_GET["pagina"]=="adminAccept2" ||
+                                $_GET["pagina"]=="adminActive2" ||
+                                $_GET["pagina"]=="adminHistory2" ||
                                 $_GET["pagina"]=="pruebaDataTables" ||
                                 $_GET["pagina"]=="detallePrestamo" ||
                                 $_GET["pagina"]=="detalleUsuario" ||
@@ -133,29 +136,9 @@
         <script type="text/javascript" src="./js/file.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> 
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>--> 
-            <!-- datatables JS -->
-        <script type="text/javascript" src="datatables/datatables.min.js"></script>   
-
-        <script type="text/javascript" src="js/articulos.js"></script>
-
-        <?php
-            if(isset($_GET["pagina"])){
-                if( $_GET["pagina"]=="adminAccept" ||
-                    $_GET["pagina"]=="adminActive" ||
-                    $_GET["pagina"]=="adminHistory" ||
-                    $_GET["pagina"]=="pruebaDataTables" ||
-                    $_GET["pagina"]=="solicitar"){
-                
-                    echo '<script type="text/javascript" src="./js/main.js"></script>';
-
-                }
-            }
-        ?>
         
-
+        <script type="text/javascript" src="js/articulos.js"></script>
+        
     </body>
 
 </html>

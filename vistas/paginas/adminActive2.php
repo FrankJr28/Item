@@ -17,18 +17,23 @@
         <h3>Préstamos activos</h3>
     </div>
     <div class="table-responsive">
-        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos" style="width:100%;">
+        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
             <thead>
                 <tr>
                     <th>Folio</th>
                     <th># de usuario</th>
                     <th>Nombre</th>
-                    <th>inicio</th>
-                    <th>Hora</th>
+                    <th>Fecha de inicio</th>
                     <th>Finalizar</th>
                 </tr>
             </thead>
-            
+            <tbody>
+                <?php 
+                    $presa = new ControladorFormularios;
+                    $presa->ctrObtenerPrestamosActivos();
+                ?>
+                
+            </tbody>
         </table>
     </div><!--TABLE-->
 
@@ -41,6 +46,3 @@
 
 
 </div>
-
-<script type="text/javascript" src="datatables/datatables.min.js"></script>
-<script type="text/javascript" src="./js/tablas/tablaAdminActive.js"></script>
