@@ -1,10 +1,12 @@
 <?php
 
+require_once "conexion.php";
+
 class ModeloUsuarios{
 
     static public function mdlObtenerUsuarios(){
         
-        $sql = "SELECT * FROM `usuario` LEFT JOIN carrera ON usuario.id_car = carrera.id_car WHERE usuario.actS_u=1";
+        $sql = "SELECT codigo_u, nombre_u, app_u, apm_u, correo_u, telefono, carrera.id_car, carrera, semestre, act FROM `usuario` LEFT JOIN carrera ON usuario.id_car = carrera.id_car WHERE usuario.actS_u=1";
 
         $stmt = Conexion::conectar()->prepare($sql);
 

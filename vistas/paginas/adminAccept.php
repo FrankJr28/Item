@@ -29,8 +29,8 @@
                 <tr>
                     <th>Folio</th>
                     <th># usuario</th>
-                    <th></th>
                     <th>Nombre</th>
+                    <th>Verificado</th>
                     <th>Fecha Solicitud</th>
                     <th>Hora</th>
                     <th>Acciones</th>

@@ -1,7 +1,7 @@
 <?php
 
-require_once "../../modelos/formularios.modelo.php";
+require_once "../../modelos/infoTablas.modelo.php";
 
-$prueba = ModeloFormularios::mdlObtenerPrestamosAceptar();
+$prueba = ModeloInfoTablas::mdlObtenerPrestamosAceptar();
 
 echo json_encode($prueba);

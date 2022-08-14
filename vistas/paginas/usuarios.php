@@ -14,12 +14,22 @@
         <h3>Gestionar usuarios</h3>
     </div>
     <div class="table-responsive">
-        <?php
-            $u = new controladorUsuarios();
-            $u->ctrObtenerUsuarios();
-        ?>
+        <table class="table table-sm table-responsive" id="adminUsuarios" style="width:100%;">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th></th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Paterno</th>
+                    <th scope="col">Materno</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Carrera</th>
+                    <th scope="col">Semestre</th>
+                </tr>
+            </thead>
+        </table>
     </div><!--TABLE-->
-
 </div>
 
 <div class="modal fade" id="editarUsuario" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
@@ -230,4 +240,8 @@
 
 ?>
 
+
+
+<script type="text/javascript" src="datatables/datatables.min.js"></script>
+<script type="text/javascript" src="./js/tablas/tablaUsuarios.js"></script>
 <script type="text/javascript" src="js/usuarios.js"></script>

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var table2 = $('#tablaDatos').DataTable({
+    var table = $('#tablaDatos').DataTable({
         //var table = $('#example').DataTable({
         ajax: {
             url: './controladores/tablas/tablaAdminActive.php',
@@ -23,13 +23,9 @@ $(document).ready(function() {
                 },
             },
             { data: 2 },
-
             {
                 data: 3,
                 render: function(data) {
-                    //var m = moment(data, "YYYY-MM-DD HH:mm:ss");
-                    //return m.format('MMMM Do, YYYY');
-
                     let fecha = new Date(data);
                     return fecha.getDay() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
 
@@ -38,9 +34,6 @@ $(document).ready(function() {
             {
                 data: 3,
                 render: function(data) {
-                    //var m = moment(data, "YYYY-MM-DD HH:mm:ss");
-                    //return m.format('MMMM Do, YYYY');
-
                     let fecha = new Date(data);
                     return fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
 
@@ -56,13 +49,11 @@ $(document).ready(function() {
             }
 
         ],
-
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
         ],
         "pageLength": 10,
-        //para cambiar el lenguaje a español
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros",
             "zeroRecords": "No se encontraron resultados",
@@ -78,14 +69,14 @@ $(document).ready(function() {
             },
             "sProcessing": "Procesando...",
         },
-        "displayLength": "All"
+        "displayLength": 10
     });
 
     $('#container').css('display', 'block');
-    table2.columns.adjust().draw();
+    table.columns.adjust().draw();
 
     setInterval(function() {
-        table2.ajax.reload();
+        table.ajax.reload(null, false); // user paging is not reset on reload
     }, 3000);
 
 });

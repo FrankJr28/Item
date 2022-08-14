@@ -23,6 +23,7 @@ $(".usuario").click((e) => {
     $("#verificadou").val(act);
 
     usuarioClicked = usuario.dataset.id;
+    console.log("desde usuarios.js");
 });
 
 $("#btnEliminarUsuario").click((e) => {
