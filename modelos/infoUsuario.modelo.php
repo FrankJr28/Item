@@ -83,8 +83,41 @@ class ModeloInfoUsuario{
             }
         }
     }
-
     //SELECT * from prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE usuario.codigo_u = 210569874 AND prestamo.finalizo IS NULL;
+
+    static public function mdlObtenerContrasenaUsuario($u){
+        
+        $sql='SELECT contra_u FROM usuario WHERE codigo_u=:cod';
+
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        $stmt->bindParam(":cod",$u,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            
+            return $stmt->fetchAll();
+
+        }
+
+    }
+
+    static public function mdlRestablecerContrasenaUsuario($u, $contra){
+    
+        $sql='UPDATE usuario SET contra_u=:contra WHERE codigo_u=:cod';
+
+        $stmt = Conexion::conectar()->prepare($sql);
+
+        $stmt->bindParam(":contra",$contra,PDO::PARAM_STR);
+
+        $stmt->bindParam(":cod",$u,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            
+            return "ok";
+
+        }
+    
+    }
 
     static public function mdlObtenerPrestamoActivo($c){
 

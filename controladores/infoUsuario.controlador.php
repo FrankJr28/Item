@@ -122,6 +122,119 @@ class ControladorInfoUsuario{
 
     }
 
+    public function ctrRestablecerContrasenaUsuario(){
+        
+        if( isset($_POST["oldPass"]) && isset($_POST["newPass"]) && isset($_POST["newPassC"]) && $_POST["newPass"]!="" ){
+
+            if($_POST["newPass"]==$_POST["newPassC"]){
+                
+                $contrActual=ModeloInfoUsuario::mdlObtenerContrasenaUsuario($_SESSION["usuario"]["codigo_u"]);
+
+                $contrActual=$contrActual[0][0];
+
+                if($contrActual==crypt($_POST["oldPass"],'$2a$07$vr1b73PijJwrKq12ghgileOeVuWqAm7$')){
+
+                    $contrasenaEncriptada=crypt($_POST["newPass"],'$2a$07$vr1b73PijJwrKq12ghgileOeVuWqAm7$');
+                    $r=ModeloInfoUsuario::mdlRestablecerContrasenaUsuario($_SESSION["usuario"]["codigo_u"],$contrasenaEncriptada);
+                    
+                    if($r=="ok"){
+
+                        echo "<script> 
+                        if ( window.history.replaceState ) {
+                            window.history.replaceState( null, null, window.location.href);
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'La contraseña ha sido actualizada',
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                        }                
+                        </script>";
+                    
+                    }
+
+                }
+
+                else{
+                    echo "<script> 
+                    if ( window.history.replaceState ) {
+                        window.history.replaceState( null, null, window.location.href);
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Contraseña incorrecta, Acuda a ventanilla para restablecer la contraseña',
+                            showConfirmButton: false,
+                            timer: 5000
+                        });
+                    }                
+                    </script>";
+                }
+
+                /*
+                $contrasenaEncriptada=crypt($_POST["newPass"],'$2a$07$vr1b73PijJwrKq12ghgileOeVuWqAm7$');
+                $r=ModeloInfoUsuario::mdlRestablecerContrasenaUsuario($_SESSION["usuario"]["codigo_u"],$contrasenaEncriptada);
+                
+                if($r=="ok"){
+
+                    echo "<script> 
+                    if ( window.history.replaceState ) {
+                        window.history.replaceState( null, null, window.location.href);
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'La contraseña ha sido actualizada',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    }                
+                    </script>";
+
+                }*/
+
+            }
+
+            else{
+                
+                echo "<script> 
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Las contraseñas no coinciden',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }                
+                </script>";
+
+            }
+
+        }//if issets
+        else{
+
+            if(isset($_POST["oldPass"]) || isset($_POST["newPass"]) || isset($_POST["newPassC"]) ){
+
+                echo "<script> 
+                    if ( window.history.replaceState ) {
+                        window.history.replaceState( null, null, window.location.href);
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Datos Faltantes',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    }                
+                </script>";
+
+            }
+        
+        }
+
+    }
+
     public function ctrObtenerPrestamoActivo(){
         
         $respuesta = ModeloInfoUsuario::mdlObtenerPrestamoActivo($_SESSION["usuario"]["codigo_u"]);
@@ -131,7 +244,7 @@ class ControladorInfoUsuario{
             echo 'Fecha de Solicitud: '.date("d-m-y",strtotime($respuesta[0]["solicitud"])).'<br>';
         }
         else{
-            echo '<div class="col-12 bg-info">No tienes prestamos activos</div>';
+            echo '<div class="col-12 p-1 border border-secundary rounded" >No tienes prestamos activos</div>';
         }
 
     }

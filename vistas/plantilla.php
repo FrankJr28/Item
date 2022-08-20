@@ -7,23 +7,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         
         <title>ITEM | Sistema de préstamos CUSur</title>
-
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-
         <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
-
         <script type="text/javascript" src="jquery/jquery-3.6.0.min.js"></script>
-
         <link rel="stylesheet" href="./css/styles.css">
-        
         <link rel="stylesheet" href="./css/navbar.css"/>       
-
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
         <!--                            SWEET ALERT                         -->
-
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
     </head>
     <body id="body-pd">
         <header class="header" id="header">
@@ -74,7 +65,6 @@
                     </nav>
                 </div>';
             }
-
         ?>
         <!--Container Main start-->
         <div class="height-100"><!--MARGIN-->
@@ -103,17 +93,11 @@
                                 $_GET["pagina"]=="cerrar"){
                                 include "paginas/".$_GET["pagina"].".php";
                             }
-
                             else{
                                 if($_GET["pagina"]!="error"){
-                                    echo '<script>
-
-                                            window.location = "index.php?pagina=error";
-                                        
-                                    </script>';
+                                    echo '<script> window.location = "index.php?pagina=error"; </script>';
                                 }
                                 include "paginas/error404.php";
-                            
                             }
                         }
                         else{
@@ -128,17 +112,11 @@
         </div>
         <!--Container Main end-->
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-
         <script type="text/javascript" src="./js/navbar.js"></script>
-        
         <script type="text/javascript" src="./js/alerts.js"></script>
-
         <script type="text/javascript" src="./js/file.js"></script>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-        
         <script type="text/javascript" src="js/articulos.js"></script>
-        
     </body>
 
 </html>

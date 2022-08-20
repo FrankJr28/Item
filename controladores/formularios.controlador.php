@@ -6,14 +6,16 @@ class ControladorFormularios{
 
         if(isset($_POST["codigo"]) && isset($_POST["contra"])){
             
+            $contrasenaEncriptada=crypt($_POST["contra"],'$2a$07$vr1b73PijJwrKq12ghgileOeVuWqAm7$');
+
             $datos = array("id" => $_POST["codigo"], 
-                        "password" => $_POST["contra"]);
+                        "password" => $contrasenaEncriptada);
         
             $respuesta = ModeloFormularios::mdlIniciarSesionUsuario($datos);
 
             if($respuesta){
                 try{
-                    if($respuesta["codigo_u"] == $_POST["codigo"] && $respuesta["contra_u"] == $_POST["contra"]){                    
+                    if($respuesta["codigo_u"] == $_POST["codigo"] && $respuesta["contra_u"] == $contrasenaEncriptada){                    
 
                         $_SESSION["usuario"] = $respuesta;
 
@@ -59,7 +61,7 @@ class ControladorFormularios{
 
             if($respuesta){
 
-                if($respuesta["codigo_a"] == $_POST["codigo"] && $respuesta["contra_a"] == $_POST["contra"]){
+                if($respuesta["codigo_a"] == $_POST["codigo"] && $respuesta["contra_a"] == $contrasenaEncriptada){
 
                     $_SESSION["admin"] = $respuesta;
 

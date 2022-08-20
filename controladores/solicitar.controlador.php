@@ -10,7 +10,7 @@ class ControladorSolicitar{
         
             $respuesta = ModeloSolicitar::mdlSolicitarPrestamo($u);
 
-            if($respuesta=="xd"){
+            if($respuesta=="ok"){
                 echo "<script>
                 
                 if ( window.history.replaceState ) {
@@ -23,13 +23,13 @@ class ControladorSolicitar{
                         title: 'Solicitud enviada3',
                         showConfirmButton: false,
                         allowOutsideClick: false,
-                        timer: 2000
+                        timer: 6000
                     });
                 }
 
                 setTimeout(function(){
                     window.location = 'index.php?pagina=solicitar';
-                }, 2000);
+                }, 1500);
                 
             </script>";
             }

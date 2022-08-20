@@ -129,7 +129,10 @@ class controladorUsuarios{
             preg_match($numerosValidos,$_POST["telefonou"]) &&
             preg_match($correoValido,$_POST["correou"])){
                 
-                if($_POST["contraseña1"]==$_POST["contraseña2"]){
+                if($_POST["contrasena1"]==$_POST["contrasena2"]){
+                    
+                    $contrasenaEncriptida=crypt($_POST["contrasena2"],'$2a$07$vr1b73PijJwrKq12ghgileOeVuWqAm7$');
+                    
                     $ar = array('codigo' => $_POST["codigou"],
                                 'nombre' => $_POST["nombreu"],
                                 'paterno' => $_POST["paternou"],
@@ -138,7 +141,7 @@ class controladorUsuarios{
                                 'telefono' => $_POST["telefonou"],
                                 'carrera' => $_POST["carrerau"],
                                 'semestre' => $_POST["semestreu"],
-                                'contra' => $_POST["contraseña1"]
+                                'contra' => $contrasenaEncriptida
                             );
                 
                     $respuesta = ModeloUsuarios::mdlInsertarUsuario($ar);
@@ -176,6 +179,44 @@ class controladorUsuarios{
         }
 
     }
-}
 
+    public function ctrRestablecerContrasena(){
+
+        if(isset($_POST["codigo_uR"])){
+            
+            if($_POST["newPass"]==$_POST["newPassC"]){
+                $contrasenaEncriptada=crypt($_POST["newPass"],'$2a$07$vr1b73PijJwrKq12ghgileOeVuWqAm7$');
+                $r=ModeloInfoUsuario::mdlRestablecerContrasenaUsuario($_POST["codigo_uR"],$contrasenaEncriptada);
+                if($r=="ok"){
+                    echo "<script> 
+                    if ( window.history.replaceState ) {
+                        window.history.replaceState( null, null, window.location.href);
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'La contraseña ha sido actualizada',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    }                
+                    </script>";
+                }
+            }
+            else{
+                echo "<script> 
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Las contraseñas no coinciden',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }                
+                </script>";
+            }
+        }
+    }
+}
 ?>

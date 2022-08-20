@@ -115,9 +115,10 @@
                             <div class="col-12 d-flex justify-content-end">
                                 <div class="btn-eliminar-s">
                                     <button id="btnEliminarUsuario" type="reset" data-bs-toggle="modal" data-bs-target="#eliminarUsuario" data-bs-dismiss="modal">Eliminar</button>
+                                    <button id="btnRestablecerContrasena" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#restablecer-modal" data-bs-dismiss="modal">Restablecer Contraseña</button>
                                 </div>
                                 <button type="reset" data-bs-dismiss="modal">Cancelar</button>
-                                <button id="btn-editar" type="submit">Guardar cambios</button>
+                                <button id="btn-editar" class="btn" type="submit">Guardar cambios</button>
                             </div>
                         </div>
                     </form>
@@ -126,6 +127,41 @@
         </div><!-- modal content -->
     </div><!-- modal dialog-->
 </div><!-- modal -->
+
+<!-- Modal Restablecer -->
+
+<div class="modal" id="restablecer-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-head">
+                <!--<img src="img/logo-CTA.png" class="img-fluid" alt="logo-CTA">-->
+                <h3>Restablecer Contraseña</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" method="post">
+                <div class="modal-body">
+                    <div class="box">
+                        <div class="form-group">
+                            <input type="hidden" name="codigo_uR" id="idResPass">
+                            <label>Nueva Contraseña:</label>
+                            <input type="password" class="form-control" name="newPass" id="">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirmar:</label>
+                            <input type="password" class="form-control" name="newPassC" id="">  
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn" style="background: #216e8a; color: #fff;">Restablecer</button>
+                    <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Fin Modal Restablecer -->
 
 <!---modal eliminar-->
 
@@ -144,7 +180,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="submit" class="btn btn-danger">Eliminar</button>
             </div>
         </form>
@@ -238,10 +274,13 @@
 
     }
 
+    $restablecer = new controladorUsuarios();
+    $restablecer->ctrRestablecerContrasena();
+
 ?>
 
 
 
 <script type="text/javascript" src="datatables/datatables.min.js"></script>
 <script type="text/javascript" src="./js/tablas/tablaUsuarios.js"></script>
-<script type="text/javascript" src="js/usuarios.js"></script>
+<!-- <script type="text/javascript" src="js/usuarios.js"></script> -->

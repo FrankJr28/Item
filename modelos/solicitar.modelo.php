@@ -6,8 +6,7 @@ class ModeloSolicitar{
 
     static public function mdlSolicitarPrestamo($u){
         /*                  OBTIENE LOS ARTICULOS QUE ESTAN EN EL ESPACIO DEL USUARIO EN LA BASE DE DATOS                  */
-        /*                  ADAPTADOR                   */
-        
+        /*                  ADAPTADOR                   */  
         $sql="SELECT adaptador.id_a, adaptador.disp_a FROM esp_adapt LEFT JOIN adaptador ON adaptador.id_a = esp_adapt.id_a WHERE codigo_u=:u";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":u",$u,PDO::PARAM_INT);
@@ -129,13 +128,6 @@ class ModeloSolicitar{
                 return "error aa";
             }
 
-            //cambia el estado de los articulos en el prestamo
-            $sql="UPDATE adaptador SET disp_a=0 WHERE ".$valAdaptsUpdate;
-            $stmt = Conexion::conectar()->prepare($sql);
-            if(!$stmt->execute()){  
-                return "error ua";
-            }
-
             //Limpia el espacio del usuario
             $sql="DELETE FROM esp_adapt WHERE codigo_u =:u";
             $stmt = Conexion::conectar()->prepare($sql);
@@ -166,13 +158,7 @@ class ModeloSolicitar{
                 return "error bb";
             }
 
-            //cambia el estado de los articulos en el prestamo
-            $sql="UPDATE bocina SET disp_b=0 WHERE ".$valBocsUpdate;
-            $stmt = Conexion::conectar()->prepare($sql);
-            if(!$stmt->execute()){  
-                return "error ub";
-            }
-
+            
             //Limpia el espacio del usuario
             $sql="DELETE FROM esp_boc WHERE codigo_u =:u";
             $stmt = Conexion::conectar()->prepare($sql);
@@ -201,13 +187,6 @@ class ModeloSolicitar{
             $stmt = Conexion::conectar()->prepare($sql);
             if(!$stmt->execute()){  
                 return "error cc";
-            }
-
-            //cambia el estado de los articulos en el prestamo
-            $sql="UPDATE cable SET disp_c=0 WHERE ".$valCabsUpdate;
-            $stmt = Conexion::conectar()->prepare($sql);
-            if(!$stmt->execute()){  
-                return "error ub";
             }
 
             //Limpia el espacio del usuario
@@ -241,13 +220,6 @@ class ModeloSolicitar{
                 return "error cc";
             }
 
-            //cambia el estado de los articulos en el prestamo
-            $sql="UPDATE laptop SET disp_l=0 WHERE ".$valLapsUpdate;
-            $stmt = Conexion::conectar()->prepare($sql);
-            if(!$stmt->execute()){  
-                return "error ub";
-            }
-
             //Limpia el espacio del usuario
             $sql="DELETE FROM esp_lap WHERE codigo_u =:u";
             $stmt = Conexion::conectar()->prepare($sql);
@@ -277,13 +249,6 @@ class ModeloSolicitar{
             $stmt = Conexion::conectar()->prepare($sql);
             if(!$stmt->execute()){  
                 return "error cc";
-            }
-
-            //cambia el estado de los articulos en el prestamo
-            $sql="UPDATE proyector SET disp_p=0 WHERE ".$valProysUpdate;
-            $stmt = Conexion::conectar()->prepare($sql);
-            if(!$stmt->execute()){  
-                return "error ub";
             }
 
             //Limpia el espacio del usuario

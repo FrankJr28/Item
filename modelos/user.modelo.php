@@ -23,21 +23,20 @@ class ModeloUsuario{
             
             $recorrio=1;
             $i=count($informacion)-1;
-            while($recorrio){
-                 if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
+            while($recorrio && $informacion){
+                if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
                     if(isset($informacion[$i+1]["id_a"])){  //si el anterios tiene articulo
                         if($informacion[$i]["id_a"]==$informacion[$i+1]["id_a"]){   //si son iguales
                                 unset($informacion[$i]);
                         }
                     }
-                 }
-                 if(!isset($informacion[$i-1])){
+                }
+                if(!isset($informacion[$i-1])){
                     $recorrio=0;
-                 }
+                }
                 $i--;
             }
             $informacion=array_values($informacion);
-
         }
 
         else{
@@ -69,17 +68,17 @@ class ModeloUsuario{
             
             $recorrio=1;
             $i=count($informacion)-1;
-            while($recorrio){
-                 if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
+            while($recorrio && $informacion){   
+                if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
                     if(isset($informacion[$i+1]["id_b"])){  //si el anterios tiene articulo
                         if($informacion[$i]["id_b"]==$informacion[$i+1]["id_b"]){   //si son iguales
                                 unset($informacion[$i]);
                         }
                     }
-                 }
-                 if(!isset($informacion[$i-1])){
+                }
+                if(!isset($informacion[$i-1])){
                     $recorrio=0;
-                 }
+                }
                 $i--;
             }
             $informacion=array_values($informacion);
@@ -118,17 +117,17 @@ class ModeloUsuario{
             
             $recorrio=1;
             $i=count($informacion)-1;
-            while($recorrio){
-                 if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
+            while($recorrio && $informacion){
+                if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
                     if(isset($informacion[$i+1]["id_c"])){  //si el anterios tiene articulo
                         if($informacion[$i]["id_c"]==$informacion[$i+1]["id_c"]){   //si son iguales
                                 unset($informacion[$i]);
                         }
                     }
-                 }
-                 if(!isset($informacion[$i-1])){
-                    $recorrio=0;
-                 }
+                }
+                if(!isset($informacion[$i-1])){
+                   $recorrio=0;
+                }
                 $i--;
             }
             $informacion=array_values($informacion);
@@ -166,7 +165,7 @@ class ModeloUsuario{
             $recorrio=1;
             if(count($informacion)>1){
                 $i=count($informacion)-1;
-                while($recorrio){
+                while($recorrio && $informacion){
                     if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
                         if(isset($informacion[$i+1]["id_l"])){  //si el anterios tiene articulo
                             if($informacion[$i]["id_l"]==$informacion[$i+1]["id_l"]){   //si son iguales
@@ -208,7 +207,7 @@ class ModeloUsuario{
             $recorrio=1;
             if(count($informacion)>1){
                 $i=count($informacion)-1;
-                while($recorrio){
+                while($recorrio && $informacion){
                     if(!$informacion[$i]["codigo_u"]){          //Sino tiene código
                         if(isset($informacion[$i+1]["id_p"])){  //si el anterios tiene articulo
                             if($informacion[$i]["id_p"]==$informacion[$i+1]["id_p"]){   //si son iguales

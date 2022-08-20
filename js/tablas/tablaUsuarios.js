@@ -97,4 +97,14 @@ $(document).ready(function() {
     });
     //
 
+    $("#btnEliminarUsuario").click((e) => {
+        $("#idText").text("¿Desea eliminar el usuario con el código " + usuarioClicked + "?");
+        $("#idEliUsu").val(usuarioClicked);
+        console.log($("#idEliUsu").val);
+    });
+
+    $("#btnRestablecerContrasena").click((e) => {
+        $("#idResPass").val(usuarioClicked);
+    });
+
 });

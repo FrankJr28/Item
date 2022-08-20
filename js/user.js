@@ -12,11 +12,15 @@ const contCab = document.getElementById("contenedor-cables");
 const contLap = document.getElementById("contenedor-laptops");
 const contProy = document.getElementById("contenedor-proyectores");
 
-var mis_adaptadores;
-var mis_bocinas;
-var mis_cables;
-var mis_laptops;
-var mis_proyectores;
+const miEspacio = document.getElementById("contEspacio");
+
+miEspacio.hidden = true;
+
+var mis_adaptadores = [];
+var mis_bocinas = [];
+var mis_cables = [];
+var mis_laptops = [];
+var mis_proyectores = [];
 
 var tiempo = setInterval(function() {
 
@@ -498,13 +502,15 @@ function checarEspacioAdapt() {
         }
     });
 
-    if (adaptsAct != mis_adaptadores) {
+    if (JSON.stringify(adaptsAct) !== JSON.stringify(mis_adaptadores)) {
         var aux = "";
         for (var i = 0; i < adaptsAct.length; i++) {
             aux += '<li class="list-group-item list-group-item-primary m-1">Adaptador <strong>ID:</strong>' + adaptsAct[i] + '</li>';
         }
+        miEspacio.hidden = false;
         document.getElementById("mi-espacio-adapt").innerHTML = aux;
         mis_adaptadores = adaptsAct;
+        //console.log("mis adaptadores: " + mis_adaptadores + typeof(mis_adaptadores) + " adaptadores activos: " + adaptsAct + typeof(adaptsAct))
     }
 }
 
@@ -517,11 +523,13 @@ function checarEspacioBoc() {
         }
     });
 
-    if (bocsAct != mis_bocinas) {
+    if (JSON.stringify(bocsAct) !== JSON.stringify(mis_bocinas)) {
         var aux = "";
         for (var i = 0; i < bocsAct.length; i++) {
             aux += '<li class="list-group-item list-group-item-success m-1">Bocinas <strong>ID:</strong>' + bocsAct[i] + '</li>';
         }
+        console.log("bocinas");
+        miEspacio.hidden = false;
         document.getElementById("mi-espacio-boc").innerHTML = aux;
         mis_bocinas = bocsAct;
     }
@@ -536,11 +544,13 @@ function checarEspacioCab() {
         }
     });
 
-    if (cabsAct != mis_cables) {
+    if (JSON.stringify(cabsAct) !== JSON.stringify(mis_cables)) {
         var aux = "";
         for (var i = 0; i < cabsAct.length; i++) {
             aux += '<li class="list-group-item list-group-item-dark m-1">Cable <strong>ID:</strong>' + cabsAct[i] + '</li>';
         }
+        console.log("cables");
+        miEspacio.hidden = false;
         document.getElementById("mi-espacio-cab").innerHTML = aux;
         mis_cables = cabsAct;
     }
@@ -555,11 +565,13 @@ function checarEspacioLap() {
         }
     });
 
-    if (lapsAct != mis_laptops) {
+    if (JSON.stringify(lapsAct) !== JSON.stringify(mis_laptops)) {
         var aux = "";
         for (var i = 0; i < lapsAct.length; i++) {
             aux += '<li class="list-group-item list-group-item-warning m-1">Laptop <strong>ID:</strong>' + lapsAct[i] + '</li>';
         }
+        console.log("laptops");
+        miEspacio.hidden = false;
         document.getElementById("mi-espacio-lap").innerHTML = aux;
         mis_laptops = lapsAct;
     }
@@ -574,11 +586,12 @@ function checarEspacioProy() {
         }
     });
 
-    if (proysAct != mis_proyectores) {
+    if (JSON.stringify(proysAct) !== JSON.stringify(mis_proyectores)) {
         var aux = "";
         for (var i = 0; i < proysAct.length; i++) {
             aux += '<li class="list-group-item list-group-item-info m-1">Proyector <strong>ID:</strong>' + proysAct[i] + '</li>';
         }
+        //miEspacio.hidden = false;
         document.getElementById("mi-espacio-proy").innerHTML = aux;
         mis_proyectores = proysAct;
     }

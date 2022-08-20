@@ -56,10 +56,13 @@ $(document).ready(function() {
             },
 
             {
-                defaultContent: '<div class="d-flex justify-content-center">' +
-                    '<form action="#" method="post"><input type="hidden" value="78" name="cPA"><button type="submit" style="background:transparent; border:none;"><i class="bi bi-check-square"></i></button></form>' +
-                    '<form action="#" method="post"><input type="hidden" value="78" name="cPR"><button type="submit" style="background:transparent; border:none;"><i class="bi bi-trash"></i></button></form>' +
-                    '</div'
+                data: 0,
+                render: function(data) {
+                    return '<div class="d-flex justify-content-center">' +
+                        '<form action="#" method="post"><input type="hidden" value="' + data + '" name="cPA"><button type="submit" style="background:transparent; border:none;"><i class="bi bi-check-square"></i></button></form>' +
+                        '<form action="#" method="post"><input type="hidden" value="' + data + '" name="cPR"><button type="submit" style="background:transparent; border:none;"><i class="bi bi-trash"></i></button></form>' +
+                        '</div'
+                }
             }
 
         ],

@@ -110,16 +110,65 @@
             </div>
             <div class="mb-4" style="padding-bottom: 3rem">
                     <div class="row">
-                        <div class="col-12 d-flex justify-content-end">
-                        <button id="btn-cancel" type="reset">Cancelar</button>
-                        <button type="submit" id="btn-agregar">Guardar cambios</button>
-                    </div>
+                        <!--<div class="col-12 d-flex justify-content-end">-->
+                        <div class="d-flex justify-content-between">
+
+                            <button id="btn-contrasenia" type="button" data-bs-toggle="modal" data-bs-target="#login-modal" >Cambiar Contraseña</button>
+                            
+                            <div>
+                                <button id="btn-cancel" type="reset">Cancelar</button>
+                                <button type="submit" id="btn-agregar">Guardar cambios</button>
+                            </div>
+                        
+                        </div>
+                            <!---</div>-->
                     </div>
             </div>
         </form>
+
+
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header modal-head">
+                        <!--<img src="img/logo-CTA.png" class="img-fluid" alt="logo-CTA">-->
+                        <h3>Restablecer Contraseña</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="#" method="post">
+                        <div class="modal-body">
+                            <div class="box">
+                                <div class="form-group">
+                                    <label>Contraseña Actual:</label>
+                                    <input type="password" class="form-control" name="oldPass" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nueva Contraseña:</label>
+                                    <input type="password" class="form-control" name="newPass" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirmar:</label>
+                                    <input type="password" class="form-control" name="newPassC" id="">  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn" style="background: #216e8a; color: #fff;">Restablecer</button>
+                            <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <?php
+
         $actualizar = new ControladorInfoUsuario();
         $actualizar->ctrActualizarInfoUsuario();
+        
+        $restablecerContraseña = new ControladorInfoUsuario();
+        $restablecerContraseña->ctrRestablecerContrasenaUsuario();
+        
         ?>
     </div><!--MARGIN-->  
 </div><!--Container-->

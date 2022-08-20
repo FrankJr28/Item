@@ -78,7 +78,20 @@
 
 #btn-agregar {
     margin-top: 10px;
-    background: #000;
+    background: #216e8a;
+    color: #fff;
+    border: none;
+    outline: none;
+    height: auto;
+    font-size: 1rem;
+    border-radius: 20px;
+    min-width: auto;
+    padding: .3rem;
+}
+
+#btn-contrasenia {
+    margin-top: 10px;
+    background: #216e8a;
     color: #fff;
     border: none;
     outline: none;

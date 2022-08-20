@@ -170,28 +170,6 @@ class ModeloFormularios{
 
     }
 
-    static public function mdlActualizarDatos($datos){
-
-        $sql="update";
-
-        $stmt = Conexion::conectar()->prepare($sql);
-
-        $stmt->bindParam(":login",$_SESSION["usuario"]["correo_u"],PDO::PARAM_STR);
-
-        if($stmt->execute()){
-
-            return "ok";
-
-        }
-
-        else{
-
-            return "error";
-
-        }
-
-    }
-
 /*                          Fin Visualiza el Usuario                            */
 
 /*                          Visualiza Admin                            */
@@ -223,13 +201,7 @@ class ModeloFormularios{
         $resultado=$stmt->fetchAll();
 
         if(!$resultado){
-            //return "inserta";
- 
-            //INSERT INTO `usuario` (`codigo_u`, `nombre_u`, `app_u`, `apm_u`, `correo_u`, `telefono`, `semestre`, 
-            //`id_car`, `cred_u`, `hol_u`, `contra_u`, `actS_u`, `banned`) 
-            //VALUES ('2188874217', 'Joaquin', 'Leonardo', 'Lázaro', 
-            //'joaquinll@alumnos.udg.mx', '3429874561', '3', '0', '', b'1', 'joa123', b'1', b'0');
-
+            
             $sql="insert into usuario (codigo_u, nombre_u, app_u, apm_u, correo_u, link_photo) VALUES (NULL, :nom, :app, :apm, :correo, :link)";
         
             $stmt=Conexion::conectar()->prepare($sql);
@@ -295,28 +267,177 @@ class ModeloFormularios{
 
     static public function mdlAceptarPrestamo($p){
 
-        $sql="UPDATE prestamo SET inicio=current_timestamp() WHERE prestamo.id_pres=:p";
-
+        //Obtener Adaptadores
+        $sql="SELECT id_a FROM pres_adapt WHERE id_pres=:p";
         $stmt = Conexion::conectar()->prepare($sql);
-
         $stmt->bindParam(":p",$p,PDO::PARAM_INT);
-
-        if($stmt->execute()){
-
-            return "ok";
-
+        if(!$stmt->execute()){
+            return "error";
+        }
+        $informacionA = $stmt->fetchAll();
+        foreach($informacionA as $dato){
+            $sql="UPDATE adaptador SET disp_a=0 WHERE id_a=".$dato["id_a"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ua";
+            }
         }
 
-        else{
-
+        //Obtener Bocina
+        $sql="SELECT id_b FROM pres_boc WHERE id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if(!$stmt->execute()){
             return "error";
+        }
+        $informacionB = $stmt->fetchAll();
+        foreach($informacionB as $dato){
+            $sql="UPDATE bocina SET disp_b=0 WHERE id_b=".$dato["id_b"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ub";
+            }
+        }
 
+        //Obtener Cables
+        $sql="SELECT id_c FROM pres_cab WHERE id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if(!$stmt->execute()){
+            return "error";
+        }
+        $informacionC = $stmt->fetchAll();
+        foreach($informacionC as $dato){
+            $sql="UPDATE cable SET disp_c=0 WHERE id_c=".$dato["id_c"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ub";
+            }
+        }
+        
+        //Obtener Laptops
+        $sql="SELECT * FROM pres_lap WHERE id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if(!$stmt->execute()){
+            return "error";
+        }
+        $informacionL = $stmt->fetchAll();
+        foreach($informacionL as $dato){
+            $sql="UPDATE laptop SET disp_l=0 WHERE id_l=".$dato["id_l"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ub";
+            }
+        }
+
+        //Obtener Proyectores
+        $sql="SELECT * FROM pres_proy WHERE id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if(!$stmt->execute()){
+            return "error";
+        }
+        $informacionP = $stmt->fetchAll();
+        foreach($informacionP as $dato){
+            $sql="UPDATE proyector SET disp_p=0 WHERE id_p=".$dato["id_p"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ub";
+            }
+        }
+
+        $sql="UPDATE prestamo SET inicio=current_timestamp() WHERE prestamo.id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if($stmt->execute()){
+            return "ok";
+        }
+        else{
+            return "error";
         }
 
     }
 
     static public function mdlFinalizarPrestamo($p){
+        //Obtener Adaptadores
+        $sql="SELECT * FROM pres_adapt WHERE id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if(!$stmt->execute()){
+            return "error";
+        }
+        $informacionA = $stmt->fetchAll();
+        foreach($informacionA as $dato){
+            $sql="UPDATE adaptador SET disp_a=1 WHERE id_a=".$dato["id_a"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ua";
+            }
+        }
+        //Obtener Bocina
+        $sql="SELECT * FROM pres_boc WHERE id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if(!$stmt->execute()){
+            return "error";
+        }
+        $informacionB = $stmt->fetchAll();
+        foreach($informacionB as $dato){
+            $sql="UPDATE bocina SET disp_b=1 WHERE id_b=".$dato["id_b"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ub";
+            }
+        }
+        //Obtener Cables
+        $sql="SELECT * FROM pres_cab WHERE id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if(!$stmt->execute()){
+            return "error";
+        }
+        $informacionC = $stmt->fetchAll();
+        foreach($informacionC as $dato){
+            $sql="UPDATE cable SET disp_c=1 WHERE id_c=".$dato["id_c"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ub";
+            }
+        }
+        
+        //Obtener Laptops
+        $sql="SELECT * FROM pres_lap WHERE id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if(!$stmt->execute()){
+            return "error";
+        }
+        $informacionL = $stmt->fetchAll();
+        foreach($informacionL as $dato){
+            $sql="UPDATE laptop SET disp_l=1 WHERE id_l=".$dato["id_l"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ub";
+            }
+        }
 
+        //Obtener Proyectores
+        $sql="SELECT * FROM pres_proy WHERE id_pres=:p";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":p",$p,PDO::PARAM_INT);
+        if(!$stmt->execute()){
+            return "error";
+        }
+        $informacionP = $stmt->fetchAll();
+        foreach($informacionP as $dato){
+            $sql="UPDATE proyector SET disp_p=1 WHERE id_p=".$dato["id_p"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ub";
+            }
+        }
+        
         $sql="UPDATE prestamo SET finalizo=current_timestamp() WHERE prestamo.id_pres=:p";
 
         $stmt = Conexion::conectar()->prepare($sql);

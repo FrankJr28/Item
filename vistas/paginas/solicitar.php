@@ -1,9 +1,6 @@
 <link rel="stylesheet" href="./css/user-styles.css">   
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
 <!-- Material disponible -->   
-
 <?php
     if(isset($_POST["adapt"])){
         echo "Hola" ;
@@ -20,6 +17,20 @@
 
     }
 ?>
+
+<div class="mb-4" id="contEspacio" style="min-height:50px">
+    <h3>Mi Espacio</h3>
+    <ul class="list-group" id="mi-espacio-adapt">
+    </ul>
+    <ul class="list-group" id="mi-espacio-boc">
+    </ul>
+    <ul class="list-group" id="mi-espacio-cab">
+    </ul>
+    <ul class="list-group" id="mi-espacio-lap">
+    </ul>
+    <ul class="list-group" id="mi-espacio-proy">
+    </ul>
+</div>
 
 <div class="mb-4">
     <h3>Material Disponible</h3>
@@ -75,7 +86,6 @@
                     ?>
                 </div>
             </article>
-
             <article id="item2">
                 <div class="list-group" id="contenedor-bocinas">
                     <a class="list-group-item actit d-flex justify-content-between align-items-start">
@@ -100,7 +110,6 @@
                     ?>
                 </div>
             </article>
-
             <article id="item4">
                 <ul class="list-group list-group-flush" id="contenedor-laptops">
                     <?php
@@ -118,17 +127,7 @@
                 </ul>
             </article>
         </div><!-- TABS CONTENT ENDS--> 
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-right: 2%;">
-            <form action="#" method="post">
-                <button class="btn btn-outline b-bl-lr mb-4 mt-2 w-100" name="btnSoli" value="1">Solicitar
-                </button>
-            </form>
-            
-        </div>
-        <?php
-            $pres = new ControladorSolicitar();
-            $pres->ctrSolicitarPrestamo();
-        ?>
+        
         <!---->
         <div class="modal" tabindex="-1" id="soli">
             <div class="modal-dialog modal-dialog-centered">
@@ -188,18 +187,21 @@
         </div>
     </div><!-- modal-monitor ends-->
 </div><!--MATERIAL DISPONIBLE FIN-->
-<div class="mb-4" style="min-height:50px">
-    <h3>Mi Espacio</h3>
-    <ul class="list-group" id="mi-espacio-adapt">
-    </ul>
-    <ul class="list-group" id="mi-espacio-boc">
-    </ul>
-    <ul class="list-group" id="mi-espacio-cab">
-    </ul>
-    <ul class="list-group" id="mi-espacio-lap">
-    </ul>
-    <ul class="list-group" id="mi-espacio-proy">
-    </ul>
+
+
+
+<div class="mb-4">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-right: 2%;">
+        <form action="#" method="post">
+            <button class="btn btn-outline b-bl-lr mb-4 mt-2 w-100" name="btnSoli" value="1">Solicitar
+            </button>
+        </form>
+        
+    </div>
+    <?php
+        $pres = new ControladorSolicitar();
+        $pres->ctrSolicitarPrestamo();
+    ?>
 </div>
 
 <div class="mb-4" style="min-height:50px">
@@ -217,7 +219,7 @@
 </div>
 <div class="mb-4">
     <div class="table-responsive">
-        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
+        <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos" style="width:100%;">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -236,7 +238,7 @@
 </div>
 
 <script type="text/javascript" src="./js/alerts.js"></script>                
-
 <script type="text/javascript" src="./js/user.js"></script>
-
+<script type="text/javascript" src="datatables/datatables.min.js"></script>
+<script type="text/javascript" src="./js/tablas/tablaUsuarioSolicitar.js"></script>
 <script src="https://kit.fontawesome.com/b4ec81d6df.js" crossorigin="anonymous"></script>

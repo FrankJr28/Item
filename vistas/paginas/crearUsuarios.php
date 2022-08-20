@@ -53,14 +53,14 @@
             <div class="row m-3">
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <input type="password" id="pass" name="contraseña1" class="form-input">
+                        <input type="password" id="pass" name="contrasena1" class="form-input">
                         <label for="pass" class="form-label">Contraseña</label>
                         <span class="form-line"></span>
                     </div>  
                 </div>  
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <input type="password" id="pass2" name="contraseña2" class="form-input">
+                        <input type="password" id="pass2" name="contrasena2" class="form-input">
                         <label for="pass2" class="form-label">Comprobación</label>
                         <span class="form-line"></span>
                     </div>
