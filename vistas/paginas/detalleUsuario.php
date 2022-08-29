@@ -64,7 +64,7 @@
     </div>
     <div class="mb-3">
         <div class="table-responsive">
-            <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos">
+            <table class="table table-hover table-bordered table-des-3 table-sm" id="tablaDatos" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -82,3 +82,6 @@
         </div><!--TABLE-->  
     </div>
 </div>
+
+<script type="text/javascript" src="datatables/datatables.min.js"></script>
+<script type="text/javascript" src="./js/tablas/tablaUsuarioSolicitar.js"></script>

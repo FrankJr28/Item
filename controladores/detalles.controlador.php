@@ -1,5 +1,6 @@
 <?php
 class ControladorDetalles{
+
     static public function ctrObtenerDetallePrestamo(){
         if(isset($_POST["folio"])){
             $fol = $_POST["folio"];

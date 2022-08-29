@@ -78,9 +78,6 @@
                                 $_GET["pagina"]=="adminAccept" ||
                                 $_GET["pagina"]=="adminActive" ||
                                 $_GET["pagina"]=="adminHistory" ||
-                                $_GET["pagina"]=="adminAccept2" ||
-                                $_GET["pagina"]=="adminActive2" ||
-                                $_GET["pagina"]=="adminHistory2" ||
                                 $_GET["pagina"]=="pruebaDataTables" ||
                                 $_GET["pagina"]=="detallePrestamo" ||
                                 $_GET["pagina"]=="detalleUsuario" ||

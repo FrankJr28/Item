@@ -64,8 +64,8 @@
             </li>
             <li id="tabitem5" class="nav-item">
                 <a class="nav-link" href="#item5">
-                    <i class="fa fa-light fa-desktop"></i>
-                    <span class="tab-text">Monitores</span>
+                    <i class=" bi bi-projector"></i>
+                    <span class="tab-text">Proyectores</span>
                 </a>
             </li>
         </ul>

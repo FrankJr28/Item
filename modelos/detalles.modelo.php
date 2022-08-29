@@ -1,8 +1,7 @@
 <?php
 class ModeloDetalles{
     static public function mdlObtenerDetallePrestamo($f){
-        $sql="SELECT * FROM prestamo LEFT JOIN usuario ON prestamo.codigo_u LEFT JOIN ubicacion ON prestamo.id_ubi 
-        WHERE prestamo.id_pres=:f";
+        $sql="SELECT * FROM prestamo LEFT JOIN usuario ON prestamo.codigo_u = usuario.codigo_u LEFT JOIN ubicacion ON prestamo.id_ubi = ubicacion.id_ubi WHERE prestamo.id_pres=:f";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":f",$f,PDO::PARAM_INT);
         if($stmt->execute()){  

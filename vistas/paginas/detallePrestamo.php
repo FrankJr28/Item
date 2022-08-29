@@ -1,18 +1,31 @@
 <?php
-$validar = new ControladorFormularios();
-$validar->ctrValidarSesionAdmin();
+//$validar = new ControladorFormularios();
+//$validar->ctrValidarSesionAdmin();
 ?>
 <div class="mb-4">
     <div class="mb-4">
         <h3>Ver préstamo</h3>
     </div>
     <?php
-    if(!isset($_POST["folio"])){
-        echo '<script>
-            window.location = "index.php?pagina=adminAccept";
-        </script>';
-    }
-        $pres = ControladorDetalles::ctrObtenerDetallePrestamo();   
+        if(!isset($_POST["folio"])){
+            echo '<script>
+                window.location = "index.php?pagina=adminAccept";
+            </script>';
+        }
+
+        $pres = ControladorDetalles::ctrObtenerDetallePrestamo();  
+        
+        if(isset($_SESSION["usuario"])){
+        
+            if($pres["codigo_u"]!=$_SESSION["usuario"]["codigo_u"]){
+                
+                echo '<script>
+                    window.location = "index.php?pagina=solicitar";
+                </script>';
+
+            }
+        
+        } 
     ?>
 
     <div class="form-view">

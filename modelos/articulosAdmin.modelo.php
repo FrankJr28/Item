@@ -85,7 +85,7 @@ class ModeloArticulos{
 
     static public function mdlObtenerProyectores(){
 
-        $sql="SELECT * FROM proyector WHERE disp_p=1";
+        $sql="SELECT * FROM proyector WHERE actS_p=1";
 
         $stmt = Conexion::conectar()->prepare($sql);
 
@@ -122,6 +122,21 @@ class ModeloArticulos{
 
     static public function mdlActualizarAdaptador($datos){
 
+        if(!$datos["disp"]){
+            
+            $sql="DELETE FROM esp_adapt WHERE id_a =:ida";
+            
+            $stmt = Conexion::conectar()->prepare($sql);
+            
+            $stmt->bindParam(":ida",$datos["id"],PDO::PARAM_INT);
+            
+            if(!$stmt->execute()){  
+            
+                return "error dea";
+            }
+
+        }
+
         $sql="UPDATE adaptador SET marca_a=:marca,modelo_a=:modelo,obs_a=:obs,disp_a=:disp WHERE id_a=:id";
 
         $stmt = Conexion::conectar()->prepare($sql);
@@ -145,6 +160,21 @@ class ModeloArticulos{
     }
 
     static public function mdlActualizarBocina($datos){
+
+        if(!$datos["disp"]){
+            
+            $sql="DELETE FROM esp_boc WHERE id_b =:idb";
+            
+            $stmt = Conexion::conectar()->prepare($sql);
+            
+            $stmt->bindParam(":idb",$datos["id"],PDO::PARAM_INT);
+            
+            if(!$stmt->execute()){  
+            
+                return "error dea";
+            }
+
+        }
 
         $sql="UPDATE bocina SET marca_b=:marca,modelo_b=:modelo,obs_b=:obs,disp_b=:disp WHERE id_b=:id";
 
@@ -170,6 +200,21 @@ class ModeloArticulos{
 
     static public function mdlActualizarCable($datos){
 
+        if(!$datos["disp"]){
+            
+            $sql="DELETE FROM esp_cab WHERE id_c =:idc";
+            
+            $stmt = Conexion::conectar()->prepare($sql);
+            
+            $stmt->bindParam(":idc",$datos["id"],PDO::PARAM_INT);
+            
+            if(!$stmt->execute()){  
+            
+                return "error dec";
+            }
+
+        }
+
         $sql="UPDATE cable SET marca_c=:marca,id_tc=:tipoCable,disp_c=:disp WHERE id_c=:id";
 
         $stmt = Conexion::conectar()->prepare($sql);
@@ -191,6 +236,21 @@ class ModeloArticulos{
     }
 
     static public function mdlActualizarLaptop($datos){
+
+        if(!$datos["disp"]){
+            
+            $sql="DELETE FROM esp_lap WHERE id_l =:idl";
+            
+            $stmt = Conexion::conectar()->prepare($sql);
+            
+            $stmt->bindParam(":idl",$datos["id"],PDO::PARAM_INT);
+            
+            if(!$stmt->execute()){  
+            
+                return "error dec";
+            }
+
+        }
 
         $sql="UPDATE laptop SET marca_l=:marca,modelo_l=:modelo,sn_l=:sn,obs_l=:obs,disp_l=:disp WHERE id_l=:id";
 
@@ -217,6 +277,21 @@ class ModeloArticulos{
     }
 
     static public function mdlActualizarProyector($datos){
+
+        if(!$datos["disp"]){
+            
+            $sql="DELETE FROM esp_proy WHERE id_p =:idp";
+            
+            $stmt = Conexion::conectar()->prepare($sql);
+            
+            $stmt->bindParam(":idp",$datos["id"],PDO::PARAM_INT);
+            
+            if(!$stmt->execute()){  
+            
+                return "error dep";
+            }
+
+        }
 
         $sql="UPDATE proyector SET marca_p=:marca,modelo_p=:modelo,sn_p=:sn,obs_p=:obs,disp_p=:disp WHERE id_p=:id";
 

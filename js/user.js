@@ -618,7 +618,7 @@ on(document, 'click', '.adapt', e => {
             data: { "valor": fn },
             success: function(data) {}
         });
-        alert(fn);
+
 
     } else {
         $.ajax({
@@ -627,7 +627,7 @@ on(document, 'click', '.adapt', e => {
             data: { "valor": fn },
             success: function(data) {}
         });
-        alert(fn);
+
     }
 });
 
@@ -646,8 +646,6 @@ on(document, 'click', '.boc', e => {
 
         });
 
-        alert(fn);
-
     } else {
         $.ajax({
             type: 'POST',
@@ -655,7 +653,6 @@ on(document, 'click', '.boc', e => {
             data: { "valor": fn },
             success: function(data) {}
         });
-        alert(fn);
     }
 });
 
@@ -674,8 +671,6 @@ on(document, 'click', '.cab', e => {
 
         });
 
-        alert(fn);
-
     } else {
         $.ajax({
             type: 'POST',
@@ -683,7 +678,6 @@ on(document, 'click', '.cab', e => {
             data: { "valor": fn },
             success: function(data) {}
         });
-        alert(fn);
     }
 });
 
@@ -701,9 +695,6 @@ on(document, 'click', '.lap', e => {
             success: function(data) {}
 
         });
-
-        alert(fn);
-
     } else {
         $.ajax({
             type: 'POST',
@@ -711,7 +702,6 @@ on(document, 'click', '.lap', e => {
             data: { "valor": fn },
             success: function(data) {}
         });
-        alert(fn);
     }
 });
 
@@ -729,9 +719,6 @@ on(document, 'click', '.proy', e => {
             success: function(data) {}
 
         });
-
-        alert(fn);
-
     } else {
         $.ajax({
             type: 'POST',
@@ -739,6 +726,5 @@ on(document, 'click', '.proy', e => {
             data: { "valor": fn },
             success: function(data) {}
         });
-        alert(fn);
     }
 });

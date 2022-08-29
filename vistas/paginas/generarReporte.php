@@ -20,11 +20,8 @@
             </div>
         </form>
         <?php
-
             $genera = new ControladorReportes();
-
             $genera->ctrGenerarReporte();
-        
         ?>
     </div>
 </div>

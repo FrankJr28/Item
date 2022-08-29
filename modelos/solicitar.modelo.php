@@ -4,6 +4,20 @@ require_once "conexion.php";
 
 class ModeloSolicitar{
 
+    static public function mdlObtenerPrestamoEnSolicitud($u){
+        $sql="SELECT * FROM prestamo WHERE finalizo IS NULL AND codigo_u=:u";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->bindParam(":u",$u,PDO::PARAM_INT);
+        if($stmt->execute()){
+            if($stmt->fetchAll()){
+                return "ocupado";
+            }
+            else{
+                return "disponible";
+            }
+        }
+    }
+    
     static public function mdlSolicitarPrestamo($u){
         /*                  OBTIENE LOS ARTICULOS QUE ESTAN EN EL ESPACIO DEL USUARIO EN LA BASE DE DATOS                  */
         /*                  ADAPTADOR                   */  
@@ -21,6 +35,7 @@ class ModeloSolicitar{
         else{   
             return "error ocA";
         }
+        
         /*                  FIN ADAPTADOR                   */
         /*                  BOCINAS                   */
         $sql="SELECT bocina.id_b, bocina.disp_b FROM esp_boc LEFT JOIN bocina ON bocina.id_b = esp_boc.id_b WHERE codigo_u=:u";

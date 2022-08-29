@@ -240,7 +240,14 @@ class ControladorInfoUsuario{
         $respuesta = ModeloInfoUsuario::mdlObtenerPrestamoActivo($_SESSION["usuario"]["codigo_u"]);
 
         if($respuesta){
-            echo 'Id del prestamo: '.$respuesta[0]["id_pres"].'<br>';
+            /*
+            <form action="index.php?pagina=detallePrestamo" method="post"><input type="hidden" value="79" name="folio">
+                        <button type="submit" style="background:transparent; border:none;">79</button></form>
+            */
+            echo '<div>Id del prestamo: ';
+            echo '<form action="index.php?pagina=detallePrestamo" style="display:inline-block"method="post"><input type="hidden" value="'.$respuesta[0]["id_pres"].'" name="folio">
+            <button type="submit" style="background:transparent; border:none;">'.$respuesta[0]["id_pres"].'</button></form></div>';
+ 
             echo 'Fecha de Solicitud: '.date("d-m-y",strtotime($respuesta[0]["solicitud"])).'<br>';
         }
         else{
