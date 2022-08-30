@@ -41,7 +41,8 @@ $(document).ready(function() {
                 data: 4,
                 render: function(data) {
                     let fecha = new Date(data);
-                    return fecha.getDay() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
+                    var m = parseInt(fecha.getMonth()) + 1;
+                    return fecha.getDate() + "/" + m + "/" + fecha.getFullYear();
 
                 },
             },

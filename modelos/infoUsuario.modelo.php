@@ -82,6 +82,8 @@ class ModeloInfoUsuario{
                 }
             }
         }
+        $stmt->close();
+        $stmt=NULL;
     }
     //SELECT * from prestamo LEFT JOIN usuario on prestamo.codigo_u = usuario.codigo_u WHERE usuario.codigo_u = 210569874 AND prestamo.finalizo IS NULL;
 
@@ -98,7 +100,8 @@ class ModeloInfoUsuario{
             return $stmt->fetchAll();
 
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlRestablecerContrasenaUsuario($u, $contra){
@@ -116,7 +119,8 @@ class ModeloInfoUsuario{
             return "ok";
 
         }
-    
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlObtenerPrestamoActivo($c){
@@ -135,6 +139,9 @@ class ModeloInfoUsuario{
 
         }
 
+        $stmt->close();
+        $stmt=NULL;
+    
     }
 
     static public function mdlObtenerCarreras($c){
@@ -158,7 +165,8 @@ class ModeloInfoUsuario{
         }
     
         return $informacion;
-        
+        $stmt->close();
+        $stmt=NULL;    
     }
 
     static public function mdlObtenerDatosUsuario(){
@@ -176,7 +184,8 @@ class ModeloInfoUsuario{
             return $resultado;
 
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
 }

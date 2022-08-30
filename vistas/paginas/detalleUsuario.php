@@ -2,7 +2,7 @@
 
     $validar = new ControladorFormularios();
     $validar->ctrValidarSesionAdmin();
-
+    
     if(!isset($_POST["codigo"])){
         echo '<script>
             

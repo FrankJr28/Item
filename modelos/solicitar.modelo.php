@@ -16,6 +16,8 @@ class ModeloSolicitar{
                 return "disponible";
             }
         }
+        $stmt->close();
+        $stmt=NULL;
     }
     
     static public function mdlSolicitarPrestamo($u){
@@ -277,7 +279,8 @@ class ModeloSolicitar{
         }
 
         return "ok";
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
 }

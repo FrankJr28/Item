@@ -10,6 +10,8 @@ class ModeloDetalles{
         else{
             return "error";
         }
+        $stmt->close();
+        $stmt=NULL;
     }
     static public function mdlObtenerPrestamosUsuario($c){
         $sql="SELECT usuario.codigo_u, prestamo.* FROM prestamo LEFT JOIN usuario ON prestamo.codigo_u = usuario.codigo_u WHERE usuario.codigo_u=:c";
@@ -21,6 +23,8 @@ class ModeloDetalles{
         else{
             return "error";
         }
+        $stmt->close();
+        $stmt=NULL;
     }
     static public function mdlObtenerDetalleUsuario($u){
         $sql="SELECT * FROM usuario  LEFT JOIN carrera ON usuario.id_car WHERE codigo_u=:login";
@@ -30,6 +34,8 @@ class ModeloDetalles{
             $resultado = $stmt->fetch();
             return $resultado;
         }
+        $stmt->close();
+        $stmt=NULL;
     }
     static public function mdlObtenerDetallePresAdapt($f){
         $sql="SELECT * FROM prestamo 
@@ -44,6 +50,8 @@ class ModeloDetalles{
         else{
             return "error";
         }
+        $stmt->close();
+        $stmt=NULL;
     }
     static public function mdlObtenerDetallePresBoc($f){
         $sql="SELECT * FROM prestamo 
@@ -58,6 +66,8 @@ class ModeloDetalles{
         else{
             return "error";
         }
+        $stmt->close();
+        $stmt=NULL;
     }
     static public function mdlObtenerDetallePresCab($f){
         $sql="SELECT * FROM prestamo 
@@ -73,6 +83,8 @@ class ModeloDetalles{
         else{
             return "error";
         }
+        $stmt->close();
+        $stmt=NULL;
     }
     static public function mdlObtenerDetallePresLap($f){
         $sql="SELECT * FROM prestamo 
@@ -87,6 +99,8 @@ class ModeloDetalles{
         else{
             return "error";
         }
+        $stmt->close();
+        $stmt=NULL;
     }
     static public function mdlObtenerDetallePresProy($f){
         $sql="SELECT * FROM prestamo 
@@ -101,6 +115,8 @@ class ModeloDetalles{
         else{
             return "error";
         }
+        $stmt->close();
+        $stmt=NULL;
     }
 }
 ?>

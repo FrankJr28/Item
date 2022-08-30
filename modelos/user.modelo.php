@@ -44,7 +44,8 @@ class ModeloUsuario{
             $informacion='error';
         
         }
-        
+        $stmt->close();
+        $stmt=NULL;
         return $informacion;
         
     }
@@ -92,7 +93,8 @@ class ModeloUsuario{
         }
         
         return $informacion;
-        
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlGetCab($u){
@@ -141,7 +143,8 @@ class ModeloUsuario{
         }
         
         return $informacion;
-        
+        $stmt->close();
+        $stmt=NULL;
     }
     
     static public function mdlGetLap($u){
@@ -187,7 +190,8 @@ class ModeloUsuario{
             $informacion='error';
 
         }
-
+        $stmt->close();
+        $stmt=NULL;
         return $informacion;
     
     }
@@ -232,7 +236,8 @@ class ModeloUsuario{
         }
 
         return $informacion;
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
 }

@@ -591,7 +591,7 @@ function checarEspacioProy() {
         for (var i = 0; i < proysAct.length; i++) {
             aux += '<li class="list-group-item list-group-item-info m-1">Proyector <strong>ID:</strong>' + proysAct[i] + '</li>';
         }
-        //miEspacio.hidden = false;
+        miEspacio.hidden = false;
         document.getElementById("mi-espacio-proy").innerHTML = aux;
         mis_proyectores = proysAct;
     }

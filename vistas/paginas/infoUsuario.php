@@ -1,4 +1,8 @@
 <!--Container-->
+<?php        
+    $login = new ControladorFormularios();    
+    $login->ctrValidarSesionUsuario();
+?>
 <link rel="stylesheet" href="./css/stylesUsDt.css"/>
 <?php
     $usuario = ControladorInfoUsuario::ctrObtenerDatosUsuario();
@@ -80,7 +84,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row"><?php echo $_SESSION["usuario"]["correo_u"] ?></div>
                                 </div>
                             </div>
                         </div>

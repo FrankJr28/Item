@@ -23,6 +23,9 @@ Class ModeloInfoTablas{
 
         return $informacion;
     
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlObtenerPrestamosActivos(){
@@ -46,7 +49,10 @@ Class ModeloInfoTablas{
         }
 
         return $informacion;
-    
+        
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlObtenerPrestamosHistorial(){
@@ -67,7 +73,10 @@ Class ModeloInfoTablas{
         }
 
         return $informacion;
-    
+        
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
 }

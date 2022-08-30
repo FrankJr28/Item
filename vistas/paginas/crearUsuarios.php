@@ -1,4 +1,7 @@
-
+<?php        
+    $login = new ControladorFormularios();    
+    $login->ctrValidarSesionAdmin();
+?>
 <link rel="stylesheet" href="./css/styleFormR.css">
 
 <div class="mb-4">

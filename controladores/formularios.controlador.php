@@ -657,9 +657,6 @@ class ControladorFormularios{
 
         if(isset($_POST["cPA"])){
 
-            
-            //echo '<script>alert("has pulado aceptar '.$_POST["cPA"].'");</script>';
-
             $p = $_POST["cPA"];
 
             $respuesta = ModeloFormularios::mdlAceptarPrestamo($p);
@@ -693,24 +690,40 @@ class ControladorFormularios{
 
             else{
 
-				echo '<script>
+                switch($respuesta){
+                    case "and":
+                        $title = "Un adaptador ya está en otro préstamo";
+                        break;
+                    case "bnd":
+                        $title = "Una bocina ya está en otro préstamo";
+                        break;
+                    case "cnd":
+                        $title = "Un cable ya está en otro préstamo";
+                        break;
+                    case "lnd":
+                        $title = "Una laptop ya está en otro préstamo";
+                        break;
+                    case "pnd":
+                        $title = "Un proyector ya está en otro préstamo";
+                        break;
+                    default:
+                        $title = "Error general";
+                        break;        
+                }
+                echo '<script>
+                            window.history.replaceState( null, null, window.location.href );
+                            if ( window.history.replaceState ) {
+                                window.history.replaceState( null, null, window.location.href );
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Error",
+                                    text: "'.$title.'"
+                                })
+                            }
+                        </script>';
+                    
 
-                    window.history.replaceState( null, null, window.location.href );
-
-					if ( window.history.replaceState ) {
-
-						window.history.replaceState( null, null, window.location.href );
-
-                        Swal.fire({
-                            icon: "error",
-                            title: "X",
-                            text: "Ocurrió un error"
-                            
-                        })
-            
-					}
-
-				</script>';
+                
 			}
 
         }

@@ -21,7 +21,8 @@ class ModeloReportes{
             return $stmt->fetchAll();
 
         }
-    
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlObtenerPeriodo($fechaInicio,$fechaFin){
@@ -45,7 +46,8 @@ class ModeloReportes{
             return $stmt->fetchAll();
 
         }
-    
+        $stmt->close();
+        $stmt=NULL;
     }
 
     /*

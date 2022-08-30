@@ -72,13 +72,11 @@
                     <?php 
                         if(isset($_GET["pagina"])){
                             if($_GET["pagina"]=="solicitar" ||
-                                $_GET["pagina"]=="admin" ||
                                 $_GET["pagina"]=="inicio" ||
                                 $_GET["pagina"]=="infoUsuario" ||
                                 $_GET["pagina"]=="adminAccept" ||
                                 $_GET["pagina"]=="adminActive" ||
                                 $_GET["pagina"]=="adminHistory" ||
-                                $_GET["pagina"]=="pruebaDataTables" ||
                                 $_GET["pagina"]=="detallePrestamo" ||
                                 $_GET["pagina"]=="detalleUsuario" ||
                                 $_GET["pagina"]=="generarReporte" ||

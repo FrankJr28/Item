@@ -1,3 +1,7 @@
+<?php        
+    $login = new ControladorFormularios();    
+    $login->ctrValidarSesionAdmin();
+?>
 <div class="mb-4">
     <ul class="nav nav-tabs">
         <li class="nav-item">

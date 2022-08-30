@@ -21,15 +21,8 @@ class ControladorReportes{
 
         if(isset($_POST['fI']) && isset($_POST["fF"])){
 
-            //echo "Sí hay variables post";
-
             $respuesta = ModeloReportes::mdlObtenerPeriodo($_POST['fI'],$_POST["fF"]);
-            /* 
-            echo "tal cual<br>";
-            var_dump($respuesta);
-            echo "<br>encodificado<br>";
-            var_dump(json_encode($respuesta));
-            */
+            
             echo "<script>
 
                 var parametros = [];
@@ -50,7 +43,8 @@ class ControladorReportes{
                     adaptadores.push(ar[i].adaptadores);
                     bocinas.push(ar[i].bocinas);
                     cables.push(ar[i].cables);
-
+                    laptops.push(ar[i].laptops);
+                    proyectores.push(ar[i].proyectores);
                 }
 
                 var traceAdaptadores={
@@ -76,14 +70,14 @@ class ControladorReportes{
 
                 var traceLaptops={
                     x: parametros,
-                    y: cables,
+                    y: laptops,
                     name: 'laptops',
                     type: 'bar'
                 };
 
                 var traceProyectores={
                     x: parametros,
-                    y: cables,
+                    y: proyectores,
                     name: 'proyectores',
                     type: 'bar'
                 };

@@ -32,7 +32,8 @@ class ModeloFormularios{
             return "error";
         
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlIniciarSesionAdmin($datos){
@@ -55,7 +56,8 @@ class ModeloFormularios{
             return "error";
         
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     /*                          Fin Validar Sesiones                            */
@@ -91,7 +93,10 @@ class ModeloFormularios{
         }
         
         return $informacion;
-        
+    
+        $stmt->close();
+        $stmt=NULL;
+    
     }
 
     static public function mdlObtenerProyectores(){
@@ -121,6 +126,9 @@ class ModeloFormularios{
         
         return $informacion;
         
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     
@@ -149,7 +157,8 @@ class ModeloFormularios{
         }
         
         return $informacion;
-        
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlObtenerPhoto(){
@@ -167,7 +176,8 @@ class ModeloFormularios{
             return $resultado["link_photo"];
 
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
 /*                          Fin Visualiza el Usuario                            */
@@ -185,6 +195,8 @@ class ModeloFormularios{
             return $stmt -> fetchAll();
 
         }
+        $stmt->close();
+        $stmt=NULL;
     }
 /*                          Fin Visualiza Admin                            */    
 
@@ -260,7 +272,8 @@ class ModeloFormularios{
         }
 
         return "0"; 
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     
@@ -276,6 +289,17 @@ class ModeloFormularios{
         }
         $informacionA = $stmt->fetchAll();
         foreach($informacionA as $dato){
+            
+            $sql="SELECT disp_a FROM adaptador WHERE id_a=".$dato["id_a"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ua";
+            }
+            $disp  = $stmt->fetchAll();
+            if(!$disp[0]["disp_a"]){    //verificar que aun esté disponible y no lo hayan aprobado en otro préstamo
+                return "and";
+            }
+
             $sql="UPDATE adaptador SET disp_a=0 WHERE id_a=".$dato["id_a"];
             $stmt = Conexion::conectar()->prepare($sql);
             if(!$stmt->execute()){  
@@ -292,6 +316,17 @@ class ModeloFormularios{
         }
         $informacionB = $stmt->fetchAll();
         foreach($informacionB as $dato){
+
+            $sql="SELECT disp_b FROM bocina WHERE id_b=".$dato["id_b"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ua";
+            }
+            $disp  = $stmt->fetchAll();
+            if(!$disp[0]["disp_b"]){    //verificar que aun esté disponible y no lo hayan aprobado en otro préstamo
+                return "bnd";
+            }
+
             $sql="UPDATE bocina SET disp_b=0 WHERE id_b=".$dato["id_b"];
             $stmt = Conexion::conectar()->prepare($sql);
             if(!$stmt->execute()){  
@@ -308,6 +343,17 @@ class ModeloFormularios{
         }
         $informacionC = $stmt->fetchAll();
         foreach($informacionC as $dato){
+
+            $sql="SELECT disp_c FROM cable WHERE id_c=".$dato["id_c"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ua";
+            }
+            $disp  = $stmt->fetchAll();
+            if(!$disp[0]["disp_c"]){    //verificar que aun esté disponible y no lo hayan aprobado en otro préstamo
+                return "cnd";
+            }
+
             $sql="UPDATE cable SET disp_c=0 WHERE id_c=".$dato["id_c"];
             $stmt = Conexion::conectar()->prepare($sql);
             if(!$stmt->execute()){  
@@ -324,6 +370,17 @@ class ModeloFormularios{
         }
         $informacionL = $stmt->fetchAll();
         foreach($informacionL as $dato){
+
+            $sql="SELECT disp_l FROM laptop WHERE id_l=".$dato["id_l"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ua";
+            }
+            $disp  = $stmt->fetchAll();
+            if(!$disp[0]["disp_l"]){    //verificar que aun esté disponible y no lo hayan aprobado en otro préstamo
+                return "lnd";
+            }
+
             $sql="UPDATE laptop SET disp_l=0 WHERE id_l=".$dato["id_l"];
             $stmt = Conexion::conectar()->prepare($sql);
             if(!$stmt->execute()){  
@@ -340,6 +397,17 @@ class ModeloFormularios{
         }
         $informacionP = $stmt->fetchAll();
         foreach($informacionP as $dato){
+
+            $sql="SELECT disp_p FROM proyector WHERE id_p=".$dato["id_p"];
+            $stmt = Conexion::conectar()->prepare($sql);
+            if(!$stmt->execute()){  
+                return "error ua";
+            }
+            $disp  = $stmt->fetchAll();
+            if(!$disp[0]["disp_p"]){    //verificar que aun esté disponible y no lo hayan aprobado en otro préstamo
+                return "pnd";
+            }
+
             $sql="UPDATE proyector SET disp_p=0 WHERE id_p=".$dato["id_p"];
             $stmt = Conexion::conectar()->prepare($sql);
             if(!$stmt->execute()){  
@@ -356,7 +424,8 @@ class ModeloFormularios{
         else{
             return "error";
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlFinalizarPrestamo($p){
@@ -456,7 +525,8 @@ class ModeloFormularios{
             return "error";
 
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlRechazarPrestamo($p){
@@ -479,6 +549,9 @@ class ModeloFormularios{
             return "error";
 
         }
+
+        $stmt->close();
+        $stmt=NULL;
 
     }
 
@@ -507,6 +580,9 @@ class ModeloFormularios{
 
         }
 
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlEliminarEspacioAdapt($a,$u){
@@ -527,6 +603,9 @@ class ModeloFormularios{
         else{
             return "error";
         }
+
+        $stmt->close();
+        $stmt=NULL;
 
     }
 
@@ -552,6 +631,9 @@ class ModeloFormularios{
         else{
             return "error";
         }
+
+        $stmt->close();
+        $stmt=NULL;
 
     }
 
@@ -579,6 +661,9 @@ class ModeloFormularios{
 
         }
 
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlEliminarEspacioBoc($b,$u){
@@ -597,6 +682,9 @@ class ModeloFormularios{
         else{
             return "error";
         }
+
+        $stmt->close();
+        $stmt=NULL;
 
     }
 
@@ -626,6 +714,9 @@ class ModeloFormularios{
         
         }
 
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlInsertarEspacioCab($c,$u){
@@ -652,6 +743,9 @@ class ModeloFormularios{
 
         }
 
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlEliminarEspacioCab($c,$u){
@@ -670,6 +764,9 @@ class ModeloFormularios{
         else{
             return "error";
         }
+
+        $stmt->close();
+        $stmt=NULL;
 
     }
 
@@ -699,6 +796,9 @@ class ModeloFormularios{
         
         }
 
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlInsertarEspacioLap($c,$u){
@@ -725,6 +825,9 @@ class ModeloFormularios{
 
         }
 
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlEliminarEspacioLap($c,$u){
@@ -743,6 +846,9 @@ class ModeloFormularios{
         else{
             return "error";
         }
+
+        $stmt->close();
+        $stmt=NULL;
 
     }
 
@@ -770,6 +876,9 @@ class ModeloFormularios{
 
         }
 
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlEliminarEspacioProy($c,$u){
@@ -793,6 +902,9 @@ class ModeloFormularios{
             return "error ep";
         
         }
+
+        $stmt->close();
+        $stmt=NULL;
 
     }
 

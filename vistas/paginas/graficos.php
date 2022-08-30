@@ -1,3 +1,7 @@
+<?php        
+    $login = new ControladorFormularios();    
+    $login->ctrValidarSesionAdmin();
+?>
 <link rel="stylesheet" href="./css/styleModF.css">
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 

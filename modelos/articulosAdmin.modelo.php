@@ -20,6 +20,10 @@ class ModeloArticulos{
             return "error";
 
         }
+
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlObtenerBocinas(){
@@ -38,7 +42,8 @@ class ModeloArticulos{
             return "error";
 
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlObtenerCables(){
@@ -60,7 +65,8 @@ class ModeloArticulos{
             return "error";
 
         }
-
+        $stmt->close();
+        $stmt=NULL;
         //
     } 
 
@@ -81,6 +87,9 @@ class ModeloArticulos{
 
         }
 
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlObtenerProyectores(){
@@ -100,6 +109,9 @@ class ModeloArticulos{
 
         }
 
+        $stmt->close();
+        $stmt=NULL;
+
     }
 
     static public function mdlObtenerTipoConexion(){
@@ -113,7 +125,8 @@ class ModeloArticulos{
             return $stmt->fetchAll();
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     /*                  Fin Obtener Registros                   */
@@ -134,7 +147,8 @@ class ModeloArticulos{
             
                 return "error dea";
             }
-
+            $stmt->close();
+            $stmt=NULL;
         }
 
         $sql="UPDATE adaptador SET marca_a=:marca,modelo_a=:modelo,obs_a=:obs,disp_a=:disp WHERE id_a=:id";
@@ -156,7 +170,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlActualizarBocina($datos){
@@ -173,7 +188,8 @@ class ModeloArticulos{
             
                 return "error dea";
             }
-
+            $stmt->close();
+            $stmt=NULL;
         }
 
         $sql="UPDATE bocina SET marca_b=:marca,modelo_b=:modelo,obs_b=:obs,disp_b=:disp WHERE id_b=:id";
@@ -186,7 +202,7 @@ class ModeloArticulos{
 
         $stmt->bindParam(":obs",$datos["obs"],PDO::PARAM_STR);
 
-        $stmt->bindParam(":disp",$datos["disp"],PDO::PARAM_STR);
+        $stmt->bindParam(":disp",$datos["disp"],PDO::PARAM_INT);
 
         $stmt->bindParam(":id",$datos["id"],PDO::PARAM_INT);
 
@@ -195,7 +211,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlActualizarCable($datos){
@@ -232,7 +249,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlActualizarLaptop($datos){
@@ -264,7 +282,7 @@ class ModeloArticulos{
 
         $stmt->bindParam(":obs",$datos["obs"],PDO::PARAM_STR);
 
-        $stmt->bindParam(":disp",$datos["disp"],PDO::PARAM_STR);
+        $stmt->bindParam(":disp",$datos["disp"],PDO::PARAM_INT);
 
         $stmt->bindParam(":id",$datos["id"],PDO::PARAM_INT);
 
@@ -273,7 +291,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlActualizarProyector($datos){
@@ -314,7 +333,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     /*                  Fin Actualizar Registros                    */
@@ -342,7 +362,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlInsertarBocina($datos){
@@ -366,7 +387,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlInsertarCable($datos){
@@ -388,7 +410,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlInsertarLaptop($datos){
@@ -414,7 +437,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlInsertarProyector($datos){
@@ -440,7 +464,8 @@ class ModeloArticulos{
             return "ok";
             
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     /*                  Fin Insertar Registros                  */
@@ -469,7 +494,8 @@ class ModeloArticulos{
         //    return $e->getMessage();
         
         //}
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
     static public function mdlEliminarBocina($id){
@@ -489,6 +515,9 @@ class ModeloArticulos{
                 return "Error en la petición";
             }
 
+            $stmt->close();
+            $stmt=NULL;
+
     }
 
     static public function mdlEliminarCable($id){
@@ -507,7 +536,8 @@ class ModeloArticulos{
         else{
             return "Error en la petición";
         }
-
+        $stmt->close();
+        $stmt=NULL;
     }
 
 }

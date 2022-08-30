@@ -350,7 +350,7 @@ class controladorArticulos{
 
             $respuesta = ModeloArticulos::mdlActualizarBocina($ar);
 
-            return "ok";
+            return $respuesta;
         
         }
 

@@ -1,6 +1,7 @@
-<style>
-
-</style>
+<?php        
+    $login = new ControladorFormularios();    
+    $login->ctrValidarSesionAdmin();
+?>
 
 <div class="mb-4">
 
